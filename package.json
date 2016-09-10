@@ -1,0 +1,50 @@
+{
+  "name": "EPL-Matchday",
+  "version": "0.1.0",
+  "author": "Matt Stuhring",
+  "description": "Follow and Support your EPL club",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "deploy": "rm -rf public; brunch build --production; surge public",
+    "lint": "eslint --ext .js,.jsx --ignore-pattern public",
+    "knex": "knex",
+    "start": "brunch watch --server"
+  },
+  "dependencies": {
+    "axios": "^0.14.0",
+    "body-parser": "^1.15.2",
+    "boom": "^4.0.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-validation": "^1.0.1",
+    "humps": "^1.1.0",
+    "joi": "^9.0.4",
+    "jsonwebtoken": "^7.1.9",
+    "knex": "^0.11.10",
+    "material-ui": "^0.15.4",
+    "morgan": "^1.7.0",
+    "pg": "^6.1.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-tap-event-plugin": "^1.0.0"
+  },
+  "devDependencies": {
+    "auto-reload-brunch": "^2.7.1",
+    "babel-brunch": "^6.0.6",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "brunch": "^2.8.2",
+    "clean-css-brunch": "^2.0.0",
+    "eslint": "^3.4.0",
+    "eslint-config-ryansobol": "^9.1.1",
+    "javascript-brunch": "^2.0.0",
+    "nodemon": "^1.10.2",
+    "postcss-brunch": "^2.0.1",
+    "surge": "^0.18.0",
+    "uglify-js-brunch": "^2.0.1"
+  }
+}

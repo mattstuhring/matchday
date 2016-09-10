@@ -1,0 +1,6 @@
+node_modules
+npm-debug.log
+public
+pg
+.env
+.DS_Store
