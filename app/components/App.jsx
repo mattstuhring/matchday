@@ -5,9 +5,6 @@ import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
 
-function handleTouchTap() {
-  alert('onTouchTap triggered on the title component');
-}
 
 const App = React.createClass({
   render() {
@@ -19,12 +16,14 @@ const App = React.createClass({
 
     return <div>
       <AppBar
-        title={<span style={styles.title}>Title</span>}
-        onTitleTouchTap={handleTouchTap}
-        iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-        iconElementRight={<FlatButton label="Save" />}
-      />
-      {this.props.children}
+        title={<span style={styles.title}>EPL-Matchday</span>}
+        showMenuIconButton={false}
+      >
+        <FlatButton label="EPL" />
+        <FlatButton label="Signin" />
+      </AppBar>
+
+      {React.cloneElement(this.props.children)}
     </div>;
   }
 });
