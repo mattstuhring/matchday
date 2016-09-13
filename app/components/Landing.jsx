@@ -49,7 +49,7 @@ const Landing = React.createClass({
       </div>
 
       <div className="row">
-        <div className="col s6">
+        <div className="col s6" style={{width: '47%'}}>
           <h3 className="center">Who do you support?</h3>
           <div className="flex-container-1">
             {clubs.map(function(element) {
@@ -103,15 +103,20 @@ const Landing = React.createClass({
                 </div>
               </div>
 
-              <CardTitle className="cardTitle" title="Card title" subtitle="Card subtitle" />
+              <CardTitle className="cardTitle" title="Standings" />
               <CardText>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
                 Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
                 Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
               </CardText>
-              <CardTitle className="cardTitle" title="Card title" subtitle="Card subtitle" />
-              <CardText>
+              <CardHeader
+                className="cardTitle"
+                title="Upcoming Matches"
+                actAsExpander={true}
+                showExpandableButton={true}
+              />
+              <CardText expandable={true}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
                 Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.

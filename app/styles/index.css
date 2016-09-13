@@ -43,3 +43,32 @@ body {
 .clubs {
   width: 50px !important;
 }
+
+.regBtn {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.landingColumns {
+  padding-left: 0px !important;
+  padding-right: 0px;
+}
+
+.regKit {
+  border: 1px solid lightgrey;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  margin-bottom: 40px;
+}
+
+.regFormTitle {
+  background-color: grey;
+  color: white;
+  padding: 10px 0 10px 0 !important;
+  margin-top: 0px !important;
+}
+
+.regForm {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
