@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import ActionAndroid from 'material-ui/svg-icons/action/android';
+import FlatButton from 'material-ui/FlatButton';
 
 const Register = React.createClass ({
   render() {
@@ -43,9 +44,8 @@ const Register = React.createClass ({
       },
     };
 
-    return <div>
+    return <div className="container">
       <h1 className="center">Lets Get You Registered</h1>
-      <div className="container">
       <Paper zDepth={3}>
         <div className="row">
           <div className="row center">
@@ -80,7 +80,6 @@ const Register = React.createClass ({
             <h4 className="col s10 offset-s1 regFormTitle">Your Personal Details</h4>
           </div>
           <div className="col s6 center regForm">
-
             <div>
               <TextField
                 style={{width: '350px'}}
@@ -135,8 +134,6 @@ const Register = React.createClass ({
           </div>
         </div>
       </Paper>
-
-      </div>
     </div>;
   }
 });

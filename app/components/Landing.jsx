@@ -3,8 +3,14 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
 import ActionHome from 'material-ui/svg-icons/action/home';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText}
+  from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
+  from 'material-ui/Table';
+import FlatButton from 'material-ui/FlatButton';
+import { lightGreenA200 }
+  from 'material-ui/styles/colors';
 
 const Landing = React.createClass({
   render() {
@@ -31,18 +37,6 @@ const Landing = React.createClass({
       { club: 'West Ham United', img: './images/clubs/West-Ham.png' }
     ];
 
-    const styles = {
-      mediumIcon: {
-        width: 48,
-        height: 48,
-      },
-      medium: {
-        width: 96,
-        height: 96,
-        padding: 24,
-      },
-    };
-
     return <div>
       <div style={{width: '100%', textAlign: 'center'}}>
         <h1>EPL-Matchday</h1>
@@ -63,11 +57,8 @@ const Landing = React.createClass({
               };
               return <div key={element.id}>
                 <Paper style={style} zDepth={3} circle={true} className="box">
-                  <IconButton
-                    style={styles.medium}
-                  >
-                  </IconButton>
-                    <p>{element.club}</p>
+                  <FlatButton rippleColor={lightGreenA200} style={{borderRadius: '50%', width: '120px', height: '120px', position: 'relative', right: '9px', bottom: '8px'}} />
+                    <p style={{marginTop: '5px'}}>{element.club}</p>
                 </Paper>
               </div>;
             })}
@@ -78,7 +69,7 @@ const Landing = React.createClass({
           <div className="col s6">
             <div className="section" />
             <Card>
-              <div className="row header">
+              <div className="row landHeader">
                 <div className="col s7">
                   <CardHeader
                     title="Manchester United"
@@ -105,10 +96,34 @@ const Landing = React.createClass({
 
               <CardTitle className="cardTitle" title="Standings" />
               <CardText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                <Table>
+                  <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                    <TableRow>
+                      <TableHeaderColumn>#</TableHeaderColumn>
+                      <TableHeaderColumn>Club</TableHeaderColumn>
+                      <TableHeaderColumn>GP</TableHeaderColumn>
+                      <TableHeaderColumn>W</TableHeaderColumn>
+                      <TableHeaderColumn>T</TableHeaderColumn>
+                      <TableHeaderColumn>L</TableHeaderColumn>
+                      <TableHeaderColumn>GF</TableHeaderColumn>
+                      <TableHeaderColumn>GA</TableHeaderColumn>
+                      <TableHeaderColumn>Pts</TableHeaderColumn>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody displayRowCheckbox={false}>
+                    <TableRow>
+                    <TableHeaderColumn>1</TableHeaderColumn>
+                    <TableHeaderColumn>MAN</TableHeaderColumn>
+                    <TableHeaderColumn>7</TableHeaderColumn>
+                    <TableHeaderColumn>7</TableHeaderColumn>
+                    <TableHeaderColumn>0</TableHeaderColumn>
+                    <TableHeaderColumn>0</TableHeaderColumn>
+                    <TableHeaderColumn>11</TableHeaderColumn>
+                    <TableHeaderColumn>0</TableHeaderColumn>
+                    <TableHeaderColumn>22</TableHeaderColumn>
+                    </TableRow>
+                  </TableBody>
+                </Table>
               </CardText>
               <CardHeader
                 className="cardTitle"

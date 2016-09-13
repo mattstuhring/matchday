@@ -20,7 +20,7 @@ const App = React.createClass({
         showMenuIconButton={false}
       >
         <FlatButton label="EPL" />
-        <FlatButton label="Signin" />
+        <FlatButton label="Login" />
       </AppBar>
 
       {React.cloneElement(this.props.children)}

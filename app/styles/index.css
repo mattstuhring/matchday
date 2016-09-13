@@ -32,8 +32,10 @@ body {
   text-align: center;
 }
 
-.header {
-  margin-bottom: 0;
+.landHeader {
+  margin-bottom: 20px;
+  background-color: grey;
+  color: white;
 }
 
 .cardTitle {
@@ -49,16 +51,12 @@ body {
   margin-bottom: 50px;
 }
 
-.landingColumns {
-  padding-left: 0px !important;
-  padding-right: 0px;
-}
-
 .regKit {
   border: 1px solid lightgrey;
   padding-left: 0px !important;
   padding-right: 0px !important;
   margin-bottom: 40px;
+  margin-left: 11px !important;
 }
 
 .regFormTitle {
@@ -71,4 +69,16 @@ body {
 .regForm {
   padding-left: 0px !important;
   padding-right: 0px !important;
+}
+
+.landFlatBtn {
+  margin-top: 7px;
+  border-radius: 50%;
+  height: 99px;
+  width: 99px;
+}
+
+.logTitle {
+  padding-right: 22px !important;
+  padding-left: 22px !important;
 }
