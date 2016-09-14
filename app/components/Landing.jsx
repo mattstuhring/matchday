@@ -94,7 +94,7 @@ const Landing = React.createClass({
                 </div>
               </div>
 
-              <CardTitle className="cardTitle" title="Standings" />
+              <div className="cardTitle">Standing</div>
               <CardText>
                 <Table>
                   <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
@@ -112,30 +112,43 @@ const Landing = React.createClass({
                   </TableHeader>
                   <TableBody displayRowCheckbox={false}>
                     <TableRow>
-                    <TableHeaderColumn>1</TableHeaderColumn>
-                    <TableHeaderColumn>MAN</TableHeaderColumn>
-                    <TableHeaderColumn>7</TableHeaderColumn>
-                    <TableHeaderColumn>7</TableHeaderColumn>
-                    <TableHeaderColumn>0</TableHeaderColumn>
-                    <TableHeaderColumn>0</TableHeaderColumn>
-                    <TableHeaderColumn>11</TableHeaderColumn>
-                    <TableHeaderColumn>0</TableHeaderColumn>
-                    <TableHeaderColumn>22</TableHeaderColumn>
+                      <TableRowColumn>1</TableRowColumn>
+                      <TableRowColumn>MAN</TableRowColumn>
+                      <TableRowColumn>7</TableRowColumn>
+                      <TableRowColumn>7</TableRowColumn>
+                      <TableRowColumn>0</TableRowColumn>
+                      <TableRowColumn>0</TableRowColumn>
+                      <TableRowColumn>11</TableRowColumn>
+                      <TableRowColumn>0</TableRowColumn>
+                      <TableRowColumn>22</TableRowColumn>
                     </TableRow>
                   </TableBody>
                 </Table>
               </CardText>
-              <CardHeader
-                className="cardTitle"
-                title="Upcoming Matches"
-                actAsExpander={true}
-                showExpandableButton={true}
-              />
-              <CardText expandable={true}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+              <div className="cardTitle">Upcoming Matches</div>
+              <CardText>
+                <Table style={{marginBottom: '10px'}}>
+                  <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                    <TableRow>
+                      <TableHeaderColumn>Sunday, 18 September 2016</TableHeaderColumn>
+                    </TableRow>
+                  </TableHeader>
+                </Table>
+                <div className="row center">
+                  <div className="col s2">12:00pm</div>
+                  <div className="col s3" style={{display: 'inline-block'}}>
+                    Watford
+                  </div>
+                  <div className="col s1" style={{display: 'inline-block'}}>
+                    v
+                  </div>
+                  <div className="col s3" style={{display: 'inline-block'}}>
+                    Manchester United
+                  </div>
+                  <div className="col s3">
+                    <RaisedButton label="Add Match" />
+                  </div>
+                </div>
               </CardText>
               <CardActions>
                 <RaisedButton label="Support Club!" fullWidth={true} />

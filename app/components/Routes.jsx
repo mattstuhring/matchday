@@ -4,6 +4,7 @@ import Landing from 'components/Landing';
 import React from 'react';
 import Register from 'components/Register';
 import Login from 'components/Login';
+import Profile from 'components/Profile';
 
 const Routes = React.createClass({
   render() {
@@ -12,6 +13,7 @@ const Routes = React.createClass({
         <IndexRoute component={Landing} />
         <Route component={Register} path="/register" />
         <Route component={Login} path="/login" />
+        <Route component={Profile} path="/profile" />
       </Route>
     </Router>;
   }

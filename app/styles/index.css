@@ -39,7 +39,8 @@ body {
 }
 
 .cardTitle {
-  background: rgba(0, 0, 0, 0.541176);
+  background-color: grey;
+  color: white !important;
 }
 
 .clubs {
@@ -81,4 +82,11 @@ body {
 .logTitle {
   padding-right: 22px !important;
   padding-left: 22px !important;
+}
+
+.proClubNews {
+  background-color: grey;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 0;
 }
