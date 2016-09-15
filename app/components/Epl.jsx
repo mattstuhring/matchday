@@ -1,4 +1,5 @@
 import { browserHistory, withRouter } from 'react-router';
+import {Tabs, Tab} from 'material-ui/Tabs';
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
@@ -6,40 +7,81 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 
 const Epl = React.createClass ({
   render() {
+    const styles = {
+      headline: {
+        fontSize: 24,
+        paddingTop: 16,
+        marginBottom: 12,
+        fontWeight: 400,
+      },
+    };
+
+    function handleActive(tab) {
+      alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
+    }
+
     return <div>
       <div className="row">
-        <h1>Premier League</h1>
+        <h1>Overview</h1>
         <div className="col s6">
-          <Paper>
-            <Table>
-              <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-                <TableRow>
-                  <TableHeaderColumn>#</TableHeaderColumn>
-                  <TableHeaderColumn>Club</TableHeaderColumn>
-                  <TableHeaderColumn>GP</TableHeaderColumn>
-                  <TableHeaderColumn>W</TableHeaderColumn>
-                  <TableHeaderColumn>T</TableHeaderColumn>
-                  <TableHeaderColumn>L</TableHeaderColumn>
-                  <TableHeaderColumn>GF</TableHeaderColumn>
-                  <TableHeaderColumn>GA</TableHeaderColumn>
-                  <TableHeaderColumn>Pts</TableHeaderColumn>
-                </TableRow>
-              </TableHeader>
-              <TableBody displayRowCheckbox={false}>
-                <TableRow>
-                  <TableRowColumn>1</TableRowColumn>
-                  <TableRowColumn>MAN</TableRowColumn>
-                  <TableRowColumn>7</TableRowColumn>
-                  <TableRowColumn>7</TableRowColumn>
-                  <TableRowColumn>0</TableRowColumn>
-                  <TableRowColumn>0</TableRowColumn>
-                  <TableRowColumn>11</TableRowColumn>
-                  <TableRowColumn>0</TableRowColumn>
-                  <TableRowColumn>22</TableRowColumn>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </Paper>
+          <Tabs>
+            <Tab label="Item One" >
+              <Paper>
+                <Table>
+                  <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                    <TableRow>
+                      <TableHeaderColumn>#</TableHeaderColumn>
+                      <TableHeaderColumn>Club</TableHeaderColumn>
+                      <TableHeaderColumn>GP</TableHeaderColumn>
+                      <TableHeaderColumn>W</TableHeaderColumn>
+                      <TableHeaderColumn>T</TableHeaderColumn>
+                      <TableHeaderColumn>L</TableHeaderColumn>
+                      <TableHeaderColumn>GF</TableHeaderColumn>
+                      <TableHeaderColumn>GA</TableHeaderColumn>
+                      <TableHeaderColumn>Pts</TableHeaderColumn>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody displayRowCheckbox={false}>
+                    <TableRow>
+                      <TableRowColumn>1</TableRowColumn>
+                      <TableRowColumn>MAN</TableRowColumn>
+                      <TableRowColumn>7</TableRowColumn>
+                      <TableRowColumn>7</TableRowColumn>
+                      <TableRowColumn>0</TableRowColumn>
+                      <TableRowColumn>0</TableRowColumn>
+                      <TableRowColumn>11</TableRowColumn>
+                      <TableRowColumn>0</TableRowColumn>
+                      <TableRowColumn>22</TableRowColumn>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </Paper>
+            </Tab>
+            <Tab label="Item Two" >
+              <div>
+                <h2 style={styles.headline}>Tab Two</h2>
+                <p>
+                  This is another example tab.
+                </p>
+              </div>
+            </Tab>
+            <Tab label="Item Three" >
+              <div>
+                <h2 style={styles.headline}>Tab Three</h2>
+                <p>
+                  And another example tab.
+                </p>
+              </div>
+            </Tab>
+          </Tabs>
+
+
+
+
+
+
+
+
         </div>
         <div className="col s6">
           <Paper>

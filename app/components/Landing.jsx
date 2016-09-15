@@ -55,7 +55,7 @@ const Landing = React.createClass({
                 display: 'inline-block',
                 backgroundImage: 'url(' + element.img + ')',
               };
-              return <div key={element.id}>
+              return <div key={element.club}>
                 <Paper style={style} zDepth={3} circle={true} className="box">
                   <FlatButton rippleColor={lightGreenA200} style={{borderRadius: '50%', width: '120px', height: '120px', position: 'relative', right: '9px', bottom: '8px'}} />
                     <p style={{marginTop: '5px'}}>{element.club}</p>
