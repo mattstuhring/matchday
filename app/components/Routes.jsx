@@ -5,6 +5,7 @@ import React from 'react';
 import Register from 'components/Register';
 import Login from 'components/Login';
 import Profile from 'components/Profile';
+import Epl from 'components/Epl';
 
 const Routes = React.createClass({
   render() {
@@ -14,6 +15,7 @@ const Routes = React.createClass({
         <Route component={Register} path="/register" />
         <Route component={Login} path="/login" />
         <Route component={Profile} path="/profile" />
+        <Route component={Epl} path="/epl" />
       </Route>
     </Router>;
   }
