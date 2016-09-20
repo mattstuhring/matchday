@@ -1,4 +1,6 @@
 import { browserHistory, withRouter } from 'react-router';
+import Avatar from 'material-ui/Avatar';
+import axios from 'axios';
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
@@ -9,149 +11,247 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
   from 'material-ui/Table';
 import FlatButton from 'material-ui/FlatButton';
-import { lightGreenA200 }
+import { fullWhite }
   from 'material-ui/styles/colors';
 
-const Landing = React.createClass({
-  render() {
-    const clubs = [
-      { club: 'Arsenal', img: './images/clubs/Arsenal.png' },
-      { club: 'BourneMouth', img: './images/clubs/Bournemouth.png' },
-      { club: 'Burnley', img: './images/clubs/Burnley.png' },
-      { club: 'Chelsea', img: './images/clubs/Chelsea.png' },
-      { club: 'Crystal Palace', img: './images/clubs/Crystal-Palace.png' },
-      { club: 'Everton', img: './images/clubs/Everton.png' },
-      { club: 'Hull City', img: './images/clubs/Hull-City.png' },
-      { club: 'Leicester', img: './images/clubs/Leicester-City.png' },
-      { club: 'Liverpool', img: './images/clubs/Liverpool.png' },
-      { club: 'Manchester City', img: './images/clubs/Manchester-City.png' },
-      { club: 'Manchester United', img: './images/clubs/Manchester-United.png' },
-      { club: 'Middlesbrough', img: './images/clubs/Middlesbrough.png' },
-      { club: 'Southampton', img: './images/clubs/Southampton.png' },
-      { club: 'Stoke City', img: './images/clubs/Stoke-City.png' },
-      { club: 'Sunderland', img: './images/clubs/Sunderland.png' },
-      { club: 'Swansea', img: './images/clubs/Swansea-City.png' },
-      { club: 'Tottenham', img: './images/clubs/Tottenham-Hotspur.png' },
-      { club: 'Watford', img: './images/clubs/Watford.png' },
-      { club: 'West Brom', img: './images/clubs/West-Brom.png' },
-      { club: 'West Ham United', img: './images/clubs/West-Ham.png' }
-    ];
 
+const Landing = React.createClass({
+  getInitialState() {
+    return {
+      clubs: [],
+      club: {
+        statistics: [
+          {rank: ''},
+          {wins: ''},
+          {draws: ''},
+          {losses: ''},
+          {goals: ''},
+          {goals_conceded: ''}
+        ],
+      },
+      match: [
+        {time: ''},
+        {formatted_date: ''},
+        {localteam_name: ''},
+        {visitorteam_name: ''},
+        {venue: ''}
+      ],
+      clubImg: [],
+
+    };
+  },
+
+  componentWillMount() {
+    axios.get('/api/clubs')
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ clubs: res.data });
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
+  },
+
+
+  handleClub(id) {
+    axios.get(`http://api.football-api.com/2.0/team/${id}?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
+      .then((res) => {
+        this.setState({ club: res.data });
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
+
+    axios.get(`/api/clubs/${id}`)
+      .then((res) => {
+        this.setState({ clubImg: res.data });
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
+
+    axios.get(`/api/clubs/match/${id}`)
+      .then((res) => {
+        this.setState({ match: res.data });
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
+  },
+
+  render() {
+    const styleBanner = {
+      width: '100%',
+      marginTop: '25px'
+    };
+
+    const styleWho = {
+      width: '100%',
+      marginTop: '45px',
+      marginBottom: '25px'
+    };
+
+    const styleClubsBtn = {
+      borderRadius: '50%',
+      width: '120px',
+      height: '120px',
+      position: 'relative',
+      right: '9px',
+      bottom: '8px'
+    };
+
+    const styleInline = {
+      display: 'inline-block'
+    };
+
+    const styleUpMatch1 = {
+      position: 'relative',
+      bottom: '15px',
+      display: 'inline-block',
+      marginRight: '10px'
+    };
+
+    const styleUpMatch2 = {
+      display: 'inline-block',
+      paddingLeft: '10px',
+      paddingRight: '10px',
+      position: 'relative',
+      bottom: '15px'
+    };
+
+    const styleUpMatch3 = {
+      position: 'relative',
+      bottom: '15px',
+      display: 'inline-block',
+      marginLeft: '10px'
+    };
+console.log(this.state);
     return <div>
-      <div style={{width: '100%', textAlign: 'center'}}>
-        <h1>EPL-Matchday</h1>
+      <div className="row center" style={{marginBottom: '5px'}}>
+          <img style={styleBanner} src="./images/banner.png" />
       </div>
 
       <div className="row">
         <div className="col s6" style={{width: '47%'}}>
-          <h3 className="center">Who do you support?</h3>
+          <img className="center" style={styleWho} src="./images/who.png" />
           <div className="flex-container-1">
-            {clubs.map(function(element) {
+            {this.state.clubs.map((element) => {
               const style = {
-                height: 100,
-                width: 100,
-                margin: 20,
+                height: '100px',
+                width: '100px',
+                margin: '10px',
                 textAlign: 'center',
                 display: 'inline-block',
-                backgroundImage: 'url(' + element.img + ')',
+                backgroundImage: 'url(' + element.logo + ')',
               };
-              return <div key={element.club}>
-                <Paper style={style} zDepth={3} circle={true} className="box">
-                  <FlatButton rippleColor={lightGreenA200} style={{borderRadius: '50%', width: '120px', height: '120px', position: 'relative', right: '9px', bottom: '8px'}} />
-                    <p style={{marginTop: '5px'}}>{element.club}</p>
+              return <div key={element.id}>
+                <Paper style={style} zDepth={3} circle={true} className="circle">
+                  <FlatButton
+                    style={styleClubsBtn}
+                    onTouchTap={() => this.handleClub(element.team_id)}
+                  />
                 </Paper>
+                <p style={{marginTop: '0px', textAlign: 'center'}}>{element.name}</p>
               </div>;
             })}
           </div>
         </div>
 
         <div className="row">
-          <div className="col s6">
+          <div className="col s6 right">
             <div className="section" />
             <Card>
-              <div className="row landHeader">
+              <div className="row landHeader titleImg">
                 <div className="col s7">
                   <CardHeader
-                    title="Manchester United"
+                    titleColor={fullWhite}
+                    subtitleColor={fullWhite}
+                    title={this.state.club.name}
                     subtitle="# of Supporters"
                     avatar="./images/Manchester-United.png"
                   />
                 </div>
                 <div className="col s5">
                   <div className="section support" />
-                  <RaisedButton className="supportClub" label="Support Club!" />
+                  <RaisedButton
+                    className="supportClub"
+                    label="Click to Support Club!"
+                    backgroundColor={"#00ffa1"}
+                    labelColor={"#38003d"}
+                    fullWidth={true} />
                 </div>
               </div>
               <div className="row">
-                <div className="col s7 matchInfo">
-                  <h3 style={{marginTop: '70px'}}>Next Match</h3>
-                  <p>Friday, September 16 2016</p>
-                  <h5>Manchester United v Watford</h5>
-                  <p>Old Trafford, Manchester</p>
+                <div className="col s7 center matchInfo" style={{height: '298px'}}>
+                  <h3 style={{marginTop: '60px'}}>Next Match</h3>
+                  <p>{this.state.match[0].time}</p>
+                  <p>{this.state.match[0].formatted_date}</p>
+                  <h5>{this.state.match[0].localteam_name} v {this.state.match[0].visitorteam_name}</h5>
+                  <p>{this.state.match[0].venue}</p>
                 </div>
-                <div className="col s5">
+                <div className="col s5" style={{border: '1px solid lightgray'}}>
                   <img src="./images/kits/manchester-united-j.jpg" />
                 </div>
               </div>
 
-              <div className="cardTitle">Standing</div>
+              <div className="cardTitle logPad">Club Standing</div>
               <CardText>
                 <Table>
                   <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                     <TableRow>
                       <TableHeaderColumn>#</TableHeaderColumn>
                       <TableHeaderColumn>Club</TableHeaderColumn>
-                      <TableHeaderColumn>GP</TableHeaderColumn>
                       <TableHeaderColumn>W</TableHeaderColumn>
                       <TableHeaderColumn>T</TableHeaderColumn>
                       <TableHeaderColumn>L</TableHeaderColumn>
                       <TableHeaderColumn>GF</TableHeaderColumn>
                       <TableHeaderColumn>GA</TableHeaderColumn>
-                      <TableHeaderColumn>Pts</TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
                   <TableBody displayRowCheckbox={false}>
                     <TableRow>
-                      <TableRowColumn>1</TableRowColumn>
-                      <TableRowColumn>MAN</TableRowColumn>
-                      <TableRowColumn>7</TableRowColumn>
-                      <TableRowColumn>7</TableRowColumn>
-                      <TableRowColumn>0</TableRowColumn>
-                      <TableRowColumn>0</TableRowColumn>
-                      <TableRowColumn>11</TableRowColumn>
-                      <TableRowColumn>0</TableRowColumn>
-                      <TableRowColumn>22</TableRowColumn>
+                      <TableRowColumn>{this.state.club.statistics[0].rank}</TableRowColumn>
+                      <TableRowColumn>{this.state.club.name}</TableRowColumn>
+                      <TableRowColumn>{this.state.club.statistics[0].wins}</TableRowColumn>
+                      <TableRowColumn>{this.state.club.statistics[0].draws}</TableRowColumn>
+                      <TableRowColumn>{this.state.club.statistics[0].losses}</TableRowColumn>
+                      <TableRowColumn>{this.state.club.statistics[0].goals}</TableRowColumn>
+                      <TableRowColumn>{this.state.club.statistics[0].goals_conceded}</TableRowColumn>
                     </TableRow>
                   </TableBody>
                 </Table>
               </CardText>
-              <div className="cardTitle">Upcoming Matches</div>
+              <div className="cardTitle logPad">Overview</div>
               <CardText>
-                <Table style={{marginBottom: '10px'}}>
-                  <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-                    <TableRow>
-                      <TableHeaderColumn>Sunday, 18 September 2016</TableHeaderColumn>
-                    </TableRow>
-                  </TableHeader>
-                </Table>
-                <div className="row center">
-                  <div className="col s2">12:00pm</div>
-                  <div className="col s3" style={{display: 'inline-block'}}>
-                    Watford
-                  </div>
-                  <div className="col s1" style={{display: 'inline-block'}}>
-                    v
-                  </div>
-                  <div className="col s3" style={{display: 'inline-block'}}>
-                    Manchester United
-                  </div>
-                  <div className="col s3">
-                    <RaisedButton label="Add Match" />
+                <div className="row center" style={{marginTop: '20px'}}>
+                  <div className="col s12">
+                    <h5>Club: {this.state.club.name}</h5>
+                    <h5>Founded: {this.state.club.founded}</h5>
+                    <h5>Coach: {this.state.club.coach_name}</h5>
+                    <h5>Stadium: {this.state.club.venue_name}</h5>
+                    <h5>City: {this.state.club.venue_city}</h5>
                   </div>
                 </div>
               </CardText>
               <CardActions>
-                <RaisedButton label="Support Club!" fullWidth={true} />
+                <RaisedButton
+                  label="Click to Support Club!"
+                  backgroundColor={"#00ffa1"}
+                  labelColor={"#38003d"}
+                  fullWidth={true}
+                />
               </CardActions>
             </Card>
           </div>

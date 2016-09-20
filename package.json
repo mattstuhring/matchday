@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.14.0",
+    "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.15.2",
     "boom": "^4.0.0",
     "cookie-parser": "^1.4.3",
@@ -31,12 +32,14 @@
     "jsonwebtoken": "^7.1.9",
     "knex": "^0.11.10",
     "material-ui": "^0.15.4",
+    "moment": "^2.15.0",
     "morgan": "^1.7.0",
     "pg": "^6.1.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-router": "^2.8.0",
     "react-tap-event-plugin": "^1.0.0",
+    "request": "^2.75.0",
     "simple-assign": "^0.1.0"
   },
   "devDependencies": {

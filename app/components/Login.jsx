@@ -13,15 +13,12 @@ const Login = React.createClass ({
       <h1 className="center">Your Account</h1>
       <Paper zDepth={3}>
         <div className="row">
-          <div className="row logTitle">
-            <div className="col s6" style={{color: 'white', backgroundColor: 'grey'}}>
-              <h4>Login</h4>
-            </div>
-            <div className="col s6" style={{color: 'white', backgroundColor: 'grey'}}>
-              <h4>Register</h4>
-            </div>
-          </div>
-          <div className="col s6 center">
+          <div className="col s6">
+            <h4 className="cardTitle" style={{marginTop: '0px'}}>Login</h4>
+            <div className="row">
+              <div className="col s10 offset-s1">
+
+
             <div>
               <TextField
                 style={{width: '350px', marginTop: '20px'}}
@@ -55,7 +52,14 @@ const Login = React.createClass ({
               />
             </div>
           </div>
-          <div className="col s5">
+          </div>
+        </div>
+          <div className="col s6">
+            <h4 className="cardTitle" style={{marginTop: '0px'}}>Register</h4>
+            <div className="row">
+              <div className="col s10 offset-s1">
+
+
             <Paper zDepth={2} style={{marginBottom: '50px'}}>
               <h5 className="center" style={{backgroundColor: 'grey', color: 'white', padding: '15px'}}>Don't have a Matchday account?</h5>
               <p style={{marginLeft: '10px'}}>Here is what you are missing:</p>
@@ -77,6 +81,9 @@ const Login = React.createClass ({
               </div>
               <RaisedButton label="Register" fullWidth={true} />
             </Paper>
+            </div>
+
+          </div>
           </div>
         </div>
       </Paper>

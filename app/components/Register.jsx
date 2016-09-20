@@ -1,13 +1,27 @@
-import { browserHistory, withRouter } from 'react-router';
+import Cancel from 'material-ui/svg-icons/navigation/cancel';
+import Check from 'material-ui/svg-icons/action/check-circle';
+import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import ActionAndroid from 'material-ui/svg-icons/action/android';
-import FlatButton from 'material-ui/FlatButton';
+import { withRouter } from 'react-router';
 
-const Register = React.createClass ({
+const Register = React.createClass({
+  getInitialState() {
+    return {
+      user: {
+        email: '',
+        emailApple: '',
+        emailGmail: '',
+        password: '',
+        clubId: 11
+      },
+      errors: {}
+    };
+  },
+
   render() {
     const clubs = [
       { club: 'Arsenal', img: './images/clubs/Arsenal.png' },
@@ -20,7 +34,8 @@ const Register = React.createClass ({
       { club: 'Leicester', img: './images/clubs/Leicester-City.png' },
       { club: 'Liverpool', img: './images/clubs/Liverpool.png' },
       { club: 'Manchester City', img: './images/clubs/Manchester-City.png' },
-      { club: 'Manchester United', img: './images/clubs/Manchester-United.png' },
+      { club: 'Manchester United',
+        img: './images/clubs/Manchester-United.png' },
       { club: 'Middlesbrough', img: './images/clubs/Middlesbrough.png' },
       { club: 'Southampton', img: './images/clubs/Southampton.png' },
       { club: 'Stoke City', img: './images/clubs/Stoke-City.png' },
@@ -32,41 +47,45 @@ const Register = React.createClass ({
       { club: 'West Ham United', img: './images/clubs/West-Ham.png' }
     ];
 
-    const styles = {
-      mediumIcon: {
-        width: 48,
-        height: 48,
-      },
-      medium: {
-        width: 96,
-        height: 96,
-        padding: 24,
-      },
+    const styleRegClubsBtn = {
+      borderRadius: '50%',
+      minWidth: '80px',
+      height: '80px',
+      position: 'relative',
+      right: '9px',
+      bottom: '8px'
     };
 
-    return <div className="container">
-      <h1 className="center">Lets Get You Registered</h1>
-      <Paper zDepth={3}>
+    return <div>
+      <div className="row">
+        <div className="col s12 center" style={{marginTop: '30px', marginBottom: '10px', padding: '20px 0px', backgroundColor: '#00ffa1'}}>
+          <img style={{width: '58%'}} src="./images/create.png" />
+        </div>
+      </div>
+      <Paper zDepth={3} className="container">
         <div className="row">
           <div className="row center">
-            <div className="col s10 offset-s1" style={{marginTop: '15px'}}>
-              <h4 className="regFormTitle">Who do you support?</h4>
+            <div className="col s10 offset-s1" style={{ marginTop: '15px' }}>
+              <h4 className="regFormTitle cardTitle">Who do you support?</h4>
               <div className="flex-container-1">
-                {clubs.map(function(element) {
+                {clubs.map((element) => {
                   const style = {
                     height: 60,
                     width: 60,
                     margin: 10,
                     textAlign: 'center',
                     display: 'inline-block',
-                    backgroundImage: 'url(' + element.img + ')',
+                    backgroundImage: 'url(' + element.img + ')'
                   };
+
                   return <div key={element.id}>
-                    <Paper style={style} zDepth={3} circle={true} className="box">
-                      <IconButton
-                        style={styles.medium}
-                      >
-                      </IconButton>
+                    <Paper
+                      style={style}
+                      zDepth={3}
+                      circle={true}
+                      className="circle"
+                    >
+                      <FlatButton style={styleRegClubsBtn} />
                     </Paper>
                   </div>;
                 })}
@@ -77,7 +96,9 @@ const Register = React.createClass ({
             <div className="divider col s10 offset-s1" />
           </div>
           <div className="row">
-            <h4 className="col s10 offset-s1 regFormTitle">Your Personal Details</h4>
+            <div className="col s10 offset-s1 cardTitle">
+              <h4 style={{marginLeft: '10px'}}>Your Personal Details</h4>
+            </div>
           </div>
           <div className="col s6 center regForm">
             <div>
@@ -113,24 +134,28 @@ const Register = React.createClass ({
               <RaisedButton
                 className="regBtn"
                 style={{marginRight: '20px'}}
+                backgroundColor={"#00ffa1"}
                 label="Submit"
+                labelColor={"#38003d"}
                 labelPosition="before"
-                primary={true}
-                icon={<ActionAndroid />}
+                icon={<Check />}
               />
               <RaisedButton
                 className="regBtn"
-                label="Cancel"
+                label="Not Ready"
+                labelColor={"#38003d"}
+                backgroundColor={"#00ffa1"}
                 labelPosition="before"
-                primary={true}
-                icon={<ActionAndroid />}
+                icon={<Cancel />}
               />
             </div>
           </div>
           <div className="col s5 center regKit">
-            <h4 className="regFormTitle">Club</h4>
-            <p>Manchester United</p>
-            <img style={{marginBottom: '10px'}} src="./images/kits/manchester-united-j.jpg" />
+            <Paper zDepth={2}>
+              <h4 className="cardTitle" style={{padding: '5px 0px', marginTop: '0px'}}>Club</h4>
+              <p>Manchester United</p>
+              <img style={{marginBottom: '20px'}} src="./images/kits/manchester-united-j.jpg" />
+            </Paper>
           </div>
         </div>
       </Paper>
