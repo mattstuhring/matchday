@@ -6,6 +6,7 @@ exports.up = function(knex) {
     table.integer('team_id');
     table.string('name');
     table.string('logo');
+    table.string('kit');
     table.string('banner');
     table.string('stadium');
     table.timestamps(true, true);

@@ -65,9 +65,9 @@ const Register = React.createClass({
       <Paper zDepth={3} className="container">
         <div className="row">
           <div className="row center">
-            <div className="col s10 offset-s1" style={{ marginTop: '15px' }}>
+            <div className="col s10 offset-s1" style={{ marginTop: '20px'}}>
               <h4 className="regFormTitle cardTitle">Who do you support?</h4>
-              <div className="flex-container-1">
+              <div className="flex-container-1" style={{marginTop: '20px'}}>
                 {clubs.map((element) => {
                   const style = {
                     height: 60,
@@ -152,7 +152,7 @@ const Register = React.createClass({
           </div>
           <div className="col s5 center regKit">
             <Paper zDepth={2}>
-              <h4 className="cardTitle" style={{padding: '5px 0px', marginTop: '0px'}}>Club</h4>
+              <h4 style={{padding: '5px 0px', marginTop: '0px', backgroundColor: '#38003d', color: 'white'}}>Club</h4>
               <p>Manchester United</p>
               <img style={{marginBottom: '20px'}} src="./images/kits/manchester-united-j.jpg" />
             </Paper>

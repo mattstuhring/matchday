@@ -40,18 +40,28 @@ const App = React.createClass({
       text: {
         // color: '#00ffa1'
         color: '#fe005a'
+      },
+      logo: {
+        height: '40px',
+        marginBottom: '9px',
+        marginLeft: '10px'
       }
     };
 
     return <div>
       <AppBar
         style={styles.background}
-        title={<img style={styles.title} src="./images/logo.png" />}
+        title={
+          <div>
+            <img style={styles.title} src="./images/logo.png" />
+            <img style={styles.logo} src="./images/matchday.png" />
+          </div>
+        }
         showMenuIconButton={false}
       >
         <div style={{marginTop: '12px'}}>
           <FlatButton style={styles.text} label="EPL" />
-          <FlatButton style={styles.text} label="Login" />
+          <FlatButton style={styles.text} label="Login" onTouchTap={() => browserHistory.push('/login')} />
         </div>
       </AppBar>
 

@@ -73,7 +73,7 @@ const Profile = React.createClass ({
 
       {/* CLUB BANNER */}
       <div className="row center">
-        <img style={{width: '100%'}} src="./images/banners/manchester-united.jpg" />
+        <img style={{width: '100%', marginTop: '20px'}} src="./images/banners/manchester-united.jpg" />
       </div>
 
 
@@ -96,11 +96,13 @@ const Profile = React.createClass ({
                 <RaisedButton
                   label="Add Match"
                   style={{marginBottom: '20px'}}
+                  backgroundColor="#00ffa1"
+                  labelColor="#38003d"
                 />
               </div>
             </div>
             <div className="row">
-              <div className="cardTitle">Club Standing</div>
+              <div className="cardTitle" style={{padding: '16px'}}>Club Standing</div>
               <CardText>
                 <Table>
                   <TableHeader
@@ -140,7 +142,7 @@ const Profile = React.createClass ({
 
           {/* LATEST NEWS */}
           <Card>
-            <div className="cardTitle">Latest News</div>
+            <div className="cardTitle" style={{padding: '16px'}}>Latest News</div>
             <CardText>
               <div className="row">
                 <div className="col s3">
@@ -172,17 +174,20 @@ const Profile = React.createClass ({
         {/* RIGHT COLUMN BEGINS */}
         <div className="col s6">
           <Card>
-            <div className="row landHeader">
+            <div className="row">
               <CardHeader
                 title="Manchester United"
                 subtitle="# of Supporters"
                 avatar="./images/Manchester-United.png"
+                titleColor="white"
+                subtitleColor="white"
+                className="cardTitle"
               />
             </div>
 
 
             {/* UPCOMING MATCHES */}
-            <div className="cardTitle">Upcoming Matches</div>
+            <div style={{padding: '10px', backgroundColor: '#38003d', color: 'white'}}>Upcoming Matches</div>
             <CardText style={styleUpRes}>
               <Table style={{marginBottom: '5px'}}>
                 <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
@@ -217,7 +222,11 @@ const Profile = React.createClass ({
                   </div>
                 </div>
                 <div className="col s3">
-                  <RaisedButton label="Add Match" />
+                  <RaisedButton
+                    label="Add Match"
+                    backgroundColor="#00ffa1"
+                    labelColor="#38003d"
+                  />
                 </div>
               </div>
             </CardText>
@@ -228,6 +237,8 @@ const Profile = React.createClass ({
               title="Show All Upcoming Matches"
               actAsExpander={true}
               showExpandableButton={true}
+              titleColor="#00ffa1"
+              style={{padding: '5px'}}
             />
             <CardText expandable={true} className="styleUpRes">
               <Table style={{marginBottom: '5px'}}>
@@ -263,14 +274,18 @@ const Profile = React.createClass ({
                   </div>
                 </div>
                 <div className="col s3">
-                  <RaisedButton label="Add Match" />
+                  <RaisedButton
+                    label="Add Match"
+                    backgroundColor="#00ffa1"
+                    labelColor="#38003d"
+                  />
                 </div>
               </div>
             </CardText>
 
 
             {/* RESULTS */}
-            <div className="cardTitle">Results</div>
+            <div style={{padding: '10px', backgroundColor: '#38003d', color: 'white'}}>Results</div>
             <Card>
               <CardText style={styleUpRes}>
               <Table style={{marginBottom: '5px'}}>
@@ -311,6 +326,8 @@ const Profile = React.createClass ({
                 title="Show All Results"
                 actAsExpander={true}
                 showExpandableButton={true}
+                titleColor="#00ffa1"
+                style={{padding: '5px'}}
               />
               <CardText expandable={true} className="styleUpRes">
                 <Table style={{marginBottom: '5px'}}>

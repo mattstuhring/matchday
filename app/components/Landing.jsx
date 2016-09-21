@@ -137,7 +137,9 @@ const Landing = React.createClass({
       display: 'inline-block',
       marginLeft: '10px'
     };
-console.log(this.state);
+
+    console.log(this.state);
+
     return <div>
       <div className="row center" style={{marginBottom: '5px'}}>
           <img style={styleBanner} src="./images/banner.png" />
@@ -163,7 +165,7 @@ console.log(this.state);
                     onTouchTap={() => this.handleClub(element.team_id)}
                   />
                 </Paper>
-                <p style={{marginTop: '0px', textAlign: 'center'}}>{element.name}</p>
+                <p style={{marginTop: '0px', textAlign: 'center', marginBottom: '25px'}}>{element.name}</p>
               </div>;
             })}
           </div>
@@ -174,14 +176,10 @@ console.log(this.state);
             <div className="section" />
             <Card>
               <div className="row landHeader titleImg">
-                <div className="col s7">
-                  <CardHeader
-                    titleColor={fullWhite}
-                    subtitleColor={fullWhite}
-                    title={this.state.club.name}
-                    subtitle="# of Supporters"
-                    avatar="./images/Manchester-United.png"
-                  />
+                <div className="col s7" style={{marginBottom: '6px'}}>
+                  <Paper circle={true} style={{width: '55px', height: '55px', display: 'inline-block', backgroundImage: 'url(' + this.state.clubImg.logo + ')', backgroundSize: 'cover', top: '10px', position: 'relative', paddingBottom: '5px'}}>
+                  </Paper>
+                  <h5 style={{display: 'inline-block', position: 'relative', bottom: '10px', marginLeft: '20px', color: 'white'}}>{this.state.club.name}</h5>
                 </div>
                 <div className="col s5">
                   <div className="section support" />
@@ -194,15 +192,15 @@ console.log(this.state);
                 </div>
               </div>
               <div className="row">
-                <div className="col s7 center matchInfo" style={{height: '298px'}}>
-                  <h3 style={{marginTop: '60px'}}>Next Match</h3>
+                <div className="col s7 center matchInfo" style={{height: '298px', backgroundImage: 'url(' + this.state.clubImg.stadium + ')'}}>
+                  <h3 style={{marginTop: '42px'}}>Next Match</h3>
                   <p>{this.state.match[0].time}</p>
                   <p>{this.state.match[0].formatted_date}</p>
                   <h5>{this.state.match[0].localteam_name} v {this.state.match[0].visitorteam_name}</h5>
                   <p>{this.state.match[0].venue}</p>
                 </div>
-                <div className="col s5" style={{border: '1px solid lightgray'}}>
-                  <img src="./images/kits/manchester-united-j.jpg" />
+                <div className="col s5 center">
+                  <img src={this.state.clubImg.kit} />
                 </div>
               </div>
 
@@ -236,12 +234,31 @@ console.log(this.state);
               <div className="cardTitle logPad">Overview</div>
               <CardText>
                 <div className="row center" style={{marginTop: '20px'}}>
-                  <div className="col s12">
-                    <h5>Club: {this.state.club.name}</h5>
-                    <h5>Founded: {this.state.club.founded}</h5>
-                    <h5>Coach: {this.state.club.coach_name}</h5>
-                    <h5>Stadium: {this.state.club.venue_name}</h5>
-                    <h5>City: {this.state.club.venue_city}</h5>
+                  <div className="col s10 offset-s1">
+                    <Table>
+                      <TableBody displayRowCheckbox={false}>
+                        <TableRow>
+                          <TableRowColumn style={{padding: '5px 5px'}}><img src="./images/icons/jersey.png" /></TableRowColumn>
+                          <TableRowColumn style={{padding: '5px 5px'}}>{this.state.club.name}</TableRowColumn>
+                        </TableRow>
+                        <TableRow>
+                          <TableRowColumn style={{padding: '5px 5px'}}><img src="./images/icons/history.png" /></TableRowColumn>
+                          <TableRowColumn style={{padding: '5px 5px'}}>{this.state.club.founded}</TableRowColumn>
+                        </TableRow>
+                        <TableRow style={{padding: '5px 5px'}}>
+                          <TableRowColumn style={{padding: '5px 5px'}}><img src="./images/icons/player.png" /></TableRowColumn>
+                          <TableRowColumn style={{padding: '5px 5px'}}>{this.state.club.coach_name}</TableRowColumn>
+                        </TableRow>
+                        <TableRow style={{padding: '5px 5px'}}>
+                          <TableRowColumn style={{padding: '5px 5px'}}><img src="./images/icons/stadium.png" /></TableRowColumn>
+                          <TableRowColumn style={{padding: '5px 5px'}}>{this.state.club.venue_name}</TableRowColumn>
+                        </TableRow>
+                        <TableRow style={{padding: '5px 5px'}}>
+                          <TableRowColumn style={{padding: '5px 5px'}}><img src="./images/icons/city.png" /></TableRowColumn>
+                          <TableRowColumn style={{padding: '5px 5px'}}>{this.state.club.venue_city}</TableRowColumn>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
                   </div>
                 </div>
               </CardText>
