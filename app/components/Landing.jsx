@@ -138,6 +138,40 @@ const Landing = React.createClass({
       marginLeft: '10px'
     };
 
+    const styleTeamHeader = {
+      width: '55px',
+      height: '55px',
+      display: 'inline-block',
+      backgroundImage: 'url(' + this.state.clubImg.logo + ')',
+      backgroundSize: 'cover',
+      top: '10px',
+      position: 'relative',
+      paddingBottom: '5px'
+    };
+
+    const styleLogoP = {
+      marginTop: '0px',
+      textAlign: 'center',
+      marginBottom: '25px'
+    };
+
+    const styleClubName = {
+      display: 'inline-block',
+      position: 'relative',
+      bottom: '10px',
+      marginLeft: '20px',
+      color: 'white'
+    };
+
+    const styleStadium = {
+      height: '298px',
+      backgroundImage: 'url(' + this.state.clubImg.stadium + ')'
+    };
+
+    const styleHistory = {
+      padding: '5px 5px'
+    };
+
     console.log(this.state);
 
     return <div>
@@ -159,13 +193,18 @@ const Landing = React.createClass({
                 backgroundImage: 'url(' + element.logo + ')',
               };
               return <div key={element.id}>
-                <Paper style={style} zDepth={3} circle={true} className="circle">
+                <Paper
+                  style={style}
+                  zDepth={3}
+                  circle={true}
+                  className="circle"
+                >
                   <FlatButton
                     style={styleClubsBtn}
                     onTouchTap={() => this.handleClub(element.team_id)}
                   />
                 </Paper>
-                <p style={{marginTop: '0px', textAlign: 'center', marginBottom: '25px'}}>{element.name}</p>
+                <p style={styleLogoP}>{element.name}</p>
               </div>;
             })}
           </div>
@@ -177,9 +216,9 @@ const Landing = React.createClass({
             <Card>
               <div className="row landHeader titleImg">
                 <div className="col s7" style={{marginBottom: '6px'}}>
-                  <Paper circle={true} style={{width: '55px', height: '55px', display: 'inline-block', backgroundImage: 'url(' + this.state.clubImg.logo + ')', backgroundSize: 'cover', top: '10px', position: 'relative', paddingBottom: '5px'}}>
+                  <Paper circle={true} style={styleTeamHeader}>
                   </Paper>
-                  <h5 style={{display: 'inline-block', position: 'relative', bottom: '10px', marginLeft: '20px', color: 'white'}}>{this.state.club.name}</h5>
+                  <h5 style={styleClubName}>{this.state.club.name}</h5>
                 </div>
                 <div className="col s5">
                   <div className="section support" />
@@ -192,7 +231,7 @@ const Landing = React.createClass({
                 </div>
               </div>
               <div className="row">
-                <div className="col s7 center matchInfo" style={{height: '298px', backgroundImage: 'url(' + this.state.clubImg.stadium + ')'}}>
+                <div className="col s7 center matchInfo" style={styleStadium}>
                   <h3 style={{marginTop: '42px'}}>Next Match</h3>
                   <p>{this.state.match[0].time}</p>
                   <p>{this.state.match[0].formatted_date}</p>
@@ -238,24 +277,44 @@ const Landing = React.createClass({
                     <Table>
                       <TableBody displayRowCheckbox={false}>
                         <TableRow>
-                          <TableRowColumn style={{padding: '5px 5px'}}><img src="./images/icons/jersey.png" /></TableRowColumn>
-                          <TableRowColumn style={{padding: '5px 5px'}}>{this.state.club.name}</TableRowColumn>
+                          <TableRowColumn style={styleHistory}>
+                            <img src="./images/icons/jersey.png" />
+                          </TableRowColumn>
+                          <TableRowColumn style={styleHistory}>
+                            {this.state.club.name}
+                          </TableRowColumn>
                         </TableRow>
                         <TableRow>
-                          <TableRowColumn style={{padding: '5px 5px'}}><img src="./images/icons/history.png" /></TableRowColumn>
-                          <TableRowColumn style={{padding: '5px 5px'}}>{this.state.club.founded}</TableRowColumn>
+                          <TableRowColumn style={styleHistory}>
+                            <img src="./images/icons/history.png" />
+                          </TableRowColumn>
+                          <TableRowColumn style={styleHistory}>
+                            {this.state.club.founded}
+                          </TableRowColumn>
                         </TableRow>
-                        <TableRow style={{padding: '5px 5px'}}>
-                          <TableRowColumn style={{padding: '5px 5px'}}><img src="./images/icons/player.png" /></TableRowColumn>
-                          <TableRowColumn style={{padding: '5px 5px'}}>{this.state.club.coach_name}</TableRowColumn>
+                        <TableRow>
+                          <TableRowColumn style={styleHistory}>
+                            <img src="./images/icons/player.png" />
+                          </TableRowColumn>
+                          <TableRowColumn style={styleHistory}>
+                            {this.state.club.coach_name}
+                          </TableRowColumn>
                         </TableRow>
-                        <TableRow style={{padding: '5px 5px'}}>
-                          <TableRowColumn style={{padding: '5px 5px'}}><img src="./images/icons/stadium.png" /></TableRowColumn>
-                          <TableRowColumn style={{padding: '5px 5px'}}>{this.state.club.venue_name}</TableRowColumn>
+                        <TableRow>
+                          <TableRowColumn style={styleHistory}>
+                            <img src="./images/icons/stadium.png" />
+                          </TableRowColumn>
+                          <TableRowColumn style={styleHistory}>
+                            {this.state.club.venue_name}
+                          </TableRowColumn>
                         </TableRow>
-                        <TableRow style={{padding: '5px 5px'}}>
-                          <TableRowColumn style={{padding: '5px 5px'}}><img src="./images/icons/city.png" /></TableRowColumn>
-                          <TableRowColumn style={{padding: '5px 5px'}}>{this.state.club.venue_city}</TableRowColumn>
+                        <TableRow>
+                          <TableRowColumn style={styleHistory}>
+                            <img src="./images/icons/city.png" />
+                          </TableRowColumn>
+                          <TableRowColumn style={styleHistory}>
+                            {this.state.club.venue_city}
+                          </TableRowColumn>
                         </TableRow>
                       </TableBody>
                     </Table>

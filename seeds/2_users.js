@@ -8,8 +8,6 @@ exports.seed = function(knex) {
         first_name: 'Matt',
         last_name: 'Stuhring',
         email: 'matt@test.com',
-        email_apple: 'whereyouatmatt@gmail.com',
-        email_gmail: 'whereyouatmatt@gmail.com',
         hashed_password: '$2a$12$3FKzHXywOeX8qxhy2u7DC.oqPKgtGnAfheo9lT5PoeQKPQSJoI3p2',
         club_id: 11,
         created_at: new Date('2016-09-15 12:16:16 UTC'),

@@ -4,7 +4,7 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
-
+import Snackbar from 'material-ui/Snackbar';
 
 const App = React.createClass({
   getInitialState() {
@@ -23,6 +23,20 @@ const App = React.createClass({
       { open: state, message });
 
     this.setState({ toast: newToast });
+  },
+
+  handleLogOut() {
+    axios.delete('api/token')
+    .then(() => {
+      browserHistory.push('/');
+      this.setToast(true, 'Logged out!');
+    })
+    .catch((err) => {
+      this.props.setToast(
+        true,
+        `Whoops! ${err}.`
+      );
+    });
   },
 
   render() {
@@ -68,6 +82,14 @@ const App = React.createClass({
       {React.cloneElement(this.props.children, {
         setToast: this.setToast
       })}
+      
+      <Snackbar
+        autoHideDuration={2500}
+        message={this.state.toast.message}
+        onRequestClose={() => this.setToast(false, '')}
+        onTouchTap={() => this.setToast(false, '')}
+        open={this.state.toast.open}
+      />
     </div>;
   }
 });
