@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.post('/token', (req, res, next) => {
   let user;
-
+console.log(req.body.email);
   knex('users')
     .where('email', req.body.email)
     .first()
@@ -21,7 +21,6 @@ router.post('/token', (req, res, next) => {
       if (!row) {
         throw boom.create(401, 'Invalid username or password');
       }
-
       user = camelizeKeys(row);
 
       return bcrypt.compare(req.body.password, user.hashedPassword);

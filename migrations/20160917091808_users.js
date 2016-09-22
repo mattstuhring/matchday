@@ -7,8 +7,8 @@ exports.up = function(knex) {
     table.string('last_name').defaultTo('');
     table.string('email').unique().notNullable().defaultTo('');
     table.specificType('hashed_password', 'char(60)').notNullable();
-    table.integer('club_id')
-      .references('id')
+    table.integer('team_id')
+      .references('team_id')
       .inTable('clubs')
       .onDelete('SET NULL')
       .index();

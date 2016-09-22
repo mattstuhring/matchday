@@ -3,7 +3,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('clubs', (table) => {
     table.increments();
-    table.integer('team_id');
+    table.integer('team_id').unique();
     table.string('name');
     table.string('logo');
     table.string('kit');

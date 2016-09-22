@@ -18,7 +18,7 @@ const Register = React.createClass({
         lastName: '',
         email: '',
         password: '',
-        clubId: 11
+        teamId: null
       },
       errors: {}
     };
@@ -27,8 +27,20 @@ const Register = React.createClass({
   componentWillMount() {
     axios.get('/api/clubs')
       .then((res) => {
-        console.log(res.data);
         this.setState({ clubs: res.data });
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
+  },
+
+  handleClub(id) {
+    axios.get(`/api/clubs/${id}`)
+      .then((res) => {
+        this.setState({ user: { teamId: res.data.team_id, kit: res.data.kit, name: res.data.name} });
       })
       .catch((err) => {
         this.props.setToast(
@@ -62,7 +74,6 @@ const Register = React.createClass({
       });
   },
 
-
   render() {
     const user = this.state.user;
     const errors = this.state.errors;
@@ -75,6 +86,8 @@ const Register = React.createClass({
       right: '9px',
       bottom: '8px'
     };
+
+console.log(this.state);
 
     return <div>
       <div className="row">
@@ -95,6 +108,7 @@ const Register = React.createClass({
                     margin: 10,
                     textAlign: 'center',
                     display: 'inline-block',
+                    backgroundSize: 'contain',
                     backgroundImage: 'url(' + element.logo + ')'
                   };
 
@@ -190,8 +204,8 @@ const Register = React.createClass({
           <div className="col s5 center regKit">
             <Paper zDepth={2}>
               <h4 style={{padding: '5px 0px', marginTop: '0px', backgroundColor: '#38003d', color: 'white'}}>Club</h4>
-              <p>Manchester United</p>
-              <img style={{marginBottom: '20px'}} src="./images/kits/manchester-united-j.jpg" />
+              <p>{this.state.user.name}</p>
+              <img style={{marginBottom: '20px'}} src={this.state.user.kit} />
             </Paper>
           </div>
         </div>

@@ -74,7 +74,7 @@ const App = React.createClass({
         showMenuIconButton={false}
       >
         <div style={{marginTop: '12px'}}>
-          <FlatButton style={styles.text} label="EPL" />
+          <FlatButton style={styles.text} label="EPL" onTouchTap={() => browserHistory.push('/epl')} />
           <FlatButton style={styles.text} label="Login" onTouchTap={() => browserHistory.push('/login')} />
         </div>
       </AppBar>
@@ -82,7 +82,7 @@ const App = React.createClass({
       {React.cloneElement(this.props.children, {
         setToast: this.setToast
       })}
-      
+
       <Snackbar
         autoHideDuration={2500}
         message={this.state.toast.message}

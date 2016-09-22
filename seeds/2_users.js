@@ -9,7 +9,7 @@ exports.seed = function(knex) {
         last_name: 'Stuhring',
         email: 'matt@test.com',
         hashed_password: '$2a$12$3FKzHXywOeX8qxhy2u7DC.oqPKgtGnAfheo9lT5PoeQKPQSJoI3p2',
-        club_id: 11,
+        team_id: 9260,
         created_at: new Date('2016-09-15 12:16:16 UTC'),
         updated_at: new Date('2016-09-15 12:16:16 UTC')
       }])

@@ -22,13 +22,20 @@ const Epl = React.createClass ({
 
     return <div>
       <div className="row">
-        <h1>Overview</h1>
+        <div className="row">
+          <div className="col s12 center" style={{marginTop: '30px', marginBottom: '10px', padding: '20px 0px', backgroundColor: '#00ffa1'}}>
+            <img style={{width: '40%', marginTop: '8px'}} src="./images/premier.png" />
+          </div>
+        </div>
         <div className="col s6">
           <Tabs>
-            <Tab label="Item One" >
+            <Tab label="Standings" style={{color: '#00ffa1', backgroundColor: '#38003d'}} >
               <Paper>
                 <Table>
-                  <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                  <TableHeader
+                    adjustForCheckbox={false}
+                    displaySelectAll={false}
+                  >
                     <TableRow>
                       <TableHeaderColumn>#</TableHeaderColumn>
                       <TableHeaderColumn>Club</TableHeaderColumn>
@@ -57,7 +64,7 @@ const Epl = React.createClass ({
                 </Table>
               </Paper>
             </Tab>
-            <Tab label="Item Two" >
+            <Tab label="Matches" style={{color: '#00ffa1', backgroundColor: '#38003d'}} >
               <div>
                 <h2 style={styles.headline}>Tab Two</h2>
                 <p>
@@ -65,7 +72,7 @@ const Epl = React.createClass ({
                 </p>
               </div>
             </Tab>
-            <Tab label="Item Three" >
+            <Tab label="Results" style={{color: '#00ffa1', backgroundColor: '#38003d'}} >
               <div>
                 <h2 style={styles.headline}>Tab Three</h2>
                 <p>
@@ -74,18 +81,10 @@ const Epl = React.createClass ({
               </div>
             </Tab>
           </Tabs>
-
-
-
-
-
-
-
-
         </div>
         <div className="col s6">
           <Paper>
-            <h3 className="center proClubNews">Latest News</h3>
+            <h3 className="center proClubNews cardTitle">Latest News</h3>
             <div className="row">
               <div className="col s3">
                 <img style={{width: '140px', height: '140px', borderRadius: '50%'}} src="https://www.bing.com/th?id=ON.D3ED3B9EB0E7CCB9B5003B035BB05F60&pid=News" />

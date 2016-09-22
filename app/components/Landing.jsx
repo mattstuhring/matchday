@@ -109,7 +109,7 @@ const Landing = React.createClass({
       height: '120px',
       position: 'relative',
       right: '9px',
-      bottom: '8px'
+      bottom: '13px'
     };
 
     const styleInline = {
@@ -191,14 +191,10 @@ const Landing = React.createClass({
                 textAlign: 'center',
                 display: 'inline-block',
                 backgroundImage: 'url(' + element.logo + ')',
+                backgroundSize: 'contain'
               };
               return <div key={element.id}>
-                <Paper
-                  style={style}
-                  zDepth={3}
-                  circle={true}
-                  className="circle"
-                >
+                <Paper style={style} circle={true} zDepth={3} >
                   <FlatButton
                     style={styleClubsBtn}
                     onTouchTap={() => this.handleClub(element.team_id)}
@@ -216,8 +212,7 @@ const Landing = React.createClass({
             <Card>
               <div className="row landHeader titleImg">
                 <div className="col s7" style={{marginBottom: '6px'}}>
-                  <Paper circle={true} style={styleTeamHeader}>
-                  </Paper>
+                  <div style={styleTeamHeader}></div>
                   <h5 style={styleClubName}>{this.state.club.name}</h5>
                 </div>
                 <div className="col s5">
@@ -227,12 +222,14 @@ const Landing = React.createClass({
                     label="Click to Support Club!"
                     backgroundColor={"#00ffa1"}
                     labelColor={"#38003d"}
-                    fullWidth={true} />
+                    fullWidth={true}
+                    onTouchTap={() => browserHistory.push('/register')}
+                  />
                 </div>
               </div>
-              <div className="row">
+              <div className="row" style={{borderTop: '1px solid lightgrey', borderBottom: '1px solid lightgrey'}}>
                 <div className="col s7 center matchInfo" style={styleStadium}>
-                  <h3 style={{marginTop: '42px'}}>Next Match</h3>
+                  <h3 style={{marginTop: '30px'}}>Next Match</h3>
                   <p>{this.state.match[0].time}</p>
                   <p>{this.state.match[0].formatted_date}</p>
                   <h5>{this.state.match[0].localteam_name} v {this.state.match[0].visitorteam_name}</h5>
@@ -271,8 +268,8 @@ const Landing = React.createClass({
                 </Table>
               </CardText>
               <div className="cardTitle logPad">Overview</div>
-              <CardText>
-                <div className="row center" style={{marginTop: '20px'}}>
+              <CardText style={{padding: '0px'}}>
+                <div className="row center" style={{margin: '5px'}}>
                   <div className="col s10 offset-s1">
                     <Table>
                       <TableBody displayRowCheckbox={false}>
@@ -327,6 +324,7 @@ const Landing = React.createClass({
                   backgroundColor={"#00ffa1"}
                   labelColor={"#38003d"}
                   fullWidth={true}
+                  onTouchTap={() => browserHistory.push('/register')}
                 />
               </CardActions>
             </Card>

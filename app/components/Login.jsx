@@ -72,7 +72,7 @@ const Login = React.createClass({
                     hintText="Password Field"
                     floatingLabelText="Password"
                     type="password"
-                    name="email"
+                    name="password"
                     onChange={this.handleTextChange}
                   />
                 </div>
