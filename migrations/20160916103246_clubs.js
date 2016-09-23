@@ -5,6 +5,7 @@ exports.up = function(knex) {
     table.increments();
     table.integer('team_id').unique();
     table.string('name');
+    table.string('abbr')
     table.string('logo');
     table.string('kit');
     table.string('banner');

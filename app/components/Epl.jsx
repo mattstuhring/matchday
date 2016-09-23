@@ -1,11 +1,93 @@
 import { browserHistory, withRouter } from 'react-router';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import Avatar from 'material-ui/Avatar';
+import axios from 'axios';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText}
+  from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import Divider from 'material-ui/Divider';
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
   from 'material-ui/Table';
+import _ from 'lodash';
+import moment from 'moment';
 
 const Epl = React.createClass ({
+  getInitialState() {
+    return {
+      table: [],
+      news: [],
+      matches: [],
+      clubImg: []
+    };
+  },
+
+  componentWillMount() {
+    axios.get('http://api.football-api.com/2.0/standings/1204?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822')
+      .then((res) => {
+        this.setState({ table: res.data });
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
+
+    axios.get('https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=english+premier+league&mkt=en-us&Subscription-Key=b80e34b3295f443f8809177ae301b6a1')
+      .then((res) => {
+        this.setState({ news: res.data.value });
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
+
+    axios.get('/api/clubs')
+      .then((res) => {
+        this.setState({ clubImg: res.data });
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
+  },
+
+  handleMatches() {
+    axios.get('api/clubs/matches')
+      .then((res) => {
+        const group = _.groupBy(res.data, (match) => {
+          return match.formatted_date;
+        });
+
+        const dates = _.sortBy(Object.keys(group), (date) => {
+          return moment(date, 'DD.MM.YYYY').valueOf();
+        });
+
+        const matches = dates.map((date) => {
+          return {
+            date: date,
+            matches: _.sortBy(group[date], (match) => {
+              return moment(match.time, 'HH:mmm').valueOf();
+            })
+          };
+        });
+
+        this.setState({ matches });
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
+  },
+
   render() {
     const styles = {
       headline: {
@@ -16,9 +98,47 @@ const Epl = React.createClass ({
       },
     };
 
-    function handleActive(tab) {
-      alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
-    }
+    const styleUpMatch2 = {
+      display: 'inline-block',
+      paddingLeft: '10px',
+      paddingRight: '10px',
+      position: 'relative',
+      bottom: '15px'
+    };
+
+    const styleUpMatch3 = {
+      position: 'relative',
+      bottom: '15px',
+      display: 'inline-block',
+      marginLeft: '10px'
+    };
+
+    const styleUpMatch1 = {
+      position: 'relative',
+      bottom: '15px',
+      display: 'inline-block',
+      marginRight: '10px'
+    };
+
+    const styleInline = {
+      display: 'inline-block'
+    };
+
+    const styleUpRes = {
+      padding: '0px 0px'
+    };
+
+    const styleTab = {
+      color: '#00ffa1',
+      backgroundColor: '#38003d'
+    };
+
+    const styleTableRowColumn = {
+      fontSize: '18px',
+      color: '#38003d',
+      paddingTop: '0px',
+      paddingBottom: '0px'
+    };
 
     return <div>
       <div className="row">
@@ -29,7 +149,7 @@ const Epl = React.createClass ({
         </div>
         <div className="col s6">
           <Tabs>
-            <Tab label="Standings" style={{color: '#00ffa1', backgroundColor: '#38003d'}} >
+            <Tab label="Standings" style={styleTab} >
               <Paper>
                 <Table>
                   <TableHeader
@@ -42,37 +162,91 @@ const Epl = React.createClass ({
                       <TableHeaderColumn>GP</TableHeaderColumn>
                       <TableHeaderColumn>W</TableHeaderColumn>
                       <TableHeaderColumn>T</TableHeaderColumn>
-                      <TableHeaderColumn>L</TableHeaderColumn>
+                      <TableHeaderColumn>D</TableHeaderColumn>
                       <TableHeaderColumn>GF</TableHeaderColumn>
                       <TableHeaderColumn>GA</TableHeaderColumn>
                       <TableHeaderColumn>Pts</TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
-                  <TableBody displayRowCheckbox={false}>
-                    <TableRow>
-                      <TableRowColumn>1</TableRowColumn>
-                      <TableRowColumn>MAN</TableRowColumn>
-                      <TableRowColumn>7</TableRowColumn>
-                      <TableRowColumn>7</TableRowColumn>
-                      <TableRowColumn>0</TableRowColumn>
-                      <TableRowColumn>0</TableRowColumn>
-                      <TableRowColumn>11</TableRowColumn>
-                      <TableRowColumn>0</TableRowColumn>
-                      <TableRowColumn>22</TableRowColumn>
-                    </TableRow>
+                  <TableBody displayRowCheckbox={false} style={{fontFamily: 'Mogra, cursive'}} stripedRows={true} showRowHover={true}>
+
+                    {this.state.table.map((element) => {
+
+                      return <TableRow key={element.position}>
+                        <TableRowColumn style={styleTableRowColumn}>{element.position}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.team_name}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.overall_gp}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.overall_w}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.overall_d}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.overall_l}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.home_gs}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.away_gs}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.points}</TableRowColumn>
+                      </TableRow>;
+                    })}
                   </TableBody>
                 </Table>
               </Paper>
             </Tab>
-            <Tab label="Matches" style={{color: '#00ffa1', backgroundColor: '#38003d'}} >
+
+            <Tab label="Matches" style={styleTab} onActive={this.handleMatches}>
               <div>
-                <h2 style={styles.headline}>Tab Two</h2>
-                <p>
-                  This is another example tab.
-                </p>
+                <Paper style={styleUpRes}>
+
+                {this.state.matches.map((element, index) => {
+                  return <div key={index}>
+                    <Table style={{marginBottom: '5px'}}>
+                      <TableHeader
+                        adjustForCheckbox={false}
+                        displaySelectAll={false}>
+                        <TableRow>
+                          <TableHeaderColumn>
+                            {element.date}
+                          </TableHeaderColumn>
+                        </TableRow>
+                      </TableHeader>
+                    </Table>
+
+                    {element.matches.map((e, i) => {
+                      return <div className="row center" key={i}>
+                        <div className="col s2" style={{marginTop: '10px'}}>
+                          <p>{e.time}</p>
+                        </div>
+                        <div className="col s7">
+                          <div style={styleInline}>
+                            <p style={styleUpMatch1}>{e.localteam_name}</p>
+                            <Avatar
+                              src="./images/clubs/Watford.png"
+                              size={40}
+                              style={styleInline}
+                            />
+                          </div>
+                          <div style={styleUpMatch2}>v</div>
+                          <div style={styleInline}>
+                            <Avatar
+                              src="./images/clubs/Manchester-United.png"
+                              size={40}
+                              style={styleInline}
+                            />
+                            <p style={styleUpMatch3}>{e.visitorteam_name}</p>
+                          </div>
+                        </div>
+                        <div className="col s3">
+                          <RaisedButton
+                            label="Add Match"
+                            backgroundColor="#00ffa1"
+                            labelColor="#38003d"
+                          />
+                        </div>
+                      </div>;
+                    })}
+                  </div>;
+                })}
+                </Paper>
               </div>
             </Tab>
-            <Tab label="Results" style={{color: '#00ffa1', backgroundColor: '#38003d'}} >
+
+            <Tab label="Results" style={styleTab} >
               <div>
                 <h2 style={styles.headline}>Tab Three</h2>
                 <p>
@@ -82,44 +256,36 @@ const Epl = React.createClass ({
             </Tab>
           </Tabs>
         </div>
+
+
+
+
         <div className="col s6">
           <Paper>
             <h3 className="center proClubNews cardTitle">Latest News</h3>
-            <div className="row">
-              <div className="col s3">
-                <img style={{width: '140px', height: '140px', borderRadius: '50%'}} src="https://www.bing.com/th?id=ON.D3ED3B9EB0E7CCB9B5003B035BB05F60&pid=News" />
-              </div>
-              <div className="col s9">
-                <a href="https://www.bing.com">Paul Pogba a passenger for Man United in derby defeat to Man City</a>
-                <p>Paul Pogba has yet to register a goal or assist for his new club. Manchester United bought Paul Pogba back this summer for a world-record fee to help push them forward from midfield. In the Manchester derby at Old Trafford on Saturday, a more familiar ...</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col s3">
-                <img style={{width: '140px', height: '140px', borderRadius: '50%'}} src="https://www.bing.com/th?id=ON.D2390540171DFA35605BB7644AFDCC85&pid=News" />
-              </div>
-              <div className="col s9">
-                <a href="https://www.bing.com">Manchester United's $761 million revenue sets world soccer record</a>
-                <p>Manchester United (MANU) may have lost its most recent match, but the fact that it set a new world record for revenue may lessen the blow. United's financial filings show that it made $761 million in revenue in 2016, the most ever by a soccer club.</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col s3">
-                <img style={{width: '140px', height: '140px', borderRadius: '50%'}} src="https://www.bing.com/th?id=ON.4F77567C2F822513D41BE9146543AE62&pid=News" />
-              </div>
-              <div className="col s9">
-                <a href="https://www.bing.com">REVEALED: 3 Ways Manchester United and Mourinho Can Maximise Paul Pogba’s Potency</a>
-                <p>To have one of the best players in the world, and utilising him correctly, are two different matters. Having procured the services of Paul Pogba, United fans were looking for the hundred million man to take the league by storm, blow all the fishes out of ...</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col s3">
-                <img style={{width: '140px', height: '140px', borderRadius: '50%'}} src="https://www.bing.com/th?id=ON.51B756AA677003012B3809698B81E856&pid=News" />
-              </div>
-              <div className="col s9">
-                <a href="https://www.bing.com">Jose Mourinho reveals battle to lure Paul Pogba to Manchester United as mystery manager at 'another big club' attempted to sign midfielder</a>
-                <p>Jose Mourinho has revealed his private battle with an unnamed manager to sign Manchester United's prized asset Paul Pogba. Pogba put pen to paper at Old Trafford but Mourinho had to work hard to convince him it was his ideal destination. The Portuguese ...</p>
-              </div>
+            <div style={{overflow: 'auto', maxHeight: '1100px'}}>
+            {this.state.news.map((element, i) => {
+              let newsImg;
+
+              if (!element.image) {
+                newsImg = <img style={{width: '140px', height: '140px', borderRadius: '50%', marginTop: '23px'}} src="./images/logo-2017.jpg" />
+              } else {
+                newsImg = <img style={{width: '140px', height: '140px', borderRadius: '50%', marginTop: '23px'}} src={element.image.thumbnail.contentUrl} />
+              }
+
+              return <div className="row" style={{borderBottom: '1px solid lightgrey'}} key={i}>
+                <div className="col s3">
+                  <a href={element.url} >
+                    {newsImg}
+                  </a>
+                </div>
+                <div className="col s9">
+                  <a href={element.url} >{element.name}</a>
+                  <p style={{fontStyle: 'italic'}}>{element.description}</p>
+                  <p style={{fontWeight: 'bold'}}>{element.datePublished}</p>
+                </div>
+              </div>;
+            })}
             </div>
           </Paper>
         </div>

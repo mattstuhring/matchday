@@ -31,6 +31,7 @@
     "joi": "^9.0.4",
     "jsonwebtoken": "^7.1.9",
     "knex": "^0.11.10",
+    "lodash": "^4.16.1",
     "material-ui": "^0.15.4",
     "moment": "^2.15.0",
     "morgan": "^1.7.0",
