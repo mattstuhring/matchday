@@ -29,7 +29,7 @@ console.log(req.body.email);
       const expiry = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30);
       const token = jwt.sign(
         { userId: user.id },
-        process.env.SECRET_KEY,
+        process.env.JWT_SECRET,
         { expiresIn: '30 days' }
       );
 
