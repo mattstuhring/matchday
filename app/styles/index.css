@@ -33,6 +33,12 @@ body {
   color: white !important;
 }
 
+.matchInfoTemp {
+  background-image: url('./images/stadiums/man-u.jpg');
+  background-repeat: no-repeat;
+  color: white !important;
+}
+
 .landHeader {
   margin-bottom: 20px;
 }

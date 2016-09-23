@@ -48,6 +48,8 @@ const Epl = React.createClass ({
 
     axios.get('/api/clubs')
       .then((res) => {
+        console.log(res.data);
+
         this.setState({ clubImg: res.data });
       })
       .catch((err) => {
@@ -61,6 +63,7 @@ const Epl = React.createClass ({
   handleMatches() {
     axios.get('api/clubs/matches')
       .then((res) => {
+        console.log(res.data);
         const group = _.groupBy(res.data, (match) => {
           return match.formatted_date;
         });
@@ -129,15 +132,15 @@ const Epl = React.createClass ({
     };
 
     const styleTab = {
-      color: '#00ffa1',
-      backgroundColor: '#38003d'
+      backgroundColor: '#00ffa1',
+      color: '#38003d'
     };
 
     const styleTableRowColumn = {
       fontSize: '18px',
       color: '#38003d',
-      paddingTop: '0px',
-      paddingBottom: '0px'
+      paddingTop: '5px',
+      paddingBottom: '5px'
     };
 
     return <div>
@@ -148,6 +151,7 @@ const Epl = React.createClass ({
           </div>
         </div>
         <div className="col s6">
+          <h3 className="center proClubNews cardTitle" style={{marginBottom: '0px', fontFamily: 'Contrail One, cursive' }}>Overview</h3>
           <Tabs>
             <Tab label="Standings" style={styleTab} >
               <Paper>
@@ -168,13 +172,35 @@ const Epl = React.createClass ({
                       <TableHeaderColumn>Pts</TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
-                  <TableBody displayRowCheckbox={false} style={{fontFamily: 'Mogra, cursive'}} stripedRows={true} showRowHover={true}>
+                  <TableBody displayRowCheckbox={false} stripedRows={true} showRowHover={true}>
 
                     {this.state.table.map((element) => {
-
                       return <TableRow key={element.position}>
                         <TableRowColumn style={styleTableRowColumn}>{element.position}</TableRowColumn>
-                        <TableRowColumn style={styleTableRowColumn}>{element.team_name}</TableRowColumn>
+
+                        {this.state.clubImg.map((e, i) => {
+                          const styleStandLogo = {
+                            width: '40px',
+                            height: '40px',
+                            position: 'relative',
+                            backgroundSize: 'contain',
+                            right: '20px',
+                            backgroundImage: 'url(' + e.logo + ')'
+                          };
+
+                          let logo;
+
+                          if (parseInt(element.team_id) === e.team_id) {
+                            logo = e.logo;
+                          } else {
+                            return;
+                          }
+
+                            return <TableRowColumn style={styleTableRowColumn} key={i}>
+                              <Paper circle={true} style={styleStandLogo} ></Paper>
+                            </TableRowColumn>;
+                        })}
+
                         <TableRowColumn style={styleTableRowColumn}>{element.overall_gp}</TableRowColumn>
                         <TableRowColumn style={styleTableRowColumn}>{element.overall_w}</TableRowColumn>
                         <TableRowColumn style={styleTableRowColumn}>{element.overall_d}</TableRowColumn>
@@ -209,7 +235,7 @@ const Epl = React.createClass ({
 
                     {element.matches.map((e, i) => {
                       return <div className="row center" key={i}>
-                        <div className="col s2" style={{marginTop: '10px'}}>
+                        <div className="col s2">
                           <p>{e.time}</p>
                         </div>
                         <div className="col s7">

@@ -7,11 +7,15 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
   from 'material-ui/Table';
+import {GridList, GridTile} from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import Subheader from 'material-ui/Subheader';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 const Profile = React.createClass ({
   render() {
     const styleNext = {
-      border: '2px solid grey',
+      border: '1px solid lightgrey',
       marginBottom: '0px'
     };
 
@@ -68,6 +72,20 @@ const Profile = React.createClass ({
       padding: '0px 0px'
     };
 
+    const styles = {
+      root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+      },
+      gridList: {
+        width: 700,
+        height: 325,
+        overflowY: 'auto',
+        marginBottom: 10,
+      },
+    };
+
 
     return <div>
 
@@ -80,7 +98,7 @@ const Profile = React.createClass ({
       {/* CLUB KIT, STANDINGS, MATCHDAY */}
       <div className="row">
         <div className="col s6">
-          <Card>
+          <Card style={{border: '1px solid lightgrey', marginBottom: '30px'}}>
             <div className="row" style={styleNext}>
               <div className="col s5 center">
                 <img
@@ -88,10 +106,10 @@ const Profile = React.createClass ({
                   src="./images/kits/manchester-united-j.jpg"
                 />
               </div>
-              <div className="col s7 center matchInfo">
+              <div className="col s7 center matchInfoTemp">
                 <h3 style={{marginTop: '20px'}}>Matchday</h3>
-                <p>Friday, September 16 2016</p>
-                <h5>Manchester United v Watford</h5>
+                <p>Friday, September 24 2016</p>
+                <h5>Manchester United v Leicester</h5>
                 <p>Old Trafford, Manchester</p>
                 <RaisedButton
                   label="Add Match"
@@ -102,7 +120,6 @@ const Profile = React.createClass ({
               </div>
             </div>
             <div className="row">
-              <div className="cardTitle" style={{padding: '16px'}}>Club Standing</div>
               <CardText>
                 <Table>
                   <TableHeader
@@ -123,15 +140,21 @@ const Profile = React.createClass ({
                   </TableHeader>
                   <TableBody displayRowCheckbox={false}>
                     <TableRow>
-                      <TableRowColumn>1</TableRowColumn>
-                      <TableRowColumn>MAN</TableRowColumn>
-                      <TableRowColumn>7</TableRowColumn>
-                      <TableRowColumn>7</TableRowColumn>
-                      <TableRowColumn>0</TableRowColumn>
-                      <TableRowColumn>0</TableRowColumn>
-                      <TableRowColumn>11</TableRowColumn>
-                      <TableRowColumn>0</TableRowColumn>
-                      <TableRowColumn>22</TableRowColumn>
+                      <TableRowColumn style={{paddingBottom: '0px'}}>1</TableRowColumn>
+                      <TableRowColumn style={{paddingBottom: '0px'}}>
+                        <Avatar
+                          src="./images/clubs/Manchester-United.png"
+                          size={40}
+                          style={styleInline}
+                        />
+                      </TableRowColumn>
+                      <TableRowColumn style={{paddingBottom: '0px'}}>7</TableRowColumn>
+                      <TableRowColumn style={{paddingBottom: '0px'}}>7</TableRowColumn>
+                      <TableRowColumn style={{paddingBottom: '0px'}}>0</TableRowColumn>
+                      <TableRowColumn style={{paddingBottom: '0px'}}>0</TableRowColumn>
+                      <TableRowColumn style={{paddingBottom: '0px'}}>11</TableRowColumn>
+                      <TableRowColumn style={{paddingBottom: '0px'}}>0</TableRowColumn>
+                      <TableRowColumn style={{paddingBottom: '0px'}}>22</TableRowColumn>
                     </TableRow>
                   </TableBody>
                 </Table>
@@ -141,72 +164,149 @@ const Profile = React.createClass ({
 
 
           {/* LATEST NEWS */}
-          <Card>
-            <div className="cardTitle" style={{padding: '16px'}}>Latest News</div>
-            <CardText>
-              <div className="row">
-                <div className="col s3">
-                  <img
-                    style={styleNewsImg} src="https://www.bing.com/th?id=ON.D3ED3B9EB0E7CCB9B5003B035BB05F60&pid=News"
-                  />
-                </div>
-                <div className="col s9">
-                  <a href="https://www.bing.com">Paul Pogba a passenger for Man United in derby defeat to Man City</a>
-                  <p>Paul Pogba has yet to register a goal or assist for his new club. Manchester United bought Paul Pogba back this summer for a world-record fee to help push them forward from midfield. In the Manchester derby at Old Trafford on Saturday, a more familiar ...</p>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col s3">
-                  <img
-                    style={styleNewsImg} src="https://www.bing.com/th?id=ON.D2390540171DFA35605BB7644AFDCC85&pid=News"
-                  />
-                </div>
-                <div className="col s9">
-                  <a href="https://www.bing.com">Manchester United's $761 million revenue sets world soccer record</a>
-                  <p>Manchester United (MANU) may have lost its most recent match, but the fact that it set a new world record for revenue may lessen the blow. United's financial filings show that it made $761 million in revenue in 2016, the most ever by a soccer club.</p>
-                </div>
-              </div>
-            </CardText>
-          </Card>
+          <div style={styles.root}>
+            <GridList
+              cellHeight={200}
+              style={styles.gridList}
+              cols={6}
+            >
+              <GridTile
+                title="Premier League era: Manchester United’s Greatest XI"
+                subtitle="Manchester United are undoubtedly the best club in the Premier League era as the club dominated both English football as well as European football with ease under legendary Sir Alex Ferguson. The club has won a record 13 Premier League titles and have ..."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.B7D5A7B675CE9BFFA3D7CD5959E11717&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Watford vs. Manchester United: Score and Reaction from 2016 Premier League Match"
+                subtitle="Substitute Juan Camilo Zuniga condemned Manchester United to a third defeat in a row in all competitions by putting Watford 2-1 ahead at Vicarage Road on Sunday before winning a stoppage-time penalty that Troy Deeney converted to give the Hornets a 3-1 win ..."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.36FD9B23FBBA3766608F295196F9A081&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Impossible” For Manchester United To Win Premier League Says Steve Claridge"
+                subtitle="Former Portsmouth striker Steve Claridge feels it could be impossible for Manchester United to win the league this season as Jose Mourinho is still struggling to settle on the right combinations. Manchester United went into last night’s EFL Cup game ..."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.DB98186270C70005C351EDD1FC0C09F2&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Premier League Playback: Why is Man United’s midfield breaking down?"
+                subtitle="After three losses in a week Manchester United and Jose Mourinho is reeling. In their defeats to Manchester City last weekend, Feyenoord in midweek Europa League action and to Watford on Sunday, one thing is clear: the midfield is the main problem area."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.0F770EE1A3E76E95B96EDE95DE3EF2B7&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Manchester United vs Leicester City: Latest odds, TV information and team news ahead of the Premier League clash"
+                subtitle="MANCHESTER United have the chance to arrest some poor recent Premier League form on Saturday when they host Leicester City. In the midweek EFL Cup games, there were contrasting fortunes for the two teams. Manchester United defeated Northampton 3-1 away ..."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.4EB20C4A352BEF9C04C0476DD05FCB66&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Manchester United in search of home comfort against Leicester"
+                subtitle="Manchester (United Kingdom) (AFP) - Manchester United eased some of the pressure on manager Jose Mourinho by beating Northampton Town in midweek but that will count for little if they lose to Premier League champions Leicester City on Saturday. United ..."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.D86F4B04A32C3B7FE90C1032CBEFD23B&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Premier League era: Manchester United’s Greatest XI"
+                subtitle="Manchester United are undoubtedly the best club in the Premier League era as the club dominated both English football as well as European football with ease under legendary Sir Alex Ferguson. The club has won a record 13 Premier League titles and have ..."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.B7D5A7B675CE9BFFA3D7CD5959E11717&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Watford vs. Manchester United: Score and Reaction from 2016 Premier League Match"
+                subtitle="Substitute Juan Camilo Zuniga condemned Manchester United to a third defeat in a row in all competitions by putting Watford 2-1 ahead at Vicarage Road on Sunday before winning a stoppage-time penalty that Troy Deeney converted to give the Hornets a 3-1 win ..."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.36FD9B23FBBA3766608F295196F9A081&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Impossible” For Manchester United To Win Premier League Says Steve Claridge"
+                subtitle="Former Portsmouth striker Steve Claridge feels it could be impossible for Manchester United to win the league this season as Jose Mourinho is still struggling to settle on the right combinations. Manchester United went into last night’s EFL Cup game ..."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.DB98186270C70005C351EDD1FC0C09F2&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Premier League Playback: Why is Man United’s midfield breaking down?"
+                subtitle="After three losses in a week Manchester United and Jose Mourinho is reeling. In their defeats to Manchester City last weekend, Feyenoord in midweek Europa League action and to Watford on Sunday, one thing is clear: the midfield is the main problem area."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.0F770EE1A3E76E95B96EDE95DE3EF2B7&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Manchester United vs Leicester City: Latest odds, TV information and team news ahead of the Premier League clash"
+                subtitle="MANCHESTER United have the chance to arrest some poor recent Premier League form on Saturday when they host Leicester City. In the midweek EFL Cup games, there were contrasting fortunes for the two teams. Manchester United defeated Northampton 3-1 away ..."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.4EB20C4A352BEF9C04C0476DD05FCB66&pid=News" />
+              </GridTile>
+
+              <GridTile
+                title="Manchester United in search of home comfort against Leicester"
+                subtitle="Manchester (United Kingdom) (AFP) - Manchester United eased some of the pressure on manager Jose Mourinho by beating Northampton Town in midweek but that will count for little if they lose to Premier League champions Leicester City on Saturday. United ..."
+                cols={2}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src="https://www.bing.com/th?id=ON.D86F4B04A32C3B7FE90C1032CBEFD23B&pid=News" />
+              </GridTile>
+            </GridList>
+          </div>
         </div>
 
 
         {/* RIGHT COLUMN BEGINS */}
         <div className="col s6">
           <Card>
-            <div className="row">
-              <CardHeader
-                title="Manchester United"
-                subtitle="# of Supporters"
-                avatar="./images/Manchester-United.png"
-                titleColor="white"
-                subtitleColor="white"
-                className="cardTitle"
-              />
-            </div>
-
 
             {/* UPCOMING MATCHES */}
-            <div style={{padding: '10px', backgroundColor: '#38003d', color: 'white'}}>Upcoming Matches</div>
+            <div className="cardTitle" style={{padding: '16px', backgroundColor: '#38003d', color: 'white'}}>Upcoming Matches</div>
             <CardText style={styleUpRes}>
               <Table style={{marginBottom: '5px'}}>
                 <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                   <TableRow>
                     <TableHeaderColumn>
-                      Sunday, 18 September 2016
+                      Sunday, 2 October 2016
                     </TableHeaderColumn>
                   </TableRow>
                 </TableHeader>
               </Table>
               <div className="row center">
                 <div className="col s2" style={{marginTop: '10px'}}>
-                  12:00pm
+                  4:00pm
                 </div>
                 <div className="col s7">
                   <div style={styleInline}>
-                    <p style={styleUpMatch1}>Watford</p>
+                    <p style={styleUpMatch1}>STK</p>
                     <Avatar
-                      src="./images/clubs/Watford.png"
+                      src="./images/clubs/Stoke-City.png"
                       size={40}
                       style={styleInline}
                     />
@@ -218,7 +318,7 @@ const Profile = React.createClass ({
                       size={40}
                       style={styleInline}
                     />
-                    <p style={styleUpMatch3}>Manchester United</p>
+                    <p style={styleUpMatch3}>MUN</p>
                   </div>
                 </div>
                 <div className="col s3">
@@ -245,7 +345,7 @@ const Profile = React.createClass ({
                 <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                   <TableRow>
                     <TableHeaderColumn>
-                      Sunday, 18 September 2016
+                      Sunday, 17 October 2016
                     </TableHeaderColumn>
                   </TableRow>
                 </TableHeader>
@@ -256,9 +356,9 @@ const Profile = React.createClass ({
                 </div>
                 <div className="col s7">
                   <div style={styleInline}>
-                    <p style={styleUpMatch1}>Watford</p>
+                    <p style={styleUpMatch1}>LIV</p>
                     <Avatar
-                      src="./images/clubs/Watford.png"
+                      src="./images/clubs/Liverpool.png"
                       size={40}
                       style={styleInline}
                     />
@@ -270,7 +370,7 @@ const Profile = React.createClass ({
                       size={40}
                       style={styleInline}
                     />
-                    <p style={styleUpMatch3}>Manchester United</p>
+                    <p style={styleUpMatch3}>MUN</p>
                   </div>
                 </div>
                 <div className="col s3">
@@ -285,7 +385,7 @@ const Profile = React.createClass ({
 
 
             {/* RESULTS */}
-            <div style={{padding: '10px', backgroundColor: '#38003d', color: 'white'}}>Results</div>
+            <div className="cardTitle" style={{padding: '16px', backgroundColor: '#38003d', color: 'white'}}>Results</div>
             <Card>
               <CardText style={styleUpRes}>
               <Table style={{marginBottom: '5px'}}>
@@ -307,7 +407,7 @@ const Profile = React.createClass ({
                   />
                 </div>
                 <div className="col s2" style={styleResMatch2}>
-                  <h5 style={{margin: '6px 0'}}>0 - 2</h5>
+                  <h5 style={{margin: '6px 0'}}>3 - 1</h5>
                 </div>
                 <div className="col s4 left-align" style={styleInline}>
                   <Avatar
@@ -334,16 +434,16 @@ const Profile = React.createClass ({
                   <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                     <TableRow>
                       <TableHeaderColumn>
-                        Sunday, 18 September 2016
+                        Sunday, 10 September 2016
                       </TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
                 </Table>
                 <div className="row center">
                   <div className="col s4 offset-s1 right-align" style={styleInline}>
-                    <p style={styleUpMatch1}>Watford</p>
+                    <p style={styleUpMatch1}>MCI</p>
                     <Avatar
-                      src="./images/clubs/Watford.png"
+                      src="./images/clubs/Manchester-City.png"
                       size={40}
                       style={styleInline}
                     />
@@ -357,11 +457,120 @@ const Profile = React.createClass ({
                       size={40}
                       style={styleInline}
                     />
-                    <p style={styleUpMatch3}>Manchester United</p>
+                    <p style={styleUpMatch3}>MUN</p>
                   </div>
                 </div>
               </CardText>
             </Card>
+
+
+            {/* SAVED */}
+            <div className="cardTitle" style={{padding: '16px', backgroundColor: '#38003d', color: 'white'}}>Saved To Calendar</div>
+            <CardText style={styleUpRes}>
+              <Table style={{marginBottom: '5px'}}>
+                <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                  <TableRow>
+                    <TableHeaderColumn>
+                      Sunday, 23 October 2016
+                    </TableHeaderColumn>
+                  </TableRow>
+                </TableHeader>
+              </Table>
+              <div className="row center">
+                <div className="col s2" style={{marginTop: '10px'}}>
+                  12:00pm
+                </div>
+                <div className="col s5">
+                  <div style={styleInline}>
+                    <p style={styleUpMatch1}>CHE</p>
+                    <Avatar
+                      src="./images/clubs/Chelsea.png"
+                      size={40}
+                      style={styleInline}
+                    />
+                  </div>
+                  <div style={styleUpMatch2}>v</div>
+                  <div style={styleInline}>
+                    <Avatar
+                      src="./images/clubs/Manchester-United.png"
+                      size={40}
+                      style={styleInline}
+                    />
+                    <p style={styleUpMatch3}>MUN</p>
+                  </div>
+                </div>
+                <div className="col s5">
+                  <RaisedButton
+                    label="update"
+                    backgroundColor="#00ffa1"
+                    labelColor="#38003d"
+                    style={{marginRight: '15px'}}
+                  />
+                  <RaisedButton
+                    label="delete"
+                    backgroundColor="#00ffa1"
+                    labelColor="#38003d"
+                  />
+                </div>
+              </div>
+            </CardText>
+
+
+            {/* SHOW ALL UPCOMING RESULTS */}
+            <CardHeader
+              title="Show All Upcoming Matches"
+              actAsExpander={true}
+              showExpandableButton={true}
+              titleColor="#00ffa1"
+              style={{padding: '5px'}}
+            />
+            <CardText expandable={true} className="styleUpRes">
+              <Table style={{marginBottom: '5px'}}>
+                <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                  <TableRow>
+                    <TableHeaderColumn>
+                      Sunday, 19 November 2016
+                    </TableHeaderColumn>
+                  </TableRow>
+                </TableHeader>
+              </Table>
+              <div className="row center">
+                <div className="col s2" style={{marginTop: '10px'}}>
+                  8:00am
+                </div>
+                <div className="col s5">
+                  <div style={styleInline}>
+                    <p style={styleUpMatch1}>ARS</p>
+                    <Avatar
+                      src="./images/clubs/Arsenal.png"
+                      size={40}
+                      style={styleInline}
+                    />
+                  </div>
+                  <div style={styleUpMatch2}>v</div>
+                  <div style={styleInline}>
+                    <Avatar
+                      src="./images/clubs/Manchester-United.png"
+                      size={40}
+                      style={styleInline}
+                    />
+                    <p style={styleUpMatch3}>MUN</p>
+                  </div>
+                </div>
+                <div className="col s5">
+                  <RaisedButton
+                    label="update"
+                    backgroundColor="#00ffa1"
+                    labelColor="#38003d"
+                  />
+                  <RaisedButton
+                    label="delete"
+                    backgroundColor="#00ffa1"
+                    labelColor="#38003d"
+                  />
+                </div>
+              </div>
+            </CardText>
           </Card>
         </div>
       </div>
