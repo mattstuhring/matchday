@@ -9,6 +9,7 @@
     "url": ""
   },
   "scripts": {
+    "heroku-postbuild": "knex migrate:latest",
     "deploy": "rm -rf public; brunch build --production; surge public",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public",
     "knex": "knex",
@@ -52,10 +53,14 @@
     "clean-css-brunch": "^2.0.0",
     "eslint": "^3.4.0",
     "eslint-config-ryansobol": "^9.1.1",
+    "foreman": "^2.0.0",
     "javascript-brunch": "^2.0.0",
     "nodemon": "^1.10.2",
     "postcss-brunch": "^2.0.1",
     "surge": "^0.18.0",
     "uglify-js-brunch": "^2.0.1"
+  },
+  "engines": {
+    "node": "v6.4.0"
   }
 }
