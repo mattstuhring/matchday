@@ -57,7 +57,7 @@ const Landing = React.createClass({
 
 
   handleClub(id) {
-    axios.get(`http://api.football-api.com/2.0/team/${id}?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
+    axios.get(`/api/clubs/team/${id}`)
       .then((res) => {
         this.setState({ club: res.data });
       })

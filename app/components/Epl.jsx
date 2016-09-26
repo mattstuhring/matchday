@@ -24,7 +24,7 @@ const Epl = React.createClass ({
   },
 
   componentWillMount() {
-    axios.get('http://api.football-api.com/2.0/standings/1204?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822')
+    axios.get('/api/clubs/table')
       .then((res) => {
         this.setState({ table: res.data });
       })
