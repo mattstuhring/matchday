@@ -9,9 +9,8 @@
     "url": ""
   },
   "scripts": {
-    "heroku-postbuild": "knex migrate:latest",
+    "heroku-postbuild": "knex migrate:latest; brunch build",
     "nf": "nf start",
-    "deploy": "rm -rf public; brunch build --production; surge public",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public",
     "knex": "knex",
     "start": "brunch watch --server"
