@@ -1,6 +1,7 @@
 import { browserHistory, withRouter } from 'react-router';
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
+import axios from 'axios';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
@@ -62,6 +63,38 @@ const App = React.createClass({
       }
     };
 
+    let appBarLogin = <div>
+      <FlatButton
+        style={styles.text}
+        label="EPL"
+        onTouchTap={() => browserHistory.push('/epl')}
+      />
+      <FlatButton
+        style={styles.text}
+        label="Login"
+        onTouchTap={() => browserHistory.push('/login')} />;
+      </div>;
+
+    if (document.cookie) {
+      appBarLogin = <div>
+        <FlatButton
+          style={styles.text}
+          label="EPL"
+          onTouchTap={() => browserHistory.push('/epl')}
+        />
+        <FlatButton
+          style={styles.text}
+          label="Profile"
+          onTouchTap={() => browserHistory.push('/profile')}
+        />
+        <FlatButton
+          style={styles.text}
+          label="Logout"
+          onTouchTap={this.handleLogOut}
+        />
+      </div>;
+    }
+
     return <div>
       <AppBar
         style={styles.background}
@@ -74,8 +107,7 @@ const App = React.createClass({
         showMenuIconButton={false}
       >
         <div style={{marginTop: '12px'}}>
-          <FlatButton style={styles.text} label="EPL" onTouchTap={() => browserHistory.push('/epl')} />
-          <FlatButton style={styles.text} label="Login" onTouchTap={() => browserHistory.push('/login')} />
+          {appBarLogin}
         </div>
       </AppBar>
 

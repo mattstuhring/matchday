@@ -50,6 +50,10 @@ const Register = React.createClass({
       });
   },
 
+  handleCalendar() {
+    window.location = '/auth/cronofy'
+  },
+
   handleTextChange(event) {
     const nextUser = Object.assign({}, this.state.user, {
       [event.target.name]: event.target.value
@@ -179,6 +183,18 @@ console.log(this.state);
                 value={user.password}
               />
             </div>
+            <div className="col s12 center" style={{height: '75px'}}>
+              <RaisedButton
+                className="regBtn"
+                style={{width: '350px'}}
+                backgroundColor={"#00ffa1"}
+                label="Sign into calendar"
+                labelColor={"#38003d"}
+                labelPosition="before"
+                icon={<Check />}
+                onTouchTap={this.handleCalendar}
+              />
+            </div>
             <div>
               <RaisedButton
                 className="regBtn"
@@ -200,6 +216,7 @@ console.log(this.state);
                 onTouchTap={() => browserHistory.push('/')}
               />
             </div>
+            <a href="/auth/cronofy">Login</a>
           </div>
           <div className="col s5 center regKit">
             <Paper zDepth={2}>

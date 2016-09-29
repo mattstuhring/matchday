@@ -13,6 +13,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+const auth = require('./routes/auth');
 const users = require('./routes/users');
 const clubs = require('./routes/clubs');
 const token = require('./routes/token');
@@ -48,6 +49,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Routes go here
+app.use('/auth', auth);
 app.use('/api', users);
 app.use('/api', clubs);
 app.use('/api', token);

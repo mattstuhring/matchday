@@ -109,7 +109,7 @@ const Landing = React.createClass({
       height: '120px',
       position: 'relative',
       right: '9px',
-      bottom: '13px'
+      bottom: '9px'
     };
 
     const styleInline = {
