@@ -23,6 +23,7 @@ const strategy = new OAuth2Strategy({
     .then((result) => {
       console.log(result);
       // could add to db at this point
+
       calendar = result;
     })
     .catch((err) => {

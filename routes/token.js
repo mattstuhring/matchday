@@ -13,7 +13,6 @@ const router = express.Router();
 
 router.post('/token', (req, res, next) => {
   let user;
-console.log(req.body.email);
   knex('users')
     .where('email', req.body.email)
     .first()

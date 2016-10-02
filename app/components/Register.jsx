@@ -50,9 +50,9 @@ const Register = React.createClass({
       });
   },
 
-  handleCalendar() {
-    window.location = '/auth/cronofy'
-  },
+  // handleCalendar() {
+  //   window.location = '/auth/cronofy'
+  // },
 
   handleTextChange(event) {
     const nextUser = Object.assign({}, this.state.user, {

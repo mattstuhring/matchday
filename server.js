@@ -12,11 +12,14 @@ const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
 
 const auth = require('./routes/auth');
 const users = require('./routes/users');
 const clubs = require('./routes/clubs');
 const token = require('./routes/token');
+const me = require('./routes/me');
+const sms = require('./routes/sms');
 
 const app = express();
 
@@ -36,6 +39,12 @@ switch (app.get('env')) {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // CSRF protection
 // app.use('/api', (req, res, next) => {
 //   if (/json/.test(req.get('Accept'))) {
@@ -47,12 +56,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 app.use(cookieParser());
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((obj, done) => {
+  done(null, obj);
+});
 
 // Routes go here
 app.use('/auth', auth);
 app.use('/api', users);
 app.use('/api', clubs);
 app.use('/api', token);
+app.use('/api', me);
+app.use('/api', sms);
 
 app.use((_req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
