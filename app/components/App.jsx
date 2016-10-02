@@ -72,7 +72,8 @@ const App = React.createClass({
       <FlatButton
         style={styles.text}
         label="Login"
-        onTouchTap={() => browserHistory.push('/login')} />;
+        onTouchTap={() => browserHistory.push('/login')}
+      />
       </div>;
 
     if (document.cookie) {
@@ -100,8 +101,10 @@ const App = React.createClass({
         style={styles.background}
         title={
           <div>
-            <img style={styles.title} src="./images/logo.png" />
-            <img style={styles.logo} src="./images/matchday.png" />
+            <a href="/">
+              <img style={styles.title} src="./images/logo.png" />
+              <img style={styles.logo} src="./images/matchday.png" />
+            </a>
           </div>
         }
         showMenuIconButton={false}

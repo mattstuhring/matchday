@@ -7,9 +7,7 @@ exports.up = function(knex) {
     table.string('last_name').defaultTo('');
     table.string('email').unique().notNullable().defaultTo('');
     table.specificType('hashed_password', 'char(60)').notNullable();
-    table.string('calendar_id').unique().defaultTo('');
-    table.string('access_token').unique().defaultTo('');
-    table.string('refreshen_token').unique().defaultTo('');
+    table.string('phone_number').defaultTo('');
     table.integer('team_id')
       .references('team_id')
       .inTable('clubs')

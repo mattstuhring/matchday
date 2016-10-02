@@ -17,6 +17,8 @@ import _ from 'lodash';
 import moment from 'moment';
 import cookie from 'react-cookie';
 import TextField from 'material-ui/TextField';
+import { fullWhite }
+  from 'material-ui/styles/colors';
 
 const Profile = React.createClass ({
   getInitialState() {
@@ -29,7 +31,11 @@ const Profile = React.createClass ({
       club: [],
       match: [],
       statistics: {},
-      sms: [],
+      sms: {
+        to: '',
+        from: '',
+        body: '',
+      },
     };
   },
 
@@ -119,29 +125,35 @@ const Profile = React.createClass ({
   handleSms(event) {
     // window.location = 'api/sms';
 
-    // const nextSms = Object.assign({}, this.state.sms, {
-    //   [event.target.name]: event.target.value
-    // });
-    //
-    // this.setState({ sms: nextSms });
-    //
-    // console.log(sms);
+    const message = {
+      time: this.state.match.time,
+      date: this.state.match.formatted_date,
+      team1: this.state.match.localteam_name,
+      team2: this.state.match.visitorteam_name,
+      venue: this.state.match.venue
+    };
 
-    // axios.post('/api/sms', {
-    //   to: '+14257651612',
-    //   from: '+14255599613',
-    //   body: 'MANU v LIV'
-    // })
-    // .then((res) => {
-    //   console.log(res.data);
-    //   this.setState({toast: res.data});
-    // })
-    // .catch((err) => {
-    //   this.props.setToast(
-    //     true,
-    //     `Whoops! ${err}.`
-    //   );
-    // });
+    axios.post('/api/sms', {
+      // to: '+14257651612',
+      // from: '+14255599613',
+      // body: 'MANU v LIV'
+      to: '+14257651612',
+      from: '+14255599613',
+      body: message
+    })
+    .then((res) => {
+      this.props.setToast(
+        true,
+        'Success!!!'
+      );
+      // this.setState({toast: res.data});
+    })
+    .catch((err) => {
+      this.props.setToast(
+        true,
+        `Whoops! ${err}.`
+      );
+    });
   },
 
   render() {
@@ -150,9 +162,9 @@ const Profile = React.createClass ({
       marginBottom: '0px'
     };
 
-    const styleStadium = {
+    const styleJersey = {
       width: '80%',
-      marginTop: '7px'
+      marginTop: '25px'
     };
 
     const styleNewsImg = {
@@ -224,7 +236,20 @@ const Profile = React.createClass ({
       },
     };
 
-// console.log(this.state.statistics.rank);
+    const styleField = {
+      borderColor: 'white',
+      text: {
+        color: 'black',
+      },
+      clear: {
+        opacity: '0'
+      }
+    };
+
+
+
+
+
 
     return <div>
       {/* CLUB BANNER */}
@@ -240,16 +265,53 @@ const Profile = React.createClass ({
             <div className="row" style={styleNext}>
               <div className="col s5 center">
                 <img
-                  style={styleStadium}
+                  style={styleJersey}
                   src="./images/kits/manchester-united-j.jpg"
                 />
               </div>
               <div className="col s7 center matchInfoTemp">
-                <h3 style={{marginTop: '20px'}}>Next Match</h3>
-                <p>{this.state.match.time}</p>
-                <p>{this.state.match.formatted_date}</p>
-                <h5>{this.state.match.localteam_name} v {this.state.match.visitorteam_name}</h5>
-                <p>{this.state.match.venue}</p>
+                <h3 style={{marginTop: '20px', marginBottom: '5px'}}>Next Match</h3>
+                <div style={{height: '35px', marginBottom: '5px'}}>
+                  <TextField
+                    id="text-field-default"
+                    disabled={true}
+                    value={this.state.match.time}
+                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
+                    name="time"
+                    underlineDisabledStyle={styleField.clear}
+                  />
+                </div>
+                <div style={{height: '35px', marginBottom: '5px'}}>
+                  <TextField
+                    id="text-field-default"
+                    disabled={true}
+                    value={this.state.match.formatted_date}
+                    inputStyle={{color: 'white', textAlign: 'center'}}
+                    name="date"
+                    underlineDisabledStyle={styleField.clear}
+                  />
+                </div>
+
+                <div style={{height: '35px', marginBottom: '5px'}}>
+                  <TextField
+                    id="text-field-default"
+                    disabled={true}
+                    value={this.state.match.localteam_name + ' v ' + this.state.match.visitorteam_name}
+                    inputStyle={{color: 'white', textAlign: 'center', height: '50%', marginBottom: '5px'}}
+                    name="team2"
+                    underlineDisabledStyle={styleField.clear}
+                  />
+                </div>
+                <div>
+                  <TextField
+                    id="text-field-default"
+                    disabled={true}
+                    value={this.state.match.venue}
+                    inputStyle={{color: 'white', textAlign: 'center', height: '50%', marginBottom: '5px'}}
+                    name="venue"
+                    underlineDisabledStyle={styleField.clear}
+                  />
+                </div>
                 <RaisedButton
                   label="Add Match"
                   style={{marginBottom: '20px'}}
@@ -422,23 +484,51 @@ const Profile = React.createClass ({
                   <Table style={{marginBottom: '5px'}}>
                     <TableHeader
                       adjustForCheckbox={false}
-                      displaySelectAll={false}>
+                      displaySelectAll={false}
+                      >
                       <TableRow>
                         <TableHeaderColumn>
                           {element.date}
                         </TableHeaderColumn>
                       </TableRow>
                     </TableHeader>
-<TableBody displayRowCheckbox={false}>
+                    <TableBody displayRowCheckbox={false}>
                   {element.matches.map((e, i) => {
                     return <div key={i}>
 
                       <TableRow>
-                        <TableRowColumn style={{paddingBottom: '0px',textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '100px'}}>{e.time}</TableRowColumn>
+                        <TableRowColumn style={{paddingBottom: '0px',textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '100px'}}
+                        >
+                          <div>
+                            <TextField
+                              id="text-field-default"
+                              disabled={true}
+                              value={e.time}
+                              underlineDisabledStyle={styleField}
+                              name="time"
+                              inputStyle={styleField.text}
+                              style={{width: '100px', paddingLeft: '25px'}}
+                            />
+                          </div>
+                        </TableRowColumn>
 
-                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', width: '175px', paddingLeft: '0px', paddingRight: '0px'}}>{e.localteam_name}</TableRowColumn>
+                        <TableRowColumn style={{paddingBottom: '0px', width: '150px', paddingLeft: '0px', paddingRight: '0px'}}
+                        >
+                          <div>
+                            <TextField
+                              id="text-field-default"
+                              disabled={true}
+                              value={e.localteam_name}
+                              underlineDisabledStyle={styleField}
+                              name="team1"
+                              inputStyle={styleField.text}
+                              style={{width: '150px', textAlign: 'center'}}
+                            />
+                          </div>
+                        </TableRowColumn>
 
-                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '50px'}}>
+                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '15px', width: '50px'}}
+                        >
                           <Avatar
                             src="./images/clubs/Manchester-United.png"
                             size={40}
@@ -446,7 +536,21 @@ const Profile = React.createClass ({
                           />
                         </TableRowColumn>
 
-                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '15px'}}>v</TableRowColumn>
+                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '15px'}}
+                        >
+                          <div>
+                            <TextField
+                              id="text-field-default"
+                              disabled={true}
+                              value="v"
+                              underlineDisabledStyle={styleField}
+                              name="v"
+                              inputStyle={styleField.text}
+                              style={{width: '15px'}}
+
+                            />
+                          </div>
+                        </TableRowColumn>
 
                         <TableRowColumn style={{paddingBottom: '0px', textAlign: 'right', paddingLeft: '0px', paddingRight: '0px', width: '50px'}}>
                           <Avatar
@@ -456,7 +560,20 @@ const Profile = React.createClass ({
                           />
                         </TableRowColumn>
 
-                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', width: '190px', paddingLeft: '0px', paddingRight: '0px'}}>{e.visitorteam_name}</TableRowColumn>
+                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', width: '200px', paddingLeft: '0px', paddingRight: '0px'}}
+                        >
+                          <div>
+                            <TextField
+                              id="text-field-default"
+                              disabled={true}
+                              value={e.visitorteam_name}
+                              underlineDisabledStyle={styleField}
+                              name="team2"
+                              inputStyle={styleField.text}
+                              style={{width: '200px', paddingLeft: '15px'}}
+                            />
+                          </div>
+                        </TableRowColumn>
 
                         <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '50px'}}>
                           <RaisedButton
@@ -466,36 +583,6 @@ const Profile = React.createClass ({
                           />
                         </TableRowColumn>
                       </TableRow>
-
-                      {/* <div className="col s2">
-                        <p>{e.time}</p>
-                      </div>
-                      <div className="col s7">
-                        <div style={styleInline}>
-                          <p style={styleUpMatch1}>{e.localteam_name}</p>
-                          <Avatar
-                            src="./images/clubs/Watford.png"
-                            size={40}
-                            style={styleInline}
-                          />
-                        </div>
-                        <div style={styleUpMatch2}>v</div>
-                        <div style={styleInline}>
-                          <Avatar
-                            src="./images/clubs/Manchester-United.png"
-                            size={40}
-                            style={styleInline}
-                          />
-                          <p style={styleUpMatch3}>{e.visitorteam_name}</p>
-                        </div>
-                      </div>
-                      <div className="col s3">
-                        <RaisedButton
-                          label="Add Match"
-                          backgroundColor="#00ffa1"
-                          labelColor="#38003d"
-                        />
-                      </div> */}
                     </div>;
                   })}
                   </TableBody>

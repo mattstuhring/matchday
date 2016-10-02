@@ -116,7 +116,13 @@ const Epl = React.createClass ({
             </div>
           </Paper>
         </div>
-        <div className="col s6" style={{border: "2px solid red", marginTop: '20px'}}>
+        <div className="col s6" style={{border: '2px solid red', marginTop: '20px'}}>
+
+
+
+
+
+
         <Table>
           <TableHeader
             adjustForCheckbox={false}
@@ -156,6 +162,49 @@ const Epl = React.createClass ({
             </TableRow>
           </TableBody>
         </Table>
+
+
+
+
+
+
+
+
+
+
+
+        {/* <Table>
+          <TableHeader
+            adjustForCheckbox={false}
+            displaySelectAll={false}
+          >
+            <TableRow>
+              <TableHeaderColumn>October 1, 2016</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody displayRowCheckbox={false}>
+            <TableRow>
+              <TableRowColumn>1</TableRowColumn>
+              <TableRowColumn>John Smith</TableRowColumn>
+              <TableRowColumn>Employed</TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn>2</TableRowColumn>
+              <TableRowColumn>Randal White</TableRowColumn>
+              <TableRowColumn>Unemployed</TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn>3</TableRowColumn>
+              <TableRowColumn>Stephanie Sanders</TableRowColumn>
+              <TableRowColumn>Employed</TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn>4</TableRowColumn>
+              <TableRowColumn>Steve Brown</TableRowColumn>
+              <TableRowColumn>Employed</TableRowColumn>
+            </TableRow>
+          </TableBody>
+        </Table> */}
         </div>
       </div>
     </div>;

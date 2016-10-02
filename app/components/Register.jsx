@@ -18,6 +18,7 @@ const Register = React.createClass({
         lastName: '',
         email: '',
         password: '',
+        phoneNumber: '+1',
         teamId: null
       },
       errors: {}
@@ -145,7 +146,6 @@ console.log(this.state);
             <div>
               <TextField
                 style={{width: '350px'}}
-                hintText="Hint Text"
                 name="firstName"
                 floatingLabelText="First Name"
                 onChange={this.handleTextChange}
@@ -155,7 +155,6 @@ console.log(this.state);
             <div>
               <TextField
                 style={{width: '350px'}}
-                hintText="Hint Text"
                 floatingLabelText="Last Name"
                 name="lastName"
                 onChange={this.handleTextChange}
@@ -165,7 +164,6 @@ console.log(this.state);
             <div>
               <TextField
                 style={{width: '350px'}}
-                hintText="Hint Text"
                 floatingLabelText="Email"
                 name="email"
                 onChange={this.handleTextChange}
@@ -175,7 +173,6 @@ console.log(this.state);
             <div>
               <TextField
                 style={{width: '350px'}}
-                hintText="Password Field"
                 floatingLabelText="Password"
                 type="password"
                 onChange={this.handleTextChange}
@@ -183,16 +180,13 @@ console.log(this.state);
                 value={user.password}
               />
             </div>
-            <div className="col s12 center" style={{height: '75px'}}>
-              <RaisedButton
-                className="regBtn"
+            <div>
+              <TextField
                 style={{width: '350px'}}
-                backgroundColor={"#00ffa1"}
-                label="Sign into calendar"
-                labelColor={"#38003d"}
-                labelPosition="before"
-                icon={<Check />}
-                onTouchTap={this.handleCalendar}
+                floatingLabelText="Phone Number"
+                name="phoneNumber"
+                onChange={this.handleTextChange}
+                value={user.phoneNumber}
               />
             </div>
             <div>
