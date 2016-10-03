@@ -51,10 +51,6 @@ const Register = React.createClass({
       });
   },
 
-  // handleCalendar() {
-  //   window.location = '/auth/cronofy'
-  // },
-
   handleTextChange(event) {
     const nextUser = Object.assign({}, this.state.user, {
       [event.target.name]: event.target.value
@@ -210,7 +206,6 @@ console.log(this.state);
                 onTouchTap={() => browserHistory.push('/')}
               />
             </div>
-            <a href="/auth/cronofy">Login</a>
           </div>
           <div className="col s5 center regKit">
             <Paper zDepth={2}>

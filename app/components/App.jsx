@@ -44,7 +44,7 @@ const App = React.createClass({
     const styles = {
       title: {
         cursor: 'pointer',
-        width: "5%",
+        width: "4.8%",
         borderRadius: "50%",
         border: '2px solid #fe005a',
         marginTop: '2px'
@@ -58,17 +58,12 @@ const App = React.createClass({
       },
       logo: {
         height: '40px',
-        marginBottom: '9px',
+        marginBottom: '11px',
         marginLeft: '10px'
       }
     };
 
     let appBarLogin = <div>
-      <FlatButton
-        style={styles.text}
-        label="EPL"
-        onTouchTap={() => browserHistory.push('/epl')}
-      />
       <FlatButton
         style={styles.text}
         label="Login"
@@ -78,11 +73,6 @@ const App = React.createClass({
 
     if (document.cookie) {
       appBarLogin = <div>
-        <FlatButton
-          style={styles.text}
-          label="EPL"
-          onTouchTap={() => browserHistory.push('/epl')}
-        />
         <FlatButton
           style={styles.text}
           label="Profile"

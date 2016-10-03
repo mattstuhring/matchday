@@ -70,6 +70,8 @@ const Profile = React.createClass ({
       loggedIn: cookie.load('loggedIn'),
     };
 
+    console.log(nextCookies);
+
     axios.get('api/me/team')
       .then((res) => {
         // console.log(res.data.teamInfo.statistics[0]);
@@ -134,9 +136,6 @@ const Profile = React.createClass ({
     };
 
     axios.post('/api/sms', {
-      // to: '+14257651612',
-      // from: '+14255599613',
-      // body: 'MANU v LIV'
       to: '+14257651612',
       from: '+14255599613',
       body: message
@@ -357,104 +356,32 @@ const Profile = React.createClass ({
                   </TableBody>
                 </Table>
               </CardText>
-              <div className="cardTitle" style={{padding: '16px', backgroundColor: '#38003d', color: 'white'}}>Saved To Calendar</div>
+
+
+
+              {/* SMS SAVED MATCHES */}
+              <div className="cardTitle" style={{padding: '16px', backgroundColor: '#38003d', color: 'white'}}>Recently Texted Match Reminders</div>
               <CardText style={styleUpRes}>
                 <Table style={{marginBottom: '5px'}}>
                   <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                     <TableRow>
                       <TableHeaderColumn>
-                        Sunday, 23 October 2016
+                        Match Week 7
                       </TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
                 </Table>
                 <div className="row center">
-                  <div className="col s2" style={{marginTop: '10px'}}>
-                    12:00pm
+                  <div className="col s2">
+                    02.10.2016
                   </div>
-                  <div className="col s5">
-                    <div style={styleInline}>
-                      <p style={styleUpMatch1}>CHE</p>
-                      <Avatar
-                        src="./images/clubs/Chelsea.png"
-                        size={40}
-                        style={styleInline}
-                      />
-                    </div>
-                    <div style={styleUpMatch2}>v</div>
-                    <div style={styleInline}>
-                      <Avatar
-                        src="./images/clubs/Manchester-United.png"
-                        size={40}
-                        style={styleInline}
-                      />
-                      <p style={styleUpMatch3}>MUN</p>
-                    </div>
+                  <div className="col s2">
+                    11:00
                   </div>
-                  <div className="col s5">
-                    <RaisedButton
-                      label="update"
-                      backgroundColor="#00ffa1"
-                      labelColor="#38003d"
-                      style={{marginRight: '15px'}}
-                    />
-                    <RaisedButton
-                      label="delete"
-                      backgroundColor="#00ffa1"
-                      labelColor="#38003d"
-                    />
+                  <div className="col s6">
+                    Manchester United v Stoke City Old
                   </div>
-                </div>
-              </CardText>
-
-
-              {/* SHOW ALL SAVED MATCHES */}
-              <CardHeader
-                title="Show All Saved Matches"
-                actAsExpander={true}
-                showExpandableButton={true}
-                titleStyle={{color: '#00ffa1'}}
-                style={{padding: '5px'}}
-              />
-              <CardText expandable={true} className="styleUpRes">
-                <Table style={{marginBottom: '5px'}}>
-                  <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-                    <TableRow>
-                      <TableHeaderColumn>
-                        Sunday, 19 November 2016
-                      </TableHeaderColumn>
-                    </TableRow>
-                  </TableHeader>
-                </Table>
-                <div className="row center">
-                  <div className="col s2" style={{marginTop: '10px'}}>
-                    8:00am
-                  </div>
-                  <div className="col s5">
-                    <div style={styleInline}>
-                      <p style={styleUpMatch1}>ARS</p>
-                      <Avatar
-                        src="./images/clubs/Arsenal.png"
-                        size={40}
-                        style={styleInline}
-                      />
-                    </div>
-                    <div style={styleUpMatch2}>v</div>
-                    <div style={styleInline}>
-                      <Avatar
-                        src="./images/clubs/Manchester-United.png"
-                        size={40}
-                        style={styleInline}
-                      />
-                      <p style={styleUpMatch3}>MUN</p>
-                    </div>
-                  </div>
-                  <div className="col s5">
-                    <RaisedButton
-                      label="update"
-                      backgroundColor="#00ffa1"
-                      labelColor="#38003d"
-                    />
+                  <div className="col 2">
                     <RaisedButton
                       label="delete"
                       backgroundColor="#00ffa1"

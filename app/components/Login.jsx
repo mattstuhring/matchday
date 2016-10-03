@@ -7,6 +7,8 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import Done from 'material-ui/svg-icons/action/done';
 import TextField from 'material-ui/TextField';
+import Cancel from 'material-ui/svg-icons/navigation/cancel';
+import Check from 'material-ui/svg-icons/action/check-circle';
 
 const Login = React.createClass({
   getInitialState() {
@@ -84,7 +86,7 @@ const Login = React.createClass({
                     labelPosition="before"
                     backgroundColor={"#00ffa1"}
                     labelColor={"#38003d"}
-                    icon={<ActionAndroid />}
+                    icon={<Check />}
                     onTouchTap={this.handleLogin}
                   />
                   <RaisedButton
@@ -93,7 +95,7 @@ const Login = React.createClass({
                     labelPosition="before"
                     backgroundColor={"#00ffa1"}
                     labelColor={"#38003d"}
-                    icon={<ActionAndroid />}
+                    icon={<Cancel />}
                     onTouchTap={() => browserHistory.push('/')}
                   />
                 </div>
@@ -117,20 +119,20 @@ const Login = React.createClass({
                   <h5 className="center" style={{backgroundColor: '#38003d', color: 'white', padding: '15px'}}>Don't have a Matchday account?</h5>
                   <p style={{marginLeft: '10px'}}>Here's what you are missing:</p>
                   <div style={{marginLeft: '40px'}}>
-                    <Done style={{display: 'inline-block'}} />
-                    <p style={{display: 'inline-block'}}>Calendar match alerts</p>
+                    <Done style={{display: 'inline-block', color: '#fe005a'}} />
+                    <p style={{display: 'inline-block'}}>SMS match alerts</p>
                   </div>
                   <div style={{marginLeft: '40px'}}>
-                    <Done style={{display: 'inline-block'}} />
+                    <Done style={{display: 'inline-block', color: '#fe005a'}} />
                     <p style={{display: 'inline-block'}}>Support your favorite club</p>
                   </div>
                   <div style={{marginLeft: '40px'}}>
-                    <Done style={{display: 'inline-block'}} />
+                    <Done style={{display: 'inline-block', color: '#fe005a'}} />
                     <p style={{display: 'inline-block'}}>Favorite club news</p>
                   </div>
                   <div style={{marginLeft: '40px'}}>
-                    <Done style={{display: 'inline-block'}} />
-                    <p style={{display: 'inline-block'}}>Match commentary</p>
+                    <Done style={{display: 'inline-block', color: '#fe005a'}} />
+                    <p style={{display: 'inline-block'}}>Weekly EPL schedule</p>
                   </div>
                   <RaisedButton
                     label="Click to go register"
