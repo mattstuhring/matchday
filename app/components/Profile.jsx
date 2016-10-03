@@ -28,6 +28,7 @@ const Profile = React.createClass ({
       matches: [],
       clubImgs: [],
       clubImg: [],
+      imgs: [],
       club: [],
       match: [],
       statistics: {},
@@ -114,7 +115,12 @@ const Profile = React.createClass ({
 
     axios.get('/api/clubs')
       .then((res) => {
-        this.setState({ clubImgs: res.data });
+        const obj = {};
+
+        for (let i=0; i<res.data.length; i++) {
+          obj[res.data[i].team_id] = res.data[i].logo
+        }
+        this.setState({ clubImgs: obj, imgs: res.data });
       })
       .catch((err) => {
         this.props.setToast(
@@ -248,6 +254,8 @@ const Profile = React.createClass ({
 
 
 
+// console.log(this.state.clubImgs);
+// console.log(this.state.matches);
 
 
     return <div>
@@ -285,7 +293,7 @@ const Profile = React.createClass ({
                     id="text-field-default"
                     disabled={true}
                     value={this.state.match.formatted_date}
-                    inputStyle={{color: 'white', textAlign: 'center'}}
+                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
                     name="date"
                     underlineDisabledStyle={styleField.clear}
                   />
@@ -296,17 +304,17 @@ const Profile = React.createClass ({
                     id="text-field-default"
                     disabled={true}
                     value={this.state.match.localteam_name + ' v ' + this.state.match.visitorteam_name}
-                    inputStyle={{color: 'white', textAlign: 'center', height: '50%', marginBottom: '5px'}}
+                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
                     name="team2"
                     underlineDisabledStyle={styleField.clear}
                   />
                 </div>
-                <div>
+                <div style={{height: '35px', marginBottom: '5px'}}>
                   <TextField
                     id="text-field-default"
                     disabled={true}
                     value={this.state.match.venue}
-                    inputStyle={{color: 'white', textAlign: 'center', height: '50%', marginBottom: '5px'}}
+                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
                     name="venue"
                     underlineDisabledStyle={styleField.clear}
                   />
@@ -340,7 +348,7 @@ const Profile = React.createClass ({
                   <TableBody displayRowCheckbox={false}>
                     <TableRow>
                       <TableRowColumn style={{paddingBottom: '0px'}}>{this.state.statistics.rank}</TableRowColumn>
-                      <TableRowColumn style={{paddingBottom: '0px'}}>
+                      <TableRowColumn style={{paddingBottom: '0px', paddingLeft: '14px'}}>
                         <Avatar
                           src="./images/clubs/Manchester-United.png"
                           size={40}
@@ -422,7 +430,6 @@ const Profile = React.createClass ({
                     <TableBody displayRowCheckbox={false}>
                   {element.matches.map((e, i) => {
                     return <div key={i}>
-
                       <TableRow>
                         <TableRowColumn style={{paddingBottom: '0px',textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '100px'}}
                         >
@@ -453,13 +460,13 @@ const Profile = React.createClass ({
                             />
                           </div>
                         </TableRowColumn>
-
                         <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '15px', width: '50px'}}
                         >
                           <Avatar
-                            src="./images/clubs/Manchester-United.png"
+                            src={this.state.clubImgs[e.localteam_id]}
                             size={40}
                             style={styleInline}
+                            backgroundColor={fullWhite}
                           />
                         </TableRowColumn>
 
@@ -481,9 +488,10 @@ const Profile = React.createClass ({
 
                         <TableRowColumn style={{paddingBottom: '0px', textAlign: 'right', paddingLeft: '0px', paddingRight: '0px', width: '50px'}}>
                           <Avatar
-                            src="./images/clubs/Manchester-United.png"
+                            src={this.state.clubImgs[e.visitorteam_id]}
                             size={40}
                             style={styleInline}
+                            backgroundColor={fullWhite}
                           />
                         </TableRowColumn>
 
@@ -546,7 +554,7 @@ const Profile = React.createClass ({
                     return <TableRow key={element.position}>
                       <TableRowColumn style={styleTableRowColumn}>{element.position}</TableRowColumn>
 
-                      {this.state.clubImgs.map((e, i) => {
+                      {this.state.imgs.map((e, i) => {
                         const styleStandLogo = {
                           width: '40px',
                           height: '40px',

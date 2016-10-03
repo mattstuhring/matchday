@@ -19,8 +19,8 @@ router.get('/clubs', (req, res, next) => {
 });
 
 router.get('/clubs/matches', (req, res, next) => {
-  const start = moment().startOf('isoWeek').format('DD.MM.YYYY');
-  const end = moment().endOf('isoWeek').format('DD.MM.YYYY');
+  const start = moment().format('DD.MM.YYYY');
+  const end = moment().add(14, 'days').format('DD.MM.YYYY');
 
   axios.get(`http://api.football-api.com/2.0/matches?comp_id=1204&team_id=9002%2C%209053%2C%209072%2C%209092%2C%209127%2C%209158%2C%209221%2C%209240%2C%209249%2C%209259%2C%209260%2C%209274%2C%209363%2C%209378%2C%209384%2C%209387%2C%209406%2C%209423%2C%209426%2C%209427&from_date=${start}&to_date=${end}&Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
     .then((matches) => {
@@ -59,7 +59,7 @@ router.get('/clubs/:id', (req, res, next) => {
 router.get('/clubs/match/:id', (req, res, next) => {
   const { id } = req.params;
   const start = moment().format('DD.MM.YYYY');
-  const end = moment().add(10, 'days').format('DD.MM.YYYY');
+  const end = moment().add(14, 'days').format('DD.MM.YYYY');
 
   axios.get(`http://api.football-api.com/2.0/matches?comp_id=1204&team_id=${id}&from_date=${start}&to_date=${end}&Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
     .then((match) => {

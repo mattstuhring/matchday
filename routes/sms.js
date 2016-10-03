@@ -16,15 +16,15 @@ router.post('/sms', checkAuth, (req, res, next) => {
   const me = req.body.from;
   const text = req.body.body;
   const smsId = req.token.userId;
-  
-  // const client = new twilio.RestClient('ACa5d56c219693886f230c2afd8f5c7015', 'f0d6e4c300ed17f45d1847b0bdb117e3');
-  //
-  // client.sms.messages.create({
-  //     to: you,
-  //     from: me,
-  //     body: `${message.time} ${message.date} ${message.team1} v ${message.team2} ${message.venue}`
-  // }, function(error, message) {
-  //     if (!error) {
+
+  const client = new twilio.RestClient('ACa5d56c219693886f230c2afd8f5c7015', 'f0d6e4c300ed17f45d1847b0bdb117e3');
+
+  client.sms.messages.create({
+      to: you,
+      from: me,
+      body: `${text.time} ${text.date} ${text.team1} v ${text.team2} ${text.venue}`
+  }, function(error, message) {
+      if (!error) {
 
         knex('sms')
           .select(knex.raw('1=1'))
@@ -44,16 +44,16 @@ router.post('/sms', checkAuth, (req, res, next) => {
             next(err);
           });
 
-  //         console.log('Success!');
-  //         console.log(message.sid);
-  //
-  //         console.log('Message sent on:');
-  //         console.log(message.dateCreated);
-  //         return;
-  //     } else {
-  //         console.log('Oops! There was an error.');
-  //     }
-  // });
+          console.log('Success!');
+          console.log(message.sid);
+
+          console.log('Message sent on:');
+          console.log(message.dateCreated);
+          return;
+      } else {
+          console.log('Oops! There was an error.');
+      }
+  });
 
   res.redirect('/profile');
 });

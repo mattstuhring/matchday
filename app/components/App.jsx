@@ -58,7 +58,7 @@ const App = React.createClass({
       },
       logo: {
         height: '40px',
-        marginBottom: '11px',
+        marginBottom: '9px',
         marginLeft: '10px'
       }
     };

@@ -37,7 +37,6 @@ const Landing = React.createClass({
         {venue: ''}
       ],
       clubImg: [],
-
     };
   },
 
@@ -54,7 +53,6 @@ const Landing = React.createClass({
         );
       });
   },
-
 
   handleClub(id) {
     axios.get(`/api/clubs/team/${id}`)
@@ -171,8 +169,6 @@ const Landing = React.createClass({
     const styleHistory = {
       padding: '5px 5px'
     };
-
-    console.log(this.state);
 
     return <div>
       <div className="row center" style={{marginBottom: '5px'}}>
