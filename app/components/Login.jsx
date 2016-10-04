@@ -62,7 +62,7 @@ const Login = React.createClass({
                 <div>
                   <TextField
                     style={{width: '350px', marginTop: '20px'}}
-                    hintText="Hint Text"
+                    hintText="Email"
                     floatingLabelText="Email"
                     name="email"
                     onChange={this.handleTextChange}

@@ -13,6 +13,8 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 import FlatButton from 'material-ui/FlatButton';
 import { fullWhite }
   from 'material-ui/styles/colors';
+import cookie from 'react-cookie';
+
 
 
 const Landing = React.createClass({
@@ -37,13 +39,13 @@ const Landing = React.createClass({
         {venue: ''}
       ],
       clubImg: [],
+      teamId: '',
     };
   },
 
   componentWillMount() {
     axios.get('/api/clubs')
       .then((res) => {
-        console.log(res.data);
         this.setState({ clubs: res.data });
       })
       .catch((err) => {
@@ -55,6 +57,10 @@ const Landing = React.createClass({
   },
 
   handleClub(id) {
+    this.setState({teamId: id});
+
+    localStorage.setItem('teamId', id);
+
     axios.get(`/api/clubs/team/${id}`)
       .then((res) => {
         this.setState({ club: res.data });
@@ -150,7 +156,7 @@ const Landing = React.createClass({
     const styleLogoP = {
       marginTop: '0px',
       textAlign: 'center',
-      marginBottom: '25px'
+      marginBottom: '25px',
     };
 
     const styleClubName = {
@@ -162,13 +168,117 @@ const Landing = React.createClass({
     };
 
     const styleStadium = {
-      height: '298px',
-      backgroundImage: 'url(' + this.state.clubImg.stadium + ')'
+      height: '284px',
+      backgroundImage: 'url(' + this.state.clubImg.stadium + ')',
     };
 
     const styleHistory = {
       padding: '5px 5px'
     };
+
+    // let welcome;
+    //
+    // if (this.state.teamId === '') {
+    //   welcome = <div>
+    //     <div className="col s7" style={{backgroundColor: 'whitesmoke', color: '#38003d'}}>
+    //     {/* <div className="col s7" style={{backgroundColor: '#38003d', color: '#fe005a'}}> */}
+    //       <div style={{marginLeft: '25px'}}>
+    //         <h4 style={{marginTop: '30px',display: 'inline-block'}}>1.</h4>
+    //         <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Select your club</h4>
+    //       </div>
+    //       <div style={{marginLeft: '25px'}}>
+    //         <h4 style={{display: 'inline-block'}}>2.</h4>
+    //         <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Click to support club</h4>
+    //       </div>
+    //       <div style={{marginLeft: '25px'}}>
+    //         <h4 style={{display: 'inline-block'}}>3.</h4>
+    //         <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Create Account</h4>
+    //       </div>
+    //       <div style={{marginLeft: '25px'}}>
+    //         <h4 style={{display: 'inline-block'}}>4.</h4>
+    //         <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Never miss a match!</h4>
+    //       </div>
+    //     </div>
+    //     <div className="col s5 center">
+    //       <img src="./images/ball2.png" style={{height: '284px'}}/>
+    //     </div>
+    //   </div>;
+    // } else {
+    //   welcome = <div>
+    //     <div className="col s7 center matchInfo" style={styleStadium}>
+    //       <h3 style={{marginTop: '30px'}}>Next Match</h3>
+    //       <p>{this.state.match[0].time}</p>
+    //       <p>{this.state.match[0].formatted_date}</p>
+    //       <h5>{this.state.match[0].localteam_name} v {this.state.match[0].visitorteam_name}</h5>
+    //       <p>{this.state.match[0].venue}</p>
+    //     </div>
+    //     <div className="col s5 center">
+    //       <img src={this.state.clubImg.kit} style={{height: '284px'}}/>
+    //     </div>
+    //   </div>;
+    // }
+
+    let welcome;
+    let name;
+    let founded;
+    let coach;
+    let stadium;
+    let city;
+
+    if (this.state.teamId === '') {
+      welcome = <div>
+        <div className="col s7" style={{backgroundColor: 'whitesmoke', color: '#38003d'}}>
+        {/* <div className="col s7" style={{backgroundColor: '#38003d', color: '#fe005a'}}> */}
+          <div style={{marginLeft: '25px'}}>
+            <h4 style={{marginTop: '30px',display: 'inline-block'}}>1.</h4>
+            <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Select your club</h4>
+          </div>
+          <div style={{marginLeft: '25px'}}>
+            <h4 style={{display: 'inline-block'}}>2.</h4>
+            <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Click to support club</h4>
+          </div>
+          <div style={{marginLeft: '25px'}}>
+            <h4 style={{display: 'inline-block'}}>3.</h4>
+            <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Create Account</h4>
+          </div>
+          <div style={{marginLeft: '25px'}}>
+            <h4 style={{display: 'inline-block'}}>4.</h4>
+            <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Never miss a match!</h4>
+          </div>
+        </div>
+        <div className="col s5 center">
+          <img src="./images/ball2.png" style={{height: '284px'}}/>
+        </div>
+      </div>;
+
+      name = <div style={{color: 'lightgrey'}}>Club Name</div>;
+      founded = <div style={{color: 'lightgrey'}}>Founded</div>;
+      coach = <div style={{color: 'lightgrey'}}>Coach</div>;
+      stadium = <div style={{color: 'lightgrey'}}>Stadium</div>;
+      city = <div style={{color: 'lightgrey'}}>City</div>;
+
+    } else {
+      welcome = <div>
+        <div className="col s7 center matchInfo" style={styleStadium}>
+          <h3 style={{marginTop: '30px'}}>Next Match</h3>
+          <p>{this.state.match[0].time}</p>
+          <p>{this.state.match[0].formatted_date}</p>
+          <h5>{this.state.match[0].localteam_name} v {this.state.match[0].visitorteam_name}</h5>
+          <p>{this.state.match[0].venue}</p>
+        </div>
+        <div className="col s5 center">
+          <img src={this.state.clubImg.kit} style={{height: '284px'}}/>
+        </div>
+      </div>;
+
+      name = <div>{this.state.club.name}</div>;
+      founded = <div>{this.state.club.founded}</div>;
+      coach = <div>{this.state.club.coach_name}</div>;
+      stadium = <div>{this.state.club.venue_name}</div>;
+      city = <div>{this.state.club.venue_city}</div>;
+    }
+
+
 
     return <div>
       <div className="row center" style={{marginBottom: '5px'}}>
@@ -219,23 +329,13 @@ const Landing = React.createClass({
                     backgroundColor={"#00ffa1"}
                     labelColor={"#38003d"}
                     fullWidth={true}
-                    onTouchTap={() => browserHistory.push('/register')}
+                    onTouchTap={() => browserHistory.push('/login')}
                   />
                 </div>
               </div>
-              <div className="row" style={{borderTop: '1px solid lightgrey', borderBottom: '1px solid lightgrey'}}>
-                <div className="col s7 center matchInfo" style={styleStadium}>
-                  <h3 style={{marginTop: '30px'}}>Next Match</h3>
-                  <p>{this.state.match[0].time}</p>
-                  <p>{this.state.match[0].formatted_date}</p>
-                  <h5>{this.state.match[0].localteam_name} v {this.state.match[0].visitorteam_name}</h5>
-                  <p>{this.state.match[0].venue}</p>
-                </div>
-                <div className="col s5 center">
-                  <img src={this.state.clubImg.kit} />
-                </div>
+              <div className="row" style={{borderTop: '1px solid whitesmoke', borderBottom: '1px solid whitesmoke', height: '286px'}}>
+                {welcome}
               </div>
-
               <div className="cardTitle logPad">Club Standing</div>
               <CardText>
                 <Table>
@@ -274,7 +374,7 @@ const Landing = React.createClass({
                             <img src="./images/icons/jersey.png" />
                           </TableRowColumn>
                           <TableRowColumn style={styleHistory}>
-                            {this.state.club.name}
+                            {name}
                           </TableRowColumn>
                         </TableRow>
                         <TableRow>
@@ -282,7 +382,7 @@ const Landing = React.createClass({
                             <img src="./images/icons/history.png" />
                           </TableRowColumn>
                           <TableRowColumn style={styleHistory}>
-                            {this.state.club.founded}
+                            {founded}
                           </TableRowColumn>
                         </TableRow>
                         <TableRow>
@@ -290,7 +390,7 @@ const Landing = React.createClass({
                             <img src="./images/icons/player.png" />
                           </TableRowColumn>
                           <TableRowColumn style={styleHistory}>
-                            {this.state.club.coach_name}
+                            {coach}
                           </TableRowColumn>
                         </TableRow>
                         <TableRow>
@@ -298,7 +398,7 @@ const Landing = React.createClass({
                             <img src="./images/icons/stadium.png" />
                           </TableRowColumn>
                           <TableRowColumn style={styleHistory}>
-                            {this.state.club.venue_name}
+                            {stadium}
                           </TableRowColumn>
                         </TableRow>
                         <TableRow>
@@ -306,7 +406,7 @@ const Landing = React.createClass({
                             <img src="./images/icons/city.png" />
                           </TableRowColumn>
                           <TableRowColumn style={styleHistory}>
-                            {this.state.club.venue_city}
+                            {city}
                           </TableRowColumn>
                         </TableRow>
                       </TableBody>
@@ -320,7 +420,7 @@ const Landing = React.createClass({
                   backgroundColor={"#00ffa1"}
                   labelColor={"#38003d"}
                   fullWidth={true}
-                  onTouchTap={() => browserHistory.push('/register')}
+                  onTouchTap={() => browserHistory.push('/login')}
                 />
               </CardActions>
             </Card>

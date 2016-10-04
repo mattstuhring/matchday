@@ -12,6 +12,8 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import Sms from 'material-ui/svg-icons/notification/sms';
+import Delete from 'material-ui/svg-icons/action/delete';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import _ from 'lodash';
 import moment from 'moment';
@@ -26,6 +28,7 @@ const Profile = React.createClass ({
       table: [],
       news: [],
       matches: [],
+      messages: [],
       clubImgs: [],
       clubImg: [],
       imgs: [],
@@ -67,12 +70,6 @@ const Profile = React.createClass ({
   },
 
   componentWillMount() {
-    const nextCookies = {
-      loggedIn: cookie.load('loggedIn'),
-    };
-
-    console.log(nextCookies);
-
     axios.get('api/me/team')
       .then((res) => {
         // console.log(res.data.teamInfo.statistics[0]);
@@ -128,11 +125,20 @@ const Profile = React.createClass ({
           `Whoops! ${err}.`
         );
       });
+
+    axios.get('/api/sms/all')
+      .then((res) => {
+        this.setState({ messages: res.data });
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
   },
 
   handleSms(event) {
-    // window.location = 'api/sms';
-
     const message = {
       time: this.state.match.time,
       date: this.state.match.formatted_date,
@@ -147,11 +153,13 @@ const Profile = React.createClass ({
       body: message
     })
     .then((res) => {
+      this.setState({ messages: res.data });
+      console.log(res.data);
+
       this.props.setToast(
         true,
         'Success!!!'
       );
-      // this.setState({toast: res.data});
     })
     .catch((err) => {
       this.props.setToast(
@@ -159,6 +167,57 @@ const Profile = React.createClass ({
         `Whoops! ${err}.`
       );
     });
+  },
+
+  handleTabSms(event) {
+    // window.location = 'api/sms';
+    console.log(event);
+
+    const message = {
+      time: event.time,
+      date: event.formatted_date,
+      team1: event.localteam_name,
+      team2: event.visitorteam_name,
+      venue: event.venue
+    };
+
+    axios.post('/api/sms', {
+      to: '+14257651612',
+      from: '+14255599613',
+      body: message
+    })
+    .then((res) => {
+      this.setState({ messages: res.data });
+      console.log(res.data);
+
+      this.props.setToast(
+        true,
+        'Success!!!'
+      );
+    })
+    .catch((err) => {
+      this.props.setToast(
+        true,
+        `Whoops! ${err}.`
+      );
+    });
+  },
+
+  handleSmsDelete(element) {
+    axios.delete(`/api/sms/${element.id}`)
+      .then((res) => {
+        console.log(res);
+        this.props.setToast(
+          true,
+          'Success!'
+        );
+      })
+      .catch((err) => {
+        this.props.setToast(
+          true,
+          `Whoops! ${err}.`
+        );
+      });
   },
 
   render() {
@@ -254,7 +313,7 @@ const Profile = React.createClass ({
 
 
 
-// console.log(this.state.clubImgs);
+// console.log(this.state.messages);
 // console.log(this.state.matches);
 
 
@@ -320,7 +379,9 @@ const Profile = React.createClass ({
                   />
                 </div>
                 <RaisedButton
-                  label="Add Match"
+                  label="Match"
+                  labelPosition="before"
+                  icon={<Sms />}
                   style={{marginBottom: '20px'}}
                   backgroundColor="#00ffa1"
                   labelColor="#38003d"
@@ -379,24 +440,27 @@ const Profile = React.createClass ({
                     </TableRow>
                   </TableHeader>
                 </Table>
-                <div className="row center">
-                  <div className="col s2">
-                    02.10.2016
+                {this.state.messages.map((element, index) => {
+                  return <div className="row center" key={index}>
+                    <div className="col s2">
+                      {element.date}
+                    </div>
+                    <div className="col s2">
+                      {element.time}
+                    </div>
+                    <div className="col s6">
+                      {element.team1} v {element.team2}
+                    </div>
+                    <div className="col 2" style={{width: '20px'}}>
+                      <RaisedButton
+                        icon={<Delete />}
+                        backgroundColor="#00ffa1"
+                        labelColor="#38003d"
+                        onTouchTap={() => this.handleSmsDelete(element)}
+                      />
+                    </div>
                   </div>
-                  <div className="col s2">
-                    11:00
-                  </div>
-                  <div className="col s6">
-                    Manchester United v Stoke City Old
-                  </div>
-                  <div className="col 2">
-                    <RaisedButton
-                      label="delete"
-                      backgroundColor="#00ffa1"
-                      labelColor="#38003d"
-                    />
-                  </div>
-                </div>
+                })}
               </CardText>
             </Card>
           </Card>
@@ -481,7 +545,6 @@ const Profile = React.createClass ({
                               name="v"
                               inputStyle={styleField.text}
                               style={{width: '15px'}}
-
                             />
                           </div>
                         </TableRowColumn>
@@ -512,9 +575,13 @@ const Profile = React.createClass ({
 
                         <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '50px'}}>
                           <RaisedButton
-                            label="Add Match"
+                            label="Match"
+                            labelPosition="before"
+                            icon={<Sms />}
                             backgroundColor="#00ffa1"
                             labelColor="#38003d"
+                            onTouchTap={this.handleSms}
+                            onTouchTap={() => this.handleTabSms(e)}
                           />
                         </TableRowColumn>
                       </TableRow>

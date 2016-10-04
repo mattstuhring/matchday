@@ -26,9 +26,30 @@ const Register = React.createClass({
   },
 
   componentWillMount() {
+    let resClubs;
     axios.get('/api/clubs')
       .then((res) => {
-        this.setState({ clubs: res.data });
+        resClubs = res;
+        const localTeamId = localStorage.getItem('teamId');
+        if (!localTeamId) {
+          return;
+        }
+
+        return axios.get(`/api/clubs/${localTeamId}`);
+      })
+      .then((resClub) => {
+        if (resClub) {
+          this.setState({
+            user: {
+              teamId: resClub.data.team_id,
+              kit: resClub.data.kit,
+              name: resClub.data.name
+            },
+            clubs: resClubs.data
+          });
+        } else {
+          this.setState({ clubs: resClubs.data });
+        }
       })
       .catch((err) => {
         this.props.setToast(
@@ -39,6 +60,9 @@ const Register = React.createClass({
   },
 
   handleClub(id) {
+
+    localStorage.setItem('teamId', id);
+
     axios.get(`/api/clubs/${id}`)
       .then((res) => {
         this.setState({ user: { teamId: res.data.team_id, kit: res.data.kit, name: res.data.name} });
