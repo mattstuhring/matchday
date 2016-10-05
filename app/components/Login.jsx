@@ -120,11 +120,11 @@ const Login = React.createClass({
                   <p style={{marginLeft: '10px'}}>Here's what you are missing:</p>
                   <div style={{marginLeft: '40px'}}>
                     <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <p style={{display: 'inline-block'}}>SMS match alerts</p>
+                    <p style={{display: 'inline-block'}}>SMS match reminders</p>
                   </div>
                   <div style={{marginLeft: '40px'}}>
                     <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <p style={{display: 'inline-block'}}>Support your favorite club</p>
+                    <p style={{display: 'inline-block'}}>Weekly Match schedule</p>
                   </div>
                   <div style={{marginLeft: '40px'}}>
                     <Done style={{display: 'inline-block', color: '#fe005a'}} />
@@ -132,7 +132,7 @@ const Login = React.createClass({
                   </div>
                   <div style={{marginLeft: '40px'}}>
                     <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <p style={{display: 'inline-block'}}>Weekly EPL schedule</p>
+                    <p style={{display: 'inline-block'}}></p>
                   </div>
                   <RaisedButton
                     label="Click to go register"

@@ -203,13 +203,21 @@ const Profile = React.createClass ({
     });
   },
 
-  handleSmsDelete(element) {
-    axios.delete(`/api/sms/${element.id}`)
+  handleSmsDelete(message) {
+    // Example Senior Dev one line filter function.
+    // const nextMessages = this.state.messages.filter((el) => el !== message)
+    const nextMessages = this.state.messages.filter((element) => {
+      return element !== message;
+    })
+
+    this.setState({ messages: nextMessages });
+
+    axios.delete(`/api/sms/${message.id}`)
       .then((res) => {
         console.log(res);
         this.props.setToast(
           true,
-          'Success!'
+          'Deleted Message!'
         );
       })
       .catch((err) => {
@@ -440,23 +448,23 @@ const Profile = React.createClass ({
                     </TableRow>
                   </TableHeader>
                 </Table>
-                {this.state.messages.map((element, index) => {
+                {this.state.messages.map((message, index) => {
                   return <div className="row center" key={index}>
                     <div className="col s2">
-                      {element.date}
+                      {message.date}
                     </div>
                     <div className="col s2">
-                      {element.time}
+                      {message.time}
                     </div>
                     <div className="col s6">
-                      {element.team1} v {element.team2}
+                      {message.team1} v {message.team2}
                     </div>
                     <div className="col 2" style={{width: '20px'}}>
                       <RaisedButton
                         icon={<Delete />}
                         backgroundColor="#00ffa1"
                         labelColor="#38003d"
-                        onTouchTap={() => this.handleSmsDelete(element)}
+                        onTouchTap={() => this.handleSmsDelete(message)}
                       />
                     </div>
                   </div>
