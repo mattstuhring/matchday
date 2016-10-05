@@ -22,6 +22,7 @@ import TextField from 'material-ui/TextField';
 import { fullWhite }
   from 'material-ui/styles/colors';
 
+
 const Profile = React.createClass ({
   getInitialState() {
     return {
@@ -320,7 +321,6 @@ const Profile = React.createClass ({
 
 
 
-
 // console.log(this.state.messages);
 // console.log(this.state.matches);
 
@@ -344,50 +344,50 @@ const Profile = React.createClass ({
                 />
               </div>
               <div className="col s7 center matchInfoTemp">
-                <h3 style={{marginTop: '20px', marginBottom: '5px'}}>Next Match</h3>
-                <div style={{height: '35px', marginBottom: '5px'}}>
-                  <TextField
-                    id="text-field-default"
-                    disabled={true}
-                    value={this.state.match.time}
-                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
-                    name="time"
-                    underlineDisabledStyle={styleField.clear}
-                  />
-                </div>
-                <div style={{height: '35px', marginBottom: '5px'}}>
+                <h3 style={{marginTop: '18px', marginBottom: '5px', textDecoration: 'underline'}}>Next Match</h3>
+                <div className="row" style={{height: '35px', marginBottom: '5px'}}>
                   <TextField
                     id="text-field-default"
                     disabled={true}
                     value={this.state.match.formatted_date}
+                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px', fontSize: '16px'}}
+                    name="time"
+                    underlineDisabledStyle={styleField.clear}
+                  />
+                </div>
+                <div className="row" style={{height: '35px', marginBottom: '5px'}}>
+                  <TextField
+                    id="text-field-default"
+                    disabled={true}
+                    value={this.state.match.time}
                     inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
                     name="date"
                     underlineDisabledStyle={styleField.clear}
                   />
                 </div>
 
-                <div style={{height: '35px', marginBottom: '5px'}}>
+                <div className="row" style={{height: '35px', marginBottom: '5px'}}>
                   <TextField
                     id="text-field-default"
                     disabled={true}
                     value={this.state.match.localteam_name + ' v ' + this.state.match.visitorteam_name}
-                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
+                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px', fontSize: '20px'}}
                     name="team2"
                     underlineDisabledStyle={styleField.clear}
                   />
                 </div>
-                <div style={{height: '35px', marginBottom: '5px'}}>
+                <div className="row" style={{height: '35px', marginBottom: '5px'}}>
                   <TextField
                     id="text-field-default"
                     disabled={true}
                     value={this.state.match.venue}
-                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
+                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px', fontSize: '14px'}}
                     name="venue"
                     underlineDisabledStyle={styleField.clear}
                   />
                 </div>
                 <RaisedButton
-                  label="Match"
+                  label="send next match reminder"
                   labelPosition="before"
                   icon={<Sms />}
                   style={{marginBottom: '20px'}}
@@ -422,6 +422,7 @@ const Profile = React.createClass ({
                           src="./images/clubs/Manchester-United.png"
                           size={40}
                           style={styleInline}
+                          backgroundColor={fullWhite}
                         />
                       </TableRowColumn>
                       <TableRowColumn style={{paddingBottom: '0px'}}>{this.state.statistics.wins}</TableRowColumn>
@@ -450,22 +451,22 @@ const Profile = React.createClass ({
                 </Table>
                 {this.state.messages.map((message, index) => {
                   return <div className="row center" key={index}>
-                    <div className="col s2">
+                    <div className="col s2" style={{marginTop: '17px'}}>
                       {message.date}
                     </div>
-                    <div className="col s2">
+                    <div className="col s2" style={{marginTop: '17px'}}>
                       {message.time}
                     </div>
-                    <div className="col s6">
+                    <div className="col s6" style={{marginTop: '17px'}}>
                       {message.team1} v {message.team2}
                     </div>
-                    <div className="col 2" style={{width: '20px'}}>
-                      <RaisedButton
-                        icon={<Delete />}
-                        backgroundColor="#00ffa1"
-                        labelColor="#38003d"
+                    <div className="col 2">
+                      <IconButton
+                        iconStyle={{backgroundColor: '#00ffa1', width: '30px', height: '30px', borderRadius: '4px'}}
                         onTouchTap={() => this.handleSmsDelete(message)}
-                      />
+                      >
+                        <Delete />
+                      </IconButton>
                     </div>
                   </div>
                 })}
@@ -583,12 +584,9 @@ const Profile = React.createClass ({
 
                         <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '50px'}}>
                           <RaisedButton
-                            label="Match"
-                            labelPosition="before"
                             icon={<Sms />}
                             backgroundColor="#00ffa1"
                             labelColor="#38003d"
-                            onTouchTap={this.handleSms}
                             onTouchTap={() => this.handleTabSms(e)}
                           />
                         </TableRowColumn>

@@ -103,7 +103,7 @@ const Login = React.createClass({
             </div>
             <div className="row">
               <div className="col s12 center">
-                <img src="./images/ball.png" />
+                <img src="./images/ball.png" style={{marginTop: '30px'}}/>
               </div>
             </div>
           </Paper>
@@ -117,22 +117,22 @@ const Login = React.createClass({
               <div className="col s10 offset-s1">
                 <Paper zDepth={2} style={{marginBottom: '50px'}}>
                   <h5 className="center" style={{backgroundColor: '#38003d', color: 'white', padding: '15px'}}>Don't have a Matchday account?</h5>
-                  <p style={{marginLeft: '10px'}}>Here's what you are missing:</p>
-                  <div style={{marginLeft: '40px'}}>
+                  <p className="center" style={{textDecoration: 'underline'}}>Here's what you are missing:</p>
+                  <div style={{marginLeft: '50px'}}>
                     <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <p style={{display: 'inline-block'}}>SMS match reminders</p>
+                    <h5 style={{display: 'inline-block', marginLeft: '15px'}}>SMS match reminders</h5>
                   </div>
-                  <div style={{marginLeft: '40px'}}>
+                  <div style={{marginLeft: '50px'}}>
                     <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <p style={{display: 'inline-block'}}>Weekly Match schedule</p>
+                    <h5 style={{display: 'inline-block', marginLeft: '15px'}}>Weekly Match schedule</h5>
                   </div>
-                  <div style={{marginLeft: '40px'}}>
+                  <div style={{marginLeft: '50px'}}>
                     <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <p style={{display: 'inline-block'}}>Favorite club news</p>
+                    <h5 style={{display: 'inline-block', marginLeft: '15px'}}>Favorite club news</h5>
                   </div>
-                  <div style={{marginLeft: '40px'}}>
+                  <div style={{marginLeft: '50px'}}>
                     <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <p style={{display: 'inline-block'}}></p>
+                    <h5 style={{display: 'inline-block', marginBottom: '53px', marginLeft: '15px'}}>Epl standings</h5>
                   </div>
                   <RaisedButton
                     label="Click to go register"
