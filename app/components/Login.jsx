@@ -61,6 +61,7 @@ const Login = React.createClass({
               <div className="col s10 offset-s1 center">
                 <div>
                   <TextField
+                    className="textField"
                     style={{width: '350px', marginTop: '20px'}}
                     hintText="Email"
                     floatingLabelText="Email"

@@ -14,6 +14,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { fullWhite }
   from 'material-ui/styles/colors';
 import cookie from 'react-cookie';
+import moment from 'moment-timezone';
 
 
 
@@ -176,48 +177,6 @@ const Landing = React.createClass({
       padding: '5px 5px'
     };
 
-    // let welcome;
-    //
-    // if (this.state.teamId === '') {
-    //   welcome = <div>
-    //     <div className="col s7" style={{backgroundColor: 'whitesmoke', color: '#38003d'}}>
-    //     {/* <div className="col s7" style={{backgroundColor: '#38003d', color: '#fe005a'}}> */}
-    //       <div style={{marginLeft: '25px'}}>
-    //         <h4 style={{marginTop: '30px',display: 'inline-block'}}>1.</h4>
-    //         <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Select your club</h4>
-    //       </div>
-    //       <div style={{marginLeft: '25px'}}>
-    //         <h4 style={{display: 'inline-block'}}>2.</h4>
-    //         <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Click to support club</h4>
-    //       </div>
-    //       <div style={{marginLeft: '25px'}}>
-    //         <h4 style={{display: 'inline-block'}}>3.</h4>
-    //         <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Create Account</h4>
-    //       </div>
-    //       <div style={{marginLeft: '25px'}}>
-    //         <h4 style={{display: 'inline-block'}}>4.</h4>
-    //         <h4 style={{display: 'inline-block', marginLeft: '10px'}}>Never miss a match!</h4>
-    //       </div>
-    //     </div>
-    //     <div className="col s5 center">
-    //       <img src="./images/ball2.png" style={{height: '284px'}}/>
-    //     </div>
-    //   </div>;
-    // } else {
-    //   welcome = <div>
-    //     <div className="col s7 center matchInfo" style={styleStadium}>
-    //       <h3 style={{marginTop: '30px'}}>Next Match</h3>
-    //       <p>{this.state.match[0].time}</p>
-    //       <p>{this.state.match[0].formatted_date}</p>
-    //       <h5>{this.state.match[0].localteam_name} v {this.state.match[0].visitorteam_name}</h5>
-    //       <p>{this.state.match[0].venue}</p>
-    //     </div>
-    //     <div className="col s5 center">
-    //       <img src={this.state.clubImg.kit} style={{height: '284px'}}/>
-    //     </div>
-    //   </div>;
-    // }
-
     let welcome;
     let name;
     let founded;
@@ -228,7 +187,6 @@ const Landing = React.createClass({
     if (this.state.teamId === '') {
       welcome = <div>
         <div className="col s7" style={{backgroundColor: 'whitesmoke', color: '#38003d', paddingBottom: '13px'}}>
-        {/* <div className="col s7" style={{backgroundColor: '#38003d', color: '#fe005a'}}> */}
           <div className="center">
             <h3 style={{textDecoration: 'underline', marginBottom: '5px'}}>Welcome</h3>
           </div>
@@ -280,8 +238,6 @@ const Landing = React.createClass({
       stadium = <div>{this.state.club.venue_name}</div>;
       city = <div>{this.state.club.venue_city}</div>;
     }
-
-
 
     return <div>
       <div className="row center" style={{marginBottom: '5px'}}>

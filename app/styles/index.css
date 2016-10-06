@@ -108,3 +108,11 @@ body {
   background-repeat: no-repeat;
   width: 100%;
 }
+
+
+input[type=text]:focus:not([readonly]) {
+  box-shadow: none;
+}
+input[type=password]:focus:not([readonly]) {
+  box-shadow: none;
+}
