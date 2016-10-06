@@ -63,14 +63,22 @@ router.get('/clubs/match/:id', (req, res, next) => {
 
   axios.get(`http://api.football-api.com/2.0/matches?comp_id=1204&team_id=${id}&from_date=${start}&to_date=${end}&Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
     .then((match) => {
-
+      console.log(match.data);
       // let time = moment(match.data[0].time, ["HH:mm"]).format('hh:mm');
       // console.log(time);
       // const euro = moment(time).tz("Europe/London").format('Z');
       // const pacific = euro.tz("America/Los_Angeles").format();
       // console.log(pacific);
-      // console.log(moment("06.10.2016", "DD-MM-YYYY"));
-
+      // const d = moment(match.data[0].formatted_date + match.data[0].time, "DD-MM-YYYY HH:mm");
+      // console.log(d);
+      //
+      // console.log(d.toObject());
+      // console.log('before -8', f.toObject());
+      // f = moment(f).subtract(8, 'hours');
+      // f = moment(f).format('HH:mm A')
+      // console.log('after -8', f.toObject());
+      // match.data[0].pacific = f;
+      // console.log(match.data);
       res.send(match.data);
     })
     .catch((err) => {
