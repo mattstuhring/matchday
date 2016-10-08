@@ -141,7 +141,7 @@ const Profile = React.createClass ({
 
   handleSms(event) {
     const message = {
-      time: this.state.match.time,
+      time: this.state.match.pacific,
       date: this.state.match.formatted_date,
       team1: this.state.match.localteam_name,
       team2: this.state.match.visitorteam_name,
@@ -349,9 +349,9 @@ console.log(this.state.match);
                   <TextField
                     id="text-field-default"
                     disabled={true}
-                    value={this.state.match.formatted_date}
+                    value={this.state.match.date}
                     inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px', fontSize: '16px'}}
-                    name="time"
+                    name="date"
                     underlineDisabledStyle={styleField.clear}
                   />
                 </div>
@@ -361,7 +361,7 @@ console.log(this.state.match);
                     disabled={true}
                     value={this.state.match.pacific}
                     inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
-                    name="date"
+                    name="time"
                     underlineDisabledStyle={styleField.clear}
                   />
                 </div>

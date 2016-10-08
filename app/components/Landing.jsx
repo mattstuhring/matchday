@@ -34,7 +34,7 @@ const Landing = React.createClass({
       },
       match: [
         {time: ''},
-        {formatted_date: ''},
+        {date: ''},
         {localteam_name: ''},
         {visitorteam_name: ''},
         {venue: ''}
@@ -221,9 +221,9 @@ const Landing = React.createClass({
     } else {
       welcome = <div>
         <div className="col s7 center matchInfo" style={styleStadium}>
-          <h3 style={{marginTop: '30px'}}>Next Match</h3>
+          <h3 style={{marginTop: '30px', textDecoration: 'underline'}}>Next Match</h3>
+          <p>{this.state.match[0].date}</p>
           <p>{this.state.match[0].pacific}</p>
-          <p>{this.state.match[0].formatted_date}</p>
           <h5>{this.state.match[0].localteam_name} v {this.state.match[0].visitorteam_name}</h5>
           <p>{this.state.match[0].venue}</p>
         </div>

@@ -27,7 +27,7 @@ router.get('/clubs/matches', (req, res, next) => {
 
       console.log(matches.data);
 
-      
+
         // let d = moment(matches.data.formatted_date, "DD-MM-YYYY").format("MM-DD-YYYY");
         // let iso = moment(d + 'T' + matches.data.time, "MM-DD-YYYY HH:mm");
         // // the date object month starts at 0 not 1
@@ -81,6 +81,8 @@ router.get('/clubs/match/:id', (req, res, next) => {
       iso = moment(iso).subtract(7, 'hours');
       iso = moment(iso).format('HH:mm A');
       match.data[0].pacific = iso + ' PST';
+      d = moment(match.data[0].formatted_date, "DD-MM-YYYY").format("dddd, MMMM Do YYYY");
+      match.data[0].date = d;
       res.send(match.data);
     })
     .catch((err) => {

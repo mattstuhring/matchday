@@ -31,12 +31,15 @@ router.get('/me/team', checkAuth, (req, res, next) => {
 
 
           let d = moment(match.data[0].formatted_date, "DD-MM-YYYY").format("MM-DD-YYYY");
+          console.log('here is what you are looking for', d);
           let iso = moment(d + 'T' + match.data[0].time, "MM-DD-YYYY HH:mm");
           // the date object month starts at 0 not 1
           // console.log('object', iso.toObject());
           iso = moment(iso).subtract(7, 'hours');
           iso = moment(iso).format('HH:mm A');
           match.data[0].pacific = iso + ' PST';
+          d = moment(match.data[0].formatted_date, "DD-MM-YYYY").format("dddd, MMMM Do YYYY");
+          match.data[0].date = d;
 
           console.log('first axios call', match.data[0]);
           return [match.data[0], user.team_id]
