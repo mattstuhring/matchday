@@ -222,7 +222,7 @@ const Landing = React.createClass({
       welcome = <div>
         <div className="col s7 center matchInfo" style={styleStadium}>
           <h3 style={{marginTop: '30px'}}>Next Match</h3>
-          <p>{this.state.match[0].time}</p>
+          <p>{this.state.match[0].pacific}</p>
           <p>{this.state.match[0].formatted_date}</p>
           <h5>{this.state.match[0].localteam_name} v {this.state.match[0].visitorteam_name}</h5>
           <p>{this.state.match[0].venue}</p>

@@ -322,7 +322,7 @@ const Profile = React.createClass ({
 
 
 // console.log(this.state.messages);
-// console.log(this.state.matches);
+console.log(this.state.match);
 
 
     return <div>
@@ -359,7 +359,7 @@ const Profile = React.createClass ({
                   <TextField
                     id="text-field-default"
                     disabled={true}
-                    value={this.state.match.time}
+                    value={this.state.match.pacific}
                     inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
                     name="date"
                     underlineDisabledStyle={styleField.clear}
