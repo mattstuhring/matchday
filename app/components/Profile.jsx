@@ -175,7 +175,7 @@ const Profile = React.createClass ({
     console.log(event);
 
     const message = {
-      time: event.time,
+      time: event.pacific,
       date: event.formatted_date,
       team1: event.localteam_name,
       team2: event.visitorteam_name,
