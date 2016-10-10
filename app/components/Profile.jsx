@@ -86,7 +86,7 @@ const Profile = React.createClass ({
     axios.get('api/clubs/matches')
       .then((res) => {
         const group = _.groupBy(res.data, (match) => {
-          return match.formatted_date;
+          return match.date;
         });
 
         const dates = _.sortBy(Object.keys(group), (date) => {
@@ -322,7 +322,7 @@ const Profile = React.createClass ({
 
 
 // console.log(this.state.messages);
-console.log(this.state.match);
+console.log(this.state.matches);
 
 
     return <div>
@@ -504,24 +504,24 @@ console.log(this.state.match);
                   {element.matches.map((e, i) => {
                     return <div key={i}>
                       <TableRow>
-                        <TableRowColumn style={{paddingBottom: '0px',textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '100px'}}
+                        <TableRowColumn style={{paddingBottom: '0px',textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '110px'}}
                         >
                           <div>
                             <TextField
                               id="text-field-default"
                               disabled={true}
-                              value={e.time}
+                              value={e.pacific}
                               underlineDisabledStyle={styleField}
                               name="time"
                               inputStyle={styleField.text}
-                              style={{width: '100px', paddingLeft: '25px'}}
+                              style={{width: '110px', paddingLeft: '25px'}}
                             />
                           </div>
                         </TableRowColumn>
 
-                        <TableRowColumn style={{paddingBottom: '0px', width: '150px', paddingLeft: '0px', paddingRight: '0px'}}
+                        <TableRowColumn style={{paddingBottom: '0px', width: '130px', paddingLeft: '0px', paddingRight: '0px'}}
                         >
-                          <div>
+                          <div style={{marginLeft: '30px'}}>
                             <TextField
                               id="text-field-default"
                               disabled={true}
@@ -529,7 +529,7 @@ console.log(this.state.match);
                               underlineDisabledStyle={styleField}
                               name="team1"
                               inputStyle={styleField.text}
-                              style={{width: '150px', textAlign: 'center'}}
+                              style={{width: '130px'}}
                             />
                           </div>
                         </TableRowColumn>
@@ -567,7 +567,7 @@ console.log(this.state.match);
                           />
                         </TableRowColumn>
 
-                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', width: '200px', paddingLeft: '0px', paddingRight: '0px'}}
+                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', width: '187px', paddingLeft: '0px', paddingRight: '0px'}}
                         >
                           <div>
                             <TextField
@@ -577,7 +577,7 @@ console.log(this.state.match);
                               underlineDisabledStyle={styleField}
                               name="team2"
                               inputStyle={styleField.text}
-                              style={{width: '200px', paddingLeft: '15px'}}
+                              style={{width: '187px', paddingLeft: '15px'}}
                             />
                           </div>
                         </TableRowColumn>

@@ -27,11 +27,7 @@ router.get('/me/team', checkAuth, (req, res, next) => {
 
       return axios.get(`http://api.football-api.com/2.0/matches?comp_id=1204&team_id=${user.team_id}&from_date=${start}&to_date=${end}&Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
         .then(match => {
-
-
-
           let d = moment(match.data[0].formatted_date, "DD-MM-YYYY").format("MM-DD-YYYY");
-          console.log('here is what you are looking for', d);
           let iso = moment(d + 'T' + match.data[0].time, "MM-DD-YYYY HH:mm");
           // the date object month starts at 0 not 1
           // console.log('object', iso.toObject());
@@ -41,7 +37,6 @@ router.get('/me/team', checkAuth, (req, res, next) => {
           d = moment(match.data[0].formatted_date, "DD-MM-YYYY").format("dddd, MMMM Do YYYY");
           match.data[0].date = d;
 
-          console.log('first axios call', match.data[0]);
           return [match.data[0], user.team_id]
         })
         .catch((err) => {
@@ -53,7 +48,6 @@ router.get('/me/team', checkAuth, (req, res, next) => {
       // console.log('...', team_id);
       return axios.get(`http://api.football-api.com/2.0/team/${team_id}?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
         .then((result) => {
-          console.log('second axios call', result.data);
 
           let { data } = result
           data.game = game
