@@ -177,6 +177,21 @@ const Landing = React.createClass({
       padding: '5px 5px'
     };
 
+    const styleNoTeamId = {
+      box: {
+        backgroundColor: 'whitesmoke',
+        color: '#38003d',
+        paddingBottom: '13px'
+      },
+      welcome: {
+        textDecoration: 'underline',
+        marginBottom: '5px'
+      },
+      div: {
+        marginLeft: '80px'
+      }
+    };
+
     let welcome;
     let name;
     let founded;
@@ -186,24 +201,24 @@ const Landing = React.createClass({
 
     if (this.state.teamId === '') {
       welcome = <div>
-        <div className="col s7" style={{backgroundColor: 'whitesmoke', color: '#38003d', paddingBottom: '13px'}}>
+        <div className="col s7" style={styleNoTeamId.box}>
           <div className="center">
-            <h3 style={{textDecoration: 'underline', marginBottom: '5px'}}>Welcome</h3>
+            <h3 style={styleNoTeamId.welcome}>Welcome</h3>
           </div>
-          <div style={{marginLeft: '80px'}}>
-            <h5 style={{display: 'inline-block'}}>1.</h5>
+          <div style={styleNoTeamId.div}>
+            <h5 style={styleInline}>1.</h5>
             <h5 style={{display: 'inline-block', marginLeft: '10px'}}>Select your club</h5>
           </div>
-          <div style={{marginLeft: '80px'}}>
-            <h5 style={{display: 'inline-block'}}>2.</h5>
+          <div style={styleNoTeamId.div}>
+            <h5 style={styleInline}>2.</h5>
             <h5 style={{display: 'inline-block', marginLeft: '10px'}}>Click to support club</h5>
           </div>
-          <div style={{marginLeft: '80px'}}>
-            <h5 style={{display: 'inline-block'}}>3.</h5>
+          <div style={styleNoTeamId.div}>
+            <h5 style={styleInline}>3.</h5>
             <h5 style={{display: 'inline-block', marginLeft: '10px'}}>Create Account</h5>
           </div>
-          <div style={{marginLeft: '80px'}}>
-            <h5 style={{display: 'inline-block'}}>4.</h5>
+          <div style={styleNoTeamId.div}>
+            <h5 style={styleInline}>4.</h5>
             <h5 style={{display: 'inline-block', marginLeft: '10px'}}>Never miss a match!</h5>
           </div>
         </div>
