@@ -88,10 +88,12 @@ const Profile = React.createClass ({
         const group = _.groupBy(res.data, (match) => {
           return match.date;
         });
+        console.log('group', group);
 
         const dates = _.sortBy(Object.keys(group), (date) => {
-          return moment(date, 'DD.MM.YYYY').valueOf();
+          return date.valueOf();
         });
+        console.log('dates', dates);
 
         const matches = dates.map((date) => {
           return {
@@ -101,6 +103,7 @@ const Profile = React.createClass ({
             })
           };
         });
+        console.log('matches', matches);
 
         this.setState({ matches });
       })
@@ -171,9 +174,6 @@ const Profile = React.createClass ({
   },
 
   handleTabSms(event) {
-    // window.location = 'api/sms';
-    console.log(event);
-
     const message = {
       time: event.pacific,
       date: event.formatted_date,
@@ -189,7 +189,6 @@ const Profile = React.createClass ({
     })
     .then((res) => {
       this.setState({ messages: res.data });
-      console.log(res.data);
 
       this.props.setToast(
         true,
@@ -318,12 +317,6 @@ const Profile = React.createClass ({
         opacity: '0'
       }
     };
-
-
-
-// console.log(this.state.messages);
-console.log(this.state.matches);
-
 
     return <div>
       {/* CLUB BANNER */}

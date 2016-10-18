@@ -47,7 +47,7 @@ const App = React.createClass({
         width: "4.8%",
         borderRadius: "50%",
         border: '2px solid #fe005a',
-        marginTop: '2px'
+        marginTop: '3px'
       },
       background: {
         backgroundColor: '#38003d',
@@ -58,7 +58,7 @@ const App = React.createClass({
       },
       logo: {
         height: '40px',
-        marginBottom: '9px',
+        marginBottom: '10px',
         marginLeft: '10px'
       }
     };
@@ -90,12 +90,10 @@ const App = React.createClass({
       <AppBar
         style={styles.background}
         title={
-          <div>
-            <a href="/">
-              <img style={styles.title} src="./images/logo.png" />
-              <img style={styles.logo} src="./images/matchday.png" />
-            </a>
-          </div>
+          <a href="/">
+            <img style={styles.title} src="./images/logo.png" />
+            <img style={styles.logo} src="./images/matchday.png" />
+          </a>
         }
         showMenuIconButton={false}
       >
