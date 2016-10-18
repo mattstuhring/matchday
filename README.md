@@ -1,10 +1,10 @@
 #Matchday: https://mattstuhring-matchday.herokuapp.com/
 
 ### User is not logged in:
-![Alt text](http://i.giphy.com/l0HlG9Cn2BTH4btnO.gif "User is not logged in.")
+![Alt text](app/assets/images/landing.png)
 
-### Logged in user:
-![Alt text](http://i.giphy.com/l0HlT2gqktrz5HmV2.gif "Logged in user.")
+### Logged in users example profile page:
+![Alt text](app/assets/images/Profile.png)
 
 
 ##What problem does Matchday solve?

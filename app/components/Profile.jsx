@@ -437,7 +437,7 @@ const Profile = React.createClass ({
                   <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                     <TableRow>
                       <TableHeaderColumn>
-                        Match Week 7
+                        Match Week
                       </TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
