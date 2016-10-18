@@ -14,7 +14,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
-const auth = require('./routes/auth');
+// const auth = require('./routes/auth');
 const users = require('./routes/users');
 const clubs = require('./routes/clubs');
 const token = require('./routes/token');
@@ -68,7 +68,7 @@ passport.deserializeUser((obj, done) => {
 });
 
 // Routes go here
-app.use('/auth', auth);
+// app.use('/auth', auth);
 app.use('/api', users);
 app.use('/api', clubs);
 app.use('/api', token);

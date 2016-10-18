@@ -1,83 +1,20 @@
-# with-react-material
+#Matchday: https://mattstuhring-matchday.herokuapp.com/
 
-Ryan Sobol's React and Material skeleton for Brunch
+### User is not logged in:
+![Alt text](http://i.giphy.com/l0HlG9Cn2BTH4btnO.gif "User is not logged in.")
 
-## Dependencies
+### Logged in user:
+![Alt text](http://i.giphy.com/l0HlT2gqktrz5HmV2.gif "Logged in user.")
 
-Install the [Brunch](http://brunch.io) package globally with NPM.
 
-```shell
-npm install -g brunch
-```
+##What problem does Matchday solve?
+A web app that helps you keep track of your favorite English Premier League soccer club.
 
-## Usage
+##How does your project solve this problem?
+It allows users to send text game reminders that includes the time, date, and clubs playing threw Twilio SMS API.
 
-Create a new React application based on this Brunch skeleton and install its dependencies.
+##What web APIs did it use?
+Twilio API, Bing Search API, and Football-Api.
 
-```shell
-brunch new path/to/app --skeleton ryansobol/with-react-material
-```
-
-The application's code lives in the `app` directory.
-
-```shell
-la app
-```
-
-Static files are placed in the `app/assets` directory and are copied to the `public` directory on build.
-
-```shell
-la app/assets
-```
-
-React components are placed in the `app/components` directory and are combined into the `public/app.js` file on build.
-
-**NOTE:** Each React component lives in a module so can be shared with other modules using [ES6 module](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/) syntax.
-
-```shell
-la app/components
-```
-
-CSS stylesheets are placed in the `app/styles` directory and are combined into the `public/app.css` file on build.
-
-```shell
-la app/styles
-```
-
-On each build, the application's files are saved to the `public` directory and served by the HTTP server.
-
-```shell
-la public
-```
-
-Watch the project for changes and launch an HTTP server.
-
-**NOTE:** Press `Ctrl + C` to quit.
-
-```shell
-npm start
-```
-
-In a new Terminal tab, navigate back the the project directory.
-
-```shell
-cd path/to/app
-```
-
-Take a look at the `public` directory to see what Brunch created.
-
-```shell
-la public
-```
-
-Open the application in your default browser.
-
-```shell
-open http://localhost:8000/
-```
-
-## Resources
-
-- [Brunch](http://brunch.io)
-- [Material-UI](http://www.material-ui.com/)
-- [React](https://facebook.github.io/react/)
+##What technologies did it use?
+The site uses a Node.js Express server, React, Material UI, Knex.js, PostgreSQL, Javascript, HTML/CSS, Twilio API, Bing Search API, and Football-Api.
