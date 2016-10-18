@@ -11,7 +11,7 @@
 A web app that helps you keep track of your favorite English Premier League soccer club.
 
 ##How does your project solve this problem?
-It allows users to send text game reminders that includes the time, date, and clubs playing threw Twilio SMS API.
+It allows users to send text message game reminders using the Twilio SMS API, that include the time, date, and clubs playing.
 
 ##What web APIs did it use?
 Twilio API, Bing Search API, and Football-Api.
