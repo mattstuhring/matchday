@@ -4,7 +4,7 @@
 ![Alt text](app/assets/images/landing.png)
 
 ### Logged in users example profile page:
-![Alt text](app/assets/images/Profile.png)
+![Alt text](app/assets/images/profile.png)
 
 
 ##What problem does Matchday solve?
