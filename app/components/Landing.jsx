@@ -260,7 +260,7 @@ const Landing = React.createClass({
       </div>
 
       <div className="row">
-        <div className="col s6" style={{width: '47%'}}>
+        <div className="col s12 l6">
           <img className="center" style={styleWho} src="./images/who.png" />
           <div className="flex-container-1">
             {this.state.clubs.map((element) => {
@@ -285,120 +285,117 @@ const Landing = React.createClass({
             })}
           </div>
         </div>
-
-        <div className="row">
-          <div className="col s6 right">
-            <div className="section" />
-            <Card>
-              <div className="row landHeader titleImg">
-                <div className="col s7" style={{marginBottom: '6px'}}>
-                  <div style={styleTeamHeader}></div>
-                  <h5 style={styleClubName}>{this.state.club.name}</h5>
-                </div>
-                <div className="col s5">
-                  <div className="section support" />
-                  <RaisedButton
-                    className="supportClub"
-                    label="Click to Support Club!"
-                    backgroundColor={"#00ffa1"}
-                    labelColor={"#38003d"}
-                    fullWidth={true}
-                    onTouchTap={() => browserHistory.push('/login')}
-                  />
-                </div>
+        <div className="col s12 l6 right">
+          <div className="section"></div>
+          <Card>
+            <div className="row landHeader titleImg">
+              <div className="col s7" style={{marginBottom: '6px'}}>
+                <div style={styleTeamHeader}></div>
+                <h5 style={styleClubName}>{this.state.club.name}</h5>
               </div>
-              <div className="row" style={{borderTop: '1px solid whitesmoke', borderBottom: '1px solid whitesmoke', height: '286px'}}>
-                {welcome}
-              </div>
-              <div className="cardTitle logPad">Club Standing</div>
-              <CardText>
-                <Table>
-                  <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-                    <TableRow>
-                      <TableHeaderColumn>#</TableHeaderColumn>
-                      <TableHeaderColumn>Club</TableHeaderColumn>
-                      <TableHeaderColumn>W</TableHeaderColumn>
-                      <TableHeaderColumn>T</TableHeaderColumn>
-                      <TableHeaderColumn>L</TableHeaderColumn>
-                      <TableHeaderColumn>GF</TableHeaderColumn>
-                      <TableHeaderColumn>GA</TableHeaderColumn>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody displayRowCheckbox={false}>
-                    <TableRow>
-                      <TableRowColumn>{this.state.club.statistics[0].rank}</TableRowColumn>
-                      <TableRowColumn>{this.state.club.name}</TableRowColumn>
-                      <TableRowColumn>{this.state.club.statistics[0].wins}</TableRowColumn>
-                      <TableRowColumn>{this.state.club.statistics[0].draws}</TableRowColumn>
-                      <TableRowColumn>{this.state.club.statistics[0].losses}</TableRowColumn>
-                      <TableRowColumn>{this.state.club.statistics[0].goals}</TableRowColumn>
-                      <TableRowColumn>{this.state.club.statistics[0].goals_conceded}</TableRowColumn>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </CardText>
-              <div className="cardTitle logPad">Overview</div>
-              <CardText style={{padding: '0px'}}>
-                <div className="row center" style={{margin: '5px'}}>
-                  <div className="col s10 offset-s1">
-                    <Table>
-                      <TableBody displayRowCheckbox={false}>
-                        <TableRow>
-                          <TableRowColumn style={styleHistory}>
-                            <img src="./images/icons/jersey.png" />
-                          </TableRowColumn>
-                          <TableRowColumn style={styleHistory}>
-                            {name}
-                          </TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                          <TableRowColumn style={styleHistory}>
-                            <img src="./images/icons/history.png" />
-                          </TableRowColumn>
-                          <TableRowColumn style={styleHistory}>
-                            {founded}
-                          </TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                          <TableRowColumn style={styleHistory}>
-                            <img src="./images/icons/player.png" />
-                          </TableRowColumn>
-                          <TableRowColumn style={styleHistory}>
-                            {coach}
-                          </TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                          <TableRowColumn style={styleHistory}>
-                            <img src="./images/icons/stadium.png" />
-                          </TableRowColumn>
-                          <TableRowColumn style={styleHistory}>
-                            {stadium}
-                          </TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                          <TableRowColumn style={styleHistory}>
-                            <img src="./images/icons/city.png" />
-                          </TableRowColumn>
-                          <TableRowColumn style={styleHistory}>
-                            {city}
-                          </TableRowColumn>
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  </div>
-                </div>
-              </CardText>
-              <CardActions>
+              <div className="col s5">
+                <div className="section support"></div>
                 <RaisedButton
+                  className="supportClub"
                   label="Click to Support Club!"
                   backgroundColor={"#00ffa1"}
                   labelColor={"#38003d"}
                   fullWidth={true}
                   onTouchTap={() => browserHistory.push('/login')}
                 />
-              </CardActions>
-            </Card>
-          </div>
+              </div>
+            </div>
+            <div className="row" style={{borderTop: '1px solid whitesmoke', borderBottom: '1px solid whitesmoke', height: '286px'}}>
+              {welcome}
+            </div>
+            <div className="cardTitle logPad">Club Standing</div>
+            <CardText>
+              <Table>
+                <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                  <TableRow>
+                    <TableHeaderColumn>#</TableHeaderColumn>
+                    <TableHeaderColumn>Club</TableHeaderColumn>
+                    <TableHeaderColumn>W</TableHeaderColumn>
+                    <TableHeaderColumn>T</TableHeaderColumn>
+                    <TableHeaderColumn>L</TableHeaderColumn>
+                    <TableHeaderColumn>GF</TableHeaderColumn>
+                    <TableHeaderColumn>GA</TableHeaderColumn>
+                  </TableRow>
+                </TableHeader>
+                <TableBody displayRowCheckbox={false}>
+                  <TableRow>
+                    <TableRowColumn>{this.state.club.statistics[0].rank}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.name}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.statistics[0].wins}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.statistics[0].draws}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.statistics[0].losses}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.statistics[0].goals}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.statistics[0].goals_conceded}</TableRowColumn>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </CardText>
+            <div className="cardTitle logPad">Overview</div>
+            <CardText style={{padding: '0px'}}>
+              <div className="row center" style={{margin: '5px'}}>
+                <div className="col s10 offset-s1">
+                  <Table>
+                    <TableBody displayRowCheckbox={false}>
+                      <TableRow>
+                        <TableRowColumn style={styleHistory}>
+                          <img src="./images/icons/jersey.png" />
+                        </TableRowColumn>
+                        <TableRowColumn style={styleHistory}>
+                          {name}
+                        </TableRowColumn>
+                      </TableRow>
+                      <TableRow>
+                        <TableRowColumn style={styleHistory}>
+                          <img src="./images/icons/history.png" />
+                        </TableRowColumn>
+                        <TableRowColumn style={styleHistory}>
+                          {founded}
+                        </TableRowColumn>
+                      </TableRow>
+                      <TableRow>
+                        <TableRowColumn style={styleHistory}>
+                          <img src="./images/icons/player.png" />
+                        </TableRowColumn>
+                        <TableRowColumn style={styleHistory}>
+                          {coach}
+                        </TableRowColumn>
+                      </TableRow>
+                      <TableRow>
+                        <TableRowColumn style={styleHistory}>
+                          <img src="./images/icons/stadium.png" />
+                        </TableRowColumn>
+                        <TableRowColumn style={styleHistory}>
+                          {stadium}
+                        </TableRowColumn>
+                      </TableRow>
+                      <TableRow>
+                        <TableRowColumn style={styleHistory}>
+                          <img src="./images/icons/city.png" />
+                        </TableRowColumn>
+                        <TableRowColumn style={styleHistory}>
+                          {city}
+                        </TableRowColumn>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+            </CardText>
+            <CardActions>
+              <RaisedButton
+                label="Click to Support Club!"
+                backgroundColor={"#00ffa1"}
+                labelColor={"#38003d"}
+                fullWidth={true}
+                onTouchTap={() => browserHistory.push('/login')}
+              />
+            </CardActions>
+          </Card>
         </div>
       </div>
     </div>;

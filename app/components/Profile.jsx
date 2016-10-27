@@ -45,7 +45,7 @@ const Profile = React.createClass ({
   },
 
   handleNews() {
-    axios.get('https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=english+premier+league&mkt=en-us&Subscription-Key=b80e34b3295f443f8809177ae301b6a1')
+    axios.get('https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=manchester+united&mkt=en-us&Subscription-Key=b80e34b3295f443f8809177ae301b6a1')
       .then((res) => {
         this.setState({ news: res.data.value });
       })
@@ -327,7 +327,7 @@ const Profile = React.createClass ({
 
       {/* CLUB KIT, STANDINGS, MATCHDAY */}
       <div className="row">
-        <div className="col s6">
+        <div className="col s12 l6">
         <Card style={{border: '1px solid lightgrey', marginBottom: '30px'}}>
             <div className="row" style={styleNext}>
               <div className="col s5 center">
@@ -469,226 +469,248 @@ const Profile = React.createClass ({
         </div>
 
 
+      {/* RIGHT COLUMN BEGINS */}
+        <div className="col s12 l6">
+          <h3 className="center proClubNews cardTitle" style={{marginBottom: '0px', fontFamily: 'Contrail One, cursive' }}>Overview</h3>
+
+        {/* TABS - OVERWIEW */}
+          <Tabs>
 
 
-        {/* RIGHT COLUMN BEGINS */}
-        <div className="col s6">
-        <h3 className="center proClubNews cardTitle" style={{marginBottom: '0px', fontFamily: 'Contrail One, cursive' }}>Overview</h3>
-        <Tabs>
 
-          <Tab label="Matches" style={styleTab}>
-            <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {/* TAB - ALL MATCHES OF THE WEEK */}
+            <Tab label="Matches" style={styleTab}>
               <Paper style={styleUpRes}>
+                {this.state.matches.map((element, index) => {
+                  return <div key={index}>
+                    <Table style={{marginBottom: '5px'}}>
+                      <TableHeader
+                        adjustForCheckbox={false}
+                        displaySelectAll={false}
+                        >
+                        <TableRow>
+                          <TableHeaderColumn>
+                            {element.date}
+                          </TableHeaderColumn>
+                        </TableRow>
+                      </TableHeader>
+                    </Table>
+                    {element.matches.map((e, i) => {
+                      return <div key={i} className="row">
 
-              {this.state.matches.map((element, index) => {
-                return <div key={index}>
-                  <Table style={{marginBottom: '5px'}}>
-                    <TableHeader
-                      adjustForCheckbox={false}
-                      displaySelectAll={false}
-                      >
-                      <TableRow>
-                        <TableHeaderColumn>
-                          {element.date}
-                        </TableHeaderColumn>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody displayRowCheckbox={false}>
-                  {element.matches.map((e, i) => {
-                    return <div key={i}>
-                      <TableRow>
-                        <TableRowColumn style={{paddingBottom: '0px',textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '110px'}}
-                        >
-                          <div>
-                            <TextField
-                              id="text-field-default"
-                              disabled={true}
-                              value={e.pacific}
-                              underlineDisabledStyle={styleField}
-                              name="time"
-                              inputStyle={styleField.text}
-                              style={{width: '110px', paddingLeft: '25px'}}
-                            />
-                          </div>
-                        </TableRowColumn>
+                        <div className="col s1">
+                          <TextField
+                            id="text-field-default"
+                            disabled={true}
+                            value={e.pacific}
+                            underlineDisabledStyle={styleField}
+                            name="time"
+                            inputStyle={styleField.text}
+                            style={{width: '10rem'}}
+                          />
+                        </div>
 
-                        <TableRowColumn style={{paddingBottom: '0px', width: '130px', paddingLeft: '0px', paddingRight: '0px'}}
-                        >
-                          <div style={{marginLeft: '30px'}}>
-                            <TextField
-                              id="text-field-default"
-                              disabled={true}
-                              value={e.localteam_name}
-                              underlineDisabledStyle={styleField}
-                              name="team1"
-                              inputStyle={styleField.text}
-                              style={{width: '130px'}}
-                            />
-                          </div>
-                        </TableRowColumn>
-                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '15px', width: '50px'}}
-                        >
+                        <div className="col s3 right-align">
+                          <TextField
+                            id="text-field-default"
+                            disabled={true}
+                            value={e.localteam_name}
+                            underlineDisabledStyle={styleField}
+                            name="team1"
+                            inputStyle={styleField.text}
+                            style={{width: '100%', marginLeft: '50px'}}
+                          />
+                        </div>
+
+                        <div className="col s1">
                           <Avatar
                             src={this.state.clubImgs[e.localteam_id]}
                             size={40}
-                            style={styleInline}
                             backgroundColor={fullWhite}
+                            style={{marginLeft: '30px'}}
                           />
-                        </TableRowColumn>
+                        </div>
 
-                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '15px'}}
-                        >
-                          <div>
-                            <TextField
-                              id="text-field-default"
-                              disabled={true}
-                              value="v"
-                              underlineDisabledStyle={styleField}
-                              name="v"
-                              inputStyle={styleField.text}
-                              style={{width: '15px'}}
-                            />
-                          </div>
-                        </TableRowColumn>
+                        <div className="col s1">
+                          <TextField
+                            className="center-align"
+                            id="text-field-default"
+                            disabled={true}
+                            value="v"
+                            underlineDisabledStyle={styleField}
+                            name="v"
+                            inputStyle={styleField.text}
+                            style={{width: '100%', marginLeft: '40px'}}
+                          />
+                        </div>
 
-                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'right', paddingLeft: '0px', paddingRight: '0px', width: '50px'}}>
+                        <div className="col s1">
                           <Avatar
                             src={this.state.clubImgs[e.visitorteam_id]}
                             size={40}
-                            style={styleInline}
+                            style={{marginLeft: '20px'}}
                             backgroundColor={fullWhite}
                           />
-                        </TableRowColumn>
+                        </div>
 
-                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', width: '187px', paddingLeft: '0px', paddingRight: '0px'}}
-                        >
-                          <div>
-                            <TextField
-                              id="text-field-default"
-                              disabled={true}
-                              value={e.visitorteam_name}
-                              underlineDisabledStyle={styleField}
-                              name="team2"
-                              inputStyle={styleField.text}
-                              style={{width: '187px', paddingLeft: '15px'}}
-                            />
-                          </div>
-                        </TableRowColumn>
+                        <div className="col s3">
+                          <TextField
+                            id="text-field-default"
+                            disabled={true}
+                            value={e.visitorteam_name}
+                            underlineDisabledStyle={styleField}
+                            name="team2"
+                            inputStyle={styleField.text}
+                            style={{width: '100%', marginLeft: '20px'}}
+                          />
+                        </div>
 
-                        <TableRowColumn style={{paddingBottom: '0px', textAlign: 'center', paddingLeft: '0px', paddingRight: '0px', width: '50px'}}>
+                        <div className="col s1">
                           <RaisedButton
                             icon={<Sms />}
                             backgroundColor="#00ffa1"
                             labelColor="#38003d"
                             onTouchTap={() => this.handleTabSms(e)}
                           />
-                        </TableRowColumn>
-                      </TableRow>
-                    </div>;
-                  })}
-                  </TableBody>
-                  </Table>
-                </div>;
-              })}
-              </Paper>
-            </div>
-          </Tab>
-
-
-          <Tab label="Standings" style={styleTab} onActive={this.handleTable} >
-            <Paper>
-              <Table>
-                <TableHeader
-                  adjustForCheckbox={false}
-                  displaySelectAll={false}
-                >
-                  <TableRow>
-                    <TableHeaderColumn>#</TableHeaderColumn>
-                    <TableHeaderColumn>Club</TableHeaderColumn>
-                    <TableHeaderColumn>GP</TableHeaderColumn>
-                    <TableHeaderColumn>W</TableHeaderColumn>
-                    <TableHeaderColumn>T</TableHeaderColumn>
-                    <TableHeaderColumn>D</TableHeaderColumn>
-                    <TableHeaderColumn>GF</TableHeaderColumn>
-                    <TableHeaderColumn>GA</TableHeaderColumn>
-                    <TableHeaderColumn>Pts</TableHeaderColumn>
-                  </TableRow>
-                </TableHeader>
-                <TableBody displayRowCheckbox={false} stripedRows={true} showRowHover={true}>
-
-                  {this.state.table.map((element) => {
-                    return <TableRow key={element.position}>
-                      <TableRowColumn style={styleTableRowColumn}>{element.position}</TableRowColumn>
-
-                      {this.state.imgs.map((e, i) => {
-                        const styleStandLogo = {
-                          width: '40px',
-                          height: '40px',
-                          position: 'relative',
-                          backgroundSize: 'contain',
-                          right: '20px',
-                          backgroundImage: 'url(' + e.logo + ')'
-                        };
-
-                        let logo;
-
-                        if (parseInt(element.team_id) === e.team_id) {
-                          logo = e.logo;
-                        } else {
-                          return;
-                        }
-
-                          return <TableRowColumn style={styleTableRowColumn} key={i}>
-                            <Paper circle={true} style={styleStandLogo} ></Paper>
-                          </TableRowColumn>;
-                      })}
-
-                      <TableRowColumn style={styleTableRowColumn}>{element.overall_gp}</TableRowColumn>
-                      <TableRowColumn style={styleTableRowColumn}>{element.overall_w}</TableRowColumn>
-                      <TableRowColumn style={styleTableRowColumn}>{element.overall_d}</TableRowColumn>
-                      <TableRowColumn style={styleTableRowColumn}>{element.overall_l}</TableRowColumn>
-                      <TableRowColumn style={styleTableRowColumn}>{element.home_gs}</TableRowColumn>
-                      <TableRowColumn style={styleTableRowColumn}>{element.away_gs}</TableRowColumn>
-                      <TableRowColumn style={styleTableRowColumn}>{element.points}</TableRowColumn>
-                    </TableRow>;
-                  })}
-                </TableBody>
-              </Table>
-            </Paper>
-          </Tab>
-
-
-          <Tab label="News" style={styleTab} onActive={this.handleNews} >
-            <div>
-              <Paper>
-                <div style={{overflow: 'auto', maxHeight: '1100px'}}>
-                {this.state.news.map((element, i) => {
-                  let newsImg;
-
-                  if (!element.image) {
-                    newsImg = <img style={{width: '140px', height: '140px', borderRadius: '50%', marginTop: '23px'}} src="./images/logo-2017.jpg" />
-                  } else {
-                    newsImg = <img style={{width: '140px', height: '140px', borderRadius: '50%', marginTop: '23px'}} src={element.image.thumbnail.contentUrl} />
-                  }
-
-                  return <div className="row" style={{borderBottom: '1px solid lightgrey'}} key={i}>
-                    <div className="col s3">
-                      <a href={element.url} >
-                        {newsImg}
-                      </a>
-                    </div>
-                    <div className="col s9">
-                      <a href={element.url} >{element.name}</a>
-                      <p style={{fontStyle: 'italic'}}>{element.description}</p>
-                      <p style={{fontWeight: 'bold'}}>{element.datePublished}</p>
-                    </div>
+                        </div>
+                      </div>;
+                    })}
                   </div>;
                 })}
-                </div>
               </Paper>
-            </div>
-          </Tab>
-        </Tabs>
+            </Tab>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {/* TAB - EPL TABLE */}
+            <Tab label="Standings" style={styleTab} onActive={this.handleTable} >
+              <Paper>
+                <Table>
+                  <TableHeader
+                    adjustForCheckbox={false}
+                    displaySelectAll={false}
+                  >
+                    <TableRow>
+                      <TableHeaderColumn>#</TableHeaderColumn>
+                      <TableHeaderColumn>Club</TableHeaderColumn>
+                      <TableHeaderColumn>GP</TableHeaderColumn>
+                      <TableHeaderColumn>W</TableHeaderColumn>
+                      <TableHeaderColumn>T</TableHeaderColumn>
+                      <TableHeaderColumn>D</TableHeaderColumn>
+                      <TableHeaderColumn>GF</TableHeaderColumn>
+                      <TableHeaderColumn>GA</TableHeaderColumn>
+                      <TableHeaderColumn>Pts</TableHeaderColumn>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody displayRowCheckbox={false} stripedRows={true} showRowHover={true}>
+
+                    {this.state.table.map((element) => {
+                      return <TableRow key={element.position}>
+                        <TableRowColumn style={styleTableRowColumn}>{element.position}</TableRowColumn>
+
+                        {this.state.imgs.map((e, i) => {
+                          const styleStandLogo = {
+                            width: '40px',
+                            height: '40px',
+                            position: 'relative',
+                            backgroundSize: 'contain',
+                            right: '20px',
+                            backgroundImage: 'url(' + e.logo + ')'
+                          };
+
+                          let logo;
+
+                          if (parseInt(element.team_id) === e.team_id) {
+                            logo = e.logo;
+                          } else {
+                            return;
+                          }
+
+                            return <TableRowColumn style={styleTableRowColumn} key={i}>
+                              <Paper circle={true} style={styleStandLogo} ></Paper>
+                            </TableRowColumn>;
+                        })}
+
+                        <TableRowColumn style={styleTableRowColumn}>{element.overall_gp}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.overall_w}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.overall_d}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.overall_l}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.home_gs}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.away_gs}</TableRowColumn>
+                        <TableRowColumn style={styleTableRowColumn}>{element.points}</TableRowColumn>
+                      </TableRow>;
+                    })}
+                  </TableBody>
+                </Table>
+              </Paper>
+            </Tab>
+
+            {/* TAB - BING NEWS */}
+            <Tab label="News" style={styleTab} onActive={this.handleNews} >
+              <div>
+                <Paper>
+                  <div style={{overflow: 'auto', maxHeight: '1100px'}}>
+                  {this.state.news.map((element, i) => {
+                    let newsImg;
+
+                    if (!element.image) {
+                      newsImg = <img style={{width: '140px', height: '140px', borderRadius: '50%', marginTop: '23px'}} src="./images/logo-2017.jpg" />
+                    } else {
+                      newsImg = <img style={{width: '140px', height: '140px', borderRadius: '50%', marginTop: '23px'}} src={element.image.thumbnail.contentUrl} />
+                    }
+
+                    return <div className="row" style={{borderBottom: '1px solid lightgrey'}} key={i}>
+                      <div className="col s3">
+                        <a href={element.url} >
+                          {newsImg}
+                        </a>
+                      </div>
+                      <div className="col s9">
+                        <a href={element.url} >{element.name}</a>
+                        <p style={{fontStyle: 'italic'}}>{element.description}</p>
+                        <p style={{fontWeight: 'bold'}}>{element.datePublished}</p>
+                      </div>
+                    </div>;
+                  })}
+                  </div>
+                </Paper>
+              </div>
+            </Tab>
+          </Tabs>
         </div>
       </div>
     </div>;

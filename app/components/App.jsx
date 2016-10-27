@@ -44,8 +44,8 @@ const App = React.createClass({
     const styles = {
       title: {
         cursor: 'pointer',
-        width: "4.8%",
-        borderRadius: "50%",
+        width: '58px',
+        borderRadius: '50%',
         border: '2px solid #fe005a',
         marginTop: '3px'
       },

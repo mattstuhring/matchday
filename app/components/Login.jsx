@@ -54,7 +54,7 @@ const Login = React.createClass({
       </div>
 
       <div className="row container">
-        <div className="col s6">
+        <div className="col s12 l6">
           <Paper zDepth={3}>
             <h4 className="cardTitle" style={{marginTop: '0px', padding: '16px', marginBottom: '0px'}}>Login</h4>
             <div className="row">
@@ -111,7 +111,7 @@ const Login = React.createClass({
         </div>
 
 
-        <div className="col s6">
+        <div className="col s12 l6">
           <Paper zDepth={3}>
             <h4 className="cardTitle" style={{marginTop: '0px', padding: '16px'}}>Register</h4>
             <div className="row">
