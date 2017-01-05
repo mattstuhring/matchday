@@ -254,9 +254,18 @@ const Landing = React.createClass({
       city = <div>{this.state.club.venue_city}</div>;
     }
 
+
+
+
+
+
+
+
+
+
     return <div>
       <div className="row center" style={{marginBottom: '5px'}}>
-          <img style={styleBanner} src="./images/banner.png" />
+          <img className="responsive-img" style={styleBanner} src="./images/banner.png" />
       </div>
 
       <div className="row">

@@ -62,7 +62,7 @@ const Login = React.createClass({
                 <div>
                   <TextField
                     className="textField"
-                    style={{width: '350px', marginTop: '20px'}}
+                    style={{marginTop: '20px'}}
                     hintText="Email"
                     floatingLabelText="Email"
                     name="email"
@@ -71,7 +71,6 @@ const Login = React.createClass({
                 </div>
                 <div>
                   <TextField
-                    style={{width: '350px'}}
                     hintText="Password Field"
                     floatingLabelText="Password"
                     type="password"

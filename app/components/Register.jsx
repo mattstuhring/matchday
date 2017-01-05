@@ -18,7 +18,7 @@ const Register = React.createClass({
         lastName: '',
         email: '',
         password: '',
-        phoneNumber: '+1',
+        phoneNumber: '',
         teamId: null
       },
       errors: {}
@@ -60,7 +60,6 @@ const Register = React.createClass({
   },
 
   handleClub(id) {
-
     localStorage.setItem('teamId', id);
 
     axios.get(`/api/clubs/${id}`)
@@ -162,80 +161,96 @@ console.log(this.state);
               <h4 style={{marginLeft: '10px'}}>Your Personal Details</h4>
             </div>
           </div>
-          <div className="col s6 center regForm">
-            <div>
-              <TextField
-                style={{width: '350px'}}
-                name="firstName"
-                floatingLabelText="First Name"
-                onChange={this.handleTextChange}
-                value={user.firstName}
-              />
+          <div className="col s5 offset-s1 regForm">
+            <div className="row">
+              <div className="input-field col s10">
+                <input
+                  id="first"
+                  name="firstName"
+                  onChange={this.handleTextChange}
+                  type="text"
+                  value={user.firstName}
+                />
+                <label for="first">First Name</label>
+              </div>
             </div>
-            <div>
-              <TextField
-                style={{width: '350px'}}
-                floatingLabelText="Last Name"
-                name="lastName"
-                onChange={this.handleTextChange}
-                value={user.lastName}
-              />
+            <div className="row">
+              <div className="input-field col s10">
+                <input
+                  id="last"
+                  name="lastName"
+                  onChange={this.handleTextChange}
+                  type="text"
+                  value={user.lastName}
+                />
+                <label for="last">Last Name</label>
+              </div>
             </div>
-            <div>
-              <TextField
-                style={{width: '350px'}}
-                floatingLabelText="Email"
-                name="email"
-                onChange={this.handleTextChange}
-                value={user.email}
-              />
+            <div className="row">
+              <div className="input-field col s10">
+                <input
+                  id="email"
+                  name="email"
+                  onChange={this.handleTextChange}
+                  type="email"
+                  value={user.email}
+                />
+                <label for="email">Email</label>
+              </div>
             </div>
-            <div>
-              <TextField
-                style={{width: '350px'}}
-                floatingLabelText="Password"
-                type="password"
-                onChange={this.handleTextChange}
-                name="password"
-                value={user.password}
-              />
+            <div className="row">
+              <div className="input-field col s10">
+                <input
+                  id="password"
+                  type="password"
+                  onChange={this.handleTextChange}
+                  name="password"
+                  value={user.password}
+                />
+                <label for="password">Password</label>
+              </div>
             </div>
-            <div>
-              <TextField
-                style={{width: '350px'}}
-                floatingLabelText="Phone Number"
-                name="phoneNumber"
-                onChange={this.handleTextChange}
-                value={user.phoneNumber}
-              />
+            <div className="row">
+              <div className="input-field col s10">
+                <input
+                  id="phone"
+                  type="text"
+                  className="validate"
+                  name="phoneNumber"
+                  onChange={this.handleTextChange}
+                  placeholder="ex. 123-456-7890"
+                  value={user.phoneNumber}
+                />
+                <label className="reg-phone" for="phone">Phone Number</label>
+              </div>
             </div>
-            <div>
-              <RaisedButton
-                className="regBtn"
-                style={{marginRight: '20px'}}
-                backgroundColor={"#00ffa1"}
-                label="Submit"
-                labelColor={"#38003d"}
-                labelPosition="before"
-                icon={<Check />}
-                onTouchTap={this.handleRegister}
-              />
-              <RaisedButton
-                className="regBtn"
-                label="Not Ready"
-                labelColor={"#38003d"}
-                backgroundColor={"#00ffa1"}
-                labelPosition="before"
-                icon={<Cancel />}
-                onTouchTap={() => browserHistory.push('/')}
-              />
+            <div className="row">
+              <div className="col s11 center reg-btn">
+                <RaisedButton
+                  style={{marginRight: '20px', marginBottom: '10px'}}
+                  backgroundColor={"#00ffa1"}
+                  label="Submit"
+                  labelColor={"#38003d"}
+                  labelPosition="before"
+                  icon={<Check />}
+                  onTouchTap={this.handleRegister}
+                />
+                <RaisedButton
+                  label="Not Ready"
+                  labelColor={"#38003d"}
+                  backgroundColor={"#00ffa1"}
+                  labelPosition="before"
+                  icon={<Cancel />}
+                  onTouchTap={() => browserHistory.push('/')}
+                />
+              </div>
             </div>
           </div>
           <div className="col s5 center regKit">
             <Paper zDepth={2}>
               <h4 style={{padding: '5px 0px', marginTop: '0px', backgroundColor: '#38003d', color: 'white'}}>Club</h4>
               <p>{this.state.user.name}</p>
-              <img style={{marginBottom: '20px'}} src={this.state.user.kit} />
+              <img style={{marginBottom: '20px'}} src={this.state.user.kit} className="responsive-img"/>
             </Paper>
           </div>
         </div>

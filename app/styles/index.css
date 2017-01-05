@@ -65,9 +65,8 @@ body {
   width: 50px !important;
 }
 
-.regBtn {
-  margin-top: 30px;
-  margin-bottom: 50px;
+.reg-btn {
+  margin-bottom: 10px;
 }
 
 .regKit {
@@ -75,6 +74,7 @@ body {
   padding-right: 0px !important;
   margin-bottom: 40px;
   margin-left: 11px !important;
+  margin-top: 30px;
 }
 
 .regFormTitle {
@@ -87,6 +87,10 @@ body {
 .regForm {
   padding-left: 0px !important;
   padding-right: 0px !important;
+}
+
+.reg-phone {
+  text-align: left;
 }
 
 .landFlatBtn {

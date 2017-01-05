@@ -29,8 +29,7 @@ router.get('/me/team', checkAuth, (req, res, next) => {
         .then(match => {
           let d = moment(match.data[0].formatted_date, "DD-MM-YYYY").format("MM-DD-YYYY");
           let iso = moment(d + 'T' + match.data[0].time, "MM-DD-YYYY HH:mm");
-          // the date object month starts at 0 not 1
-          // console.log('object', iso.toObject());
+
           iso = moment(iso).subtract(7, 'hours');
           iso = moment(iso).format('HH:mm A');
           match.data[0].pacific = iso + ' PST';
@@ -44,8 +43,6 @@ router.get('/me/team', checkAuth, (req, res, next) => {
         });
     })
     .then(([game, team_id]) => {
-      // console.log('...', game);
-      // console.log('...', team_id);
       return axios.get(`http://api.football-api.com/2.0/team/${team_id}?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
         .then((result) => {
 
@@ -59,7 +56,6 @@ router.get('/me/team', checkAuth, (req, res, next) => {
         });
     })
     .then((result) => {
-      // console.log(result.data.team_id);
       knex('clubs')
         .where('team_id', result.data.team_id)
         .first()

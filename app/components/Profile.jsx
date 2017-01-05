@@ -45,7 +45,7 @@ const Profile = React.createClass ({
   },
 
   handleNews() {
-    axios.get('https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=manchester+united&mkt=en-us&Subscription-Key=b80e34b3295f443f8809177ae301b6a1')
+    axios.get('https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=manchester+united&mkt=en-us&Subscription-Key=96366b1419b44f2da9d6d7b4df919268')
       .then((res) => {
         this.setState({ news: res.data.value });
       })
@@ -73,7 +73,6 @@ const Profile = React.createClass ({
   componentWillMount() {
     axios.get('api/me/team')
       .then((res) => {
-        // console.log(res.data.teamInfo.statistics[0]);
         this.setState({match: res.data.teamInfo.game, statistics: res.data.teamInfo.statistics[0], clubImg: res.data.clubImg});
       })
       .catch((err) => {
@@ -162,7 +161,7 @@ const Profile = React.createClass ({
 
       this.props.setToast(
         true,
-        'Success!!!'
+        'Test SMS was a success!  Renew Twilio subscription :('
       );
     })
     .catch((err) => {
