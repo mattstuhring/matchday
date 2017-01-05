@@ -82,8 +82,22 @@ const Register = React.createClass({
     this.setState({ user: nextUser });
   },
 
+  formatPhoneNumber(phone) {
+    phone = phone.replace(/[^\d]/g, "");
+
+      if (phone.length == 10) {
+        const newPhone = '+1' + phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1$2$3");
+        this.setState({ phoneNumber: newPhone });
+      }
+
+    this.props.setToast(true, 'Woops! Phone number error.');
+  },
+
   handleRegister() {
+    this.formatPhoneNumber(this.state.user.phoneNumber);
+
     const user = this.state.user;
+    console.log(user);
 
     axios.post('/api/users', user)
       .then(() => {
