@@ -67,7 +67,7 @@ const App = React.createClass({
       <FlatButton
         style={styles.text}
         label="Login"
-        onTouchTap={() => browserHistory.push('/login')}
+        onClick={() => browserHistory.push('/login')}
       />
       </div>;
 
@@ -76,12 +76,12 @@ const App = React.createClass({
         <FlatButton
           style={styles.text}
           label="Profile"
-          onTouchTap={() => browserHistory.push('/profile')}
+          onClick={() => browserHistory.push('/profile')}
         />
         <FlatButton
           style={styles.text}
           label="Logout"
-          onTouchTap={this.handleLogOut}
+          onClick={this.handleLogOut}
         />
       </div>;
     }
@@ -110,7 +110,7 @@ const App = React.createClass({
         autoHideDuration={2500}
         message={this.state.toast.message}
         onRequestClose={() => this.setToast(false, '')}
-        onTouchTap={() => this.setToast(false, '')}
+        onClick={() => this.setToast(false, '')}
         open={this.state.toast.open}
       />
     </div>;

@@ -87,7 +87,7 @@ const Login = React.createClass({
                     backgroundColor={"#00ffa1"}
                     labelColor={"#38003d"}
                     icon={<Check />}
-                    onTouchTap={this.handleLogin}
+                    onClick={this.handleLogin}
                   />
                   <RaisedButton
                     className="regBtn"
@@ -96,7 +96,7 @@ const Login = React.createClass({
                     backgroundColor={"#00ffa1"}
                     labelColor={"#38003d"}
                     icon={<Cancel />}
-                    onTouchTap={() => browserHistory.push('/')}
+                    onClick={() => browserHistory.push('/')}
                   />
                 </div>
               </div>
@@ -139,7 +139,7 @@ const Login = React.createClass({
                     fullWidth={true}
                     backgroundColor={"#00ffa1"}
                     labelColor={"#38003d"}
-                    onTouchTap={() => browserHistory.push('/register')}
+                    onClick={() => browserHistory.push('/register')}
                   />
                 </Paper>
               </div>

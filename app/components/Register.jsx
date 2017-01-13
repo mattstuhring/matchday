@@ -159,7 +159,7 @@ console.log(this.state);
                     >
                       <FlatButton
                         style={styleRegClubsBtn}
-                        onTouchTap={() => this.handleClub(element.team_id)}
+                        onClick={() => this.handleClub(element.team_id)}
                       />
                     </Paper>
                   </div>;
@@ -247,7 +247,7 @@ console.log(this.state);
                   labelColor={"#38003d"}
                   labelPosition="before"
                   icon={<Check />}
-                  onTouchTap={this.handleRegister}
+                  onClick={this.handleRegister}
                 />
                 <RaisedButton
                   label="Not Ready"
@@ -255,7 +255,7 @@ console.log(this.state);
                   backgroundColor={"#00ffa1"}
                   labelPosition="before"
                   icon={<Cancel />}
-                  onTouchTap={() => browserHistory.push('/')}
+                  onClick={() => browserHistory.push('/')}
                 />
               </div>
             </div>

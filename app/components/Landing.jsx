@@ -286,7 +286,7 @@ const Landing = React.createClass({
                 <Paper style={style} circle={true} zDepth={3} >
                   <FlatButton
                     style={styleClubsBtn}
-                    onTouchTap={() => this.handleClub(element.team_id)}
+                    onClick={() => this.handleClub(element.team_id)}
                   />
                 </Paper>
                 <p style={styleLogoP}>{element.name}</p>
@@ -310,7 +310,7 @@ const Landing = React.createClass({
                   backgroundColor={"#00ffa1"}
                   labelColor={"#38003d"}
                   fullWidth={true}
-                  onTouchTap={() => browserHistory.push('/login')}
+                  onClick={() => browserHistory.push('/login')}
                 />
               </div>
             </div>
@@ -401,7 +401,7 @@ const Landing = React.createClass({
                 backgroundColor={"#00ffa1"}
                 labelColor={"#38003d"}
                 fullWidth={true}
-                onTouchTap={() => browserHistory.push('/login')}
+                onClick={() => browserHistory.push('/login')}
               />
             </CardActions>
           </Card>

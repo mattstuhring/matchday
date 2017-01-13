@@ -385,7 +385,7 @@ const Profile = React.createClass ({
                   style={{marginBottom: '20px'}}
                   backgroundColor="#00ffa1"
                   labelColor="#38003d"
-                  onTouchTap={this.handleSms}
+                  onClick={this.handleSms}
                 />
               </div>
             </div>
@@ -455,7 +455,7 @@ const Profile = React.createClass ({
                     <div className="col 2">
                       <IconButton
                         iconStyle={{backgroundColor: '#00ffa1', width: '30px', height: '30px', borderRadius: '4px'}}
-                        onTouchTap={() => this.handleSmsDelete(message)}
+                        onClick={() => this.handleSmsDelete(message)}
                       >
                         <Delete />
                       </IconButton>
@@ -583,7 +583,7 @@ const Profile = React.createClass ({
                             icon={<Sms />}
                             backgroundColor="#00ffa1"
                             labelColor="#38003d"
-                            onTouchTap={() => this.handleTabSms(e)}
+                            onClick={() => this.handleTabSms(e)}
                           />
                         </div>
                       </div>;
