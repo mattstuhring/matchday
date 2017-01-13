@@ -58,6 +58,7 @@ const Profile = React.createClass ({
   },
 
   handleTable() {
+    console.log('I am here');
     axios.get('/api/clubs/table')
       .then((res) => {
         this.setState({ table: res.data });
@@ -475,22 +476,6 @@ const Profile = React.createClass ({
         {/* TABS - OVERWIEW */}
           <Tabs>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             {/* TAB - ALL MATCHES OF THE WEEK */}
             <Tab label="Matches" style={styleTab}>
               <Paper style={styleUpRes}>
@@ -592,26 +577,6 @@ const Profile = React.createClass ({
                 })}
               </Paper>
             </Tab>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
