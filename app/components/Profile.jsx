@@ -58,7 +58,6 @@ const Profile = React.createClass ({
   },
 
   handleTable() {
-    console.log('I am here');
     axios.get('/api/clubs/table')
       .then((res) => {
         this.setState({ table: res.data });
@@ -88,12 +87,10 @@ const Profile = React.createClass ({
         const group = _.groupBy(res.data, (match) => {
           return match.date;
         });
-        console.log('group', group);
 
         const dates = _.sortBy(Object.keys(group), (date) => {
           return date.valueOf();
         });
-        console.log('dates', dates);
 
         const matches = dates.map((date) => {
           return {
@@ -103,7 +100,6 @@ const Profile = React.createClass ({
             })
           };
         });
-        console.log('matches', matches);
 
         this.setState({ matches });
       })
@@ -158,7 +154,6 @@ const Profile = React.createClass ({
     })
     .then((res) => {
       this.setState({ messages: res.data });
-      console.log(res.data);
 
       this.props.setToast(
         true,
@@ -214,7 +209,6 @@ const Profile = React.createClass ({
 
     axios.delete(`/api/sms/${message.id}`)
       .then((res) => {
-        console.log(res);
         this.props.setToast(
           true,
           'Deleted Message!'
@@ -229,85 +223,6 @@ const Profile = React.createClass ({
   },
 
   render() {
-    const styleNext = {
-      border: '1px solid lightgrey',
-      marginBottom: '0px'
-    };
-
-    const styleJersey = {
-      width: '80%',
-      marginTop: '25px'
-    };
-
-    const styleNewsImg = {
-      width: '140px',
-      height: '140px',
-      borderRadius: '50%'
-    };
-
-    const styleTableRowColumn = {
-      fontSize: '18px',
-      color: '#38003d',
-      paddingTop: '5px',
-      paddingBottom: '5px'
-    };
-
-    const styleUpMatch1 = {
-      position: 'relative',
-      bottom: '15px',
-      display: 'inline-block',
-      marginRight: '10px'
-    };
-
-    const styleTab = {
-      backgroundColor: '#00ffa1',
-      color: '#38003d'
-    };
-
-    const styleUpMatch2 = {
-      display: 'inline-block',
-      paddingLeft: '10px',
-      paddingRight: '10px',
-      position: 'relative',
-      bottom: '15px'
-    };
-
-    const styleUpMatch3 = {
-      position: 'relative',
-      bottom: '15px',
-      display: 'inline-block',
-      marginLeft: '10px'
-    };
-
-    const styleResMatch1 = {
-      position: 'relative',
-      bottom: '15px',
-      display: 'inline-block',
-      marginRight: '10px'
-    };
-
-    const styleInline = {
-      display: 'inline-block'
-    };
-
-    const styleResMatch2 = {
-      color: 'white',
-      backgroundColor: 'grey'
-    };
-
-    const styleUpRes = {
-      padding: '0px 0px'
-    };
-
-    const styles = {
-      headline: {
-        fontSize: 24,
-        paddingTop: 16,
-        marginBottom: 12,
-        fontWeight: 400,
-      },
-    };
-
     const styleField = {
       borderColor: 'white',
       text: {
@@ -315,66 +230,100 @@ const Profile = React.createClass ({
       },
       clear: {
         opacity: '0'
+      },
+      date: {
+        color: 'white',
+        textAlign: 'center',
+        height: '35px',
+        marginBottom: '5px',
+        fontSize: '16px'
+      },
+      time: {
+        color: 'white',
+        textAlign: 'center',
+        height: '35px',
+        marginBottom: '5px',
+      },
+      team: {
+        color: 'white',
+        textAlign: 'center',
+        height: '35px',
+        marginBottom: '5px',
+        fontSize: '20px'
+      },
+      venue: {
+        color: 'white',
+        textAlign: 'center',
+        height: '35px',
+        marginBottom: '5px',
+        fontSize: '14px'
       }
+    };
+
+    const styleDeleteBtn = {
+      backgroundColor: '#00ffa1',
+      width: '30px',
+      height: '30px',
+      borderRadius: '4px'
     };
 
     return <div>
       {/* CLUB BANNER */}
       <div className="row center">
-        <img style={{width: '100%', marginTop: '20px'}} src="./images/banners/manchester-united.jpg" />
+        <img className="pro-banner" src="./images/banners/manchester-united.jpg" />
       </div>
 
 
       {/* CLUB KIT, STANDINGS, MATCHDAY */}
       <div className="row">
         <div className="col s12 l6">
-        <Card style={{border: '1px solid lightgrey', marginBottom: '30px'}}>
-            <div className="row" style={styleNext}>
+        <Card className="pro-card">
+            <div className="row pro-next">
               <div className="col s5 center">
                 <img
-                  style={styleJersey}
+                  className="pro-jersey"
                   src="./images/kits/manchester-united-j.jpg"
                 />
               </div>
               <div className="col s7 center matchInfoTemp">
-                <h3 style={{marginTop: '18px', marginBottom: '5px', textDecoration: 'underline'}}>Next Match</h3>
-                <div className="row" style={{height: '35px', marginBottom: '5px'}}>
+                <h3 className="pro-info-title">Next Match</h3>
+                <div className="row pro-info">
                   <TextField
                     id="text-field-default"
                     disabled={true}
                     value={this.state.match.date}
-                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px', fontSize: '16px'}}
+                    inputStyle={styleField.date}
                     name="date"
                     underlineDisabledStyle={styleField.clear}
                   />
                 </div>
-                <div className="row" style={{height: '35px', marginBottom: '5px'}}>
+                <div className="row pro-info">
                   <TextField
                     id="text-field-default"
                     disabled={true}
                     value={this.state.match.pacific}
-                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px'}}
+                    inputStyle={styleField.time}
                     name="time"
                     underlineDisabledStyle={styleField.clear}
                   />
                 </div>
 
-                <div className="row" style={{height: '35px', marginBottom: '5px'}}>
+                <div className="row pro-info">
                   <TextField
                     id="text-field-default"
                     disabled={true}
                     value={this.state.match.localteam_name + ' v ' + this.state.match.visitorteam_name}
-                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px', fontSize: '20px'}}
+                    inputStyle={styleField.team}
                     name="team2"
                     underlineDisabledStyle={styleField.clear}
                   />
                 </div>
-                <div className="row" style={{height: '35px', marginBottom: '5px'}}>
+                <div className="row pro-info">
                   <TextField
                     id="text-field-default"
                     disabled={true}
                     value={this.state.match.venue}
-                    inputStyle={{color: 'white', textAlign: 'center', height: '35px', marginBottom: '5px', fontSize: '14px'}}
+                    inputStyle={styleField.venue}
                     name="venue"
                     underlineDisabledStyle={styleField.clear}
                   />
@@ -383,7 +332,7 @@ const Profile = React.createClass ({
                   label="send next match reminder"
                   labelPosition="before"
                   icon={<Sms />}
-                  style={{marginBottom: '20px'}}
+                  className="pro-send-btn"
                   backgroundColor="#00ffa1"
                   labelColor="#38003d"
                   onClick={this.handleSms}
@@ -409,20 +358,20 @@ const Profile = React.createClass ({
                   </TableHeader>
                   <TableBody displayRowCheckbox={false}>
                     <TableRow>
-                      <TableRowColumn style={{paddingBottom: '0px'}}>{this.state.statistics.rank}</TableRowColumn>
-                      <TableRowColumn style={{paddingBottom: '0px', paddingLeft: '14px'}}>
+                      <TableRowColumn className="pro-table-pad" >{this.state.statistics.rank}</TableRowColumn>
+                      <TableRowColumn className="pro-table-avatar">
                         <Avatar
                           src="./images/clubs/Manchester-United.png"
                           size={40}
-                          style={styleInline}
+                          className="pro-inline"
                           backgroundColor={fullWhite}
                         />
                       </TableRowColumn>
-                      <TableRowColumn style={{paddingBottom: '0px'}}>{this.state.statistics.wins}</TableRowColumn>
-                      <TableRowColumn style={{paddingBottom: '0px'}}>{this.state.statistics.draws}</TableRowColumn>
-                      <TableRowColumn style={{paddingBottom: '0px'}}>{this.state.statistics.losses}</TableRowColumn>
-                      <TableRowColumn style={{paddingBottom: '0px'}}>{this.state.statistics.goals}</TableRowColumn>
-                      <TableRowColumn style={{paddingBottom: '0px'}}>22</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad">{this.state.statistics.wins}</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad">{this.state.statistics.draws}</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad">{this.state.statistics.losses}</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad">{this.state.statistics.goals}</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad">22</TableRowColumn>
                     </TableRow>
                   </TableBody>
                 </Table>
@@ -431,9 +380,9 @@ const Profile = React.createClass ({
 
 
               {/* SMS SAVED MATCHES */}
-              <div className="cardTitle" style={{padding: '16px', backgroundColor: '#38003d', color: 'white'}}>Recently Texted Match Reminders</div>
-              <CardText style={styleUpRes}>
-                <Table style={{marginBottom: '5px'}}>
+              <div className="cardTitle pro-sms-title">Recently Texted Match Reminders</div>
+              <CardText className="pro-card-text">
+                <Table className="pro-sms-table">
                   <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                     <TableRow>
                       <TableHeaderColumn>
@@ -444,18 +393,18 @@ const Profile = React.createClass ({
                 </Table>
                 {this.state.messages.map((message, index) => {
                   return <div className="row center" key={index}>
-                    <div className="col s2" style={{marginTop: '17px'}}>
+                    <div className="col s2 pro-sms-row">
                       {message.date}
                     </div>
-                    <div className="col s2" style={{marginTop: '17px'}}>
+                    <div className="col s2 pro-sms-row">
                       {message.time}
                     </div>
-                    <div className="col s6" style={{marginTop: '17px'}}>
+                    <div className="col s6 pro-sms-row">
                       {message.team1} v {message.team2}
                     </div>
                     <div className="col 2">
                       <IconButton
-                        iconStyle={{backgroundColor: '#00ffa1', width: '30px', height: '30px', borderRadius: '4px'}}
+                        iconStyle={styleDeleteBtn}
                         onClick={() => this.handleSmsDelete(message)}
                       >
                         <Delete />
@@ -469,19 +418,21 @@ const Profile = React.createClass ({
         </div>
 
 
+
       {/* RIGHT COLUMN BEGINS */}
+
+
         <div className="col s12 l6">
-          <h3 className="center proClubNews cardTitle" style={{marginBottom: '0px', fontFamily: 'Contrail One, cursive' }}>Overview</h3>
+          <h3 className="center cardTitle pro-overview">Overview</h3>
 
         {/* TABS - OVERWIEW */}
           <Tabs>
-
             {/* TAB - ALL MATCHES OF THE WEEK */}
-            <Tab label="Matches" style={styleTab}>
-              <Paper style={styleUpRes}>
+            <Tab label="Matches" className="pro-tab">
+              <Paper className="pro-card-text">
                 {this.state.matches.map((element, index) => {
                   return <div key={index}>
-                    <Table style={{marginBottom: '5px'}}>
+                    <Table className="pro-m-table">
                       <TableHeader
                         adjustForCheckbox={false}
                         displaySelectAll={false}
@@ -504,7 +455,7 @@ const Profile = React.createClass ({
                             underlineDisabledStyle={styleField}
                             name="time"
                             inputStyle={styleField.text}
-                            style={{width: '10rem'}}
+                            className="pro-field-time"
                           />
                         </div>
 
@@ -516,7 +467,7 @@ const Profile = React.createClass ({
                             underlineDisabledStyle={styleField}
                             name="team1"
                             inputStyle={styleField.text}
-                            style={{width: '100%', marginLeft: '50px'}}
+                            className="pro-field-team"
                           />
                         </div>
 
@@ -525,7 +476,7 @@ const Profile = React.createClass ({
                             src={this.state.clubImgs[e.localteam_id]}
                             size={40}
                             backgroundColor={fullWhite}
-                            style={{marginLeft: '30px'}}
+                            className="pro-field-local"
                           />
                         </div>
 
@@ -538,7 +489,7 @@ const Profile = React.createClass ({
                             underlineDisabledStyle={styleField}
                             name="v"
                             inputStyle={styleField.text}
-                            style={{width: '100%', marginLeft: '40px'}}
+                            className="pro-field-v"
                           />
                         </div>
 
@@ -546,7 +497,7 @@ const Profile = React.createClass ({
                           <Avatar
                             src={this.state.clubImgs[e.visitorteam_id]}
                             size={40}
-                            style={{marginLeft: '20px'}}
+                            className="pro-field-visitor"
                             backgroundColor={fullWhite}
                           />
                         </div>
@@ -559,7 +510,7 @@ const Profile = React.createClass ({
                             underlineDisabledStyle={styleField}
                             name="team2"
                             inputStyle={styleField.text}
-                            style={{width: '100%', marginLeft: '20px'}}
+                            className="pro-field-team2"
                           />
                         </div>
 
@@ -581,7 +532,7 @@ const Profile = React.createClass ({
 
 
             {/* TAB - EPL TABLE */}
-            <Tab label="Standings" style={styleTab} onActive={this.handleTable} >
+            <Tab label="Standings" className="pro-tab" onActive={this.handleTable} >
               <Paper>
                 <Table>
                   <TableHeader
@@ -604,7 +555,9 @@ const Profile = React.createClass ({
 
                     {this.state.table.map((element) => {
                       return <TableRow key={element.position}>
-                        <TableRowColumn style={styleTableRowColumn}>{element.position}</TableRowColumn>
+                        <TableRowColumn className="pro-table">
+                          {element.position}
+                        </TableRowColumn>
 
                         {this.state.imgs.map((e, i) => {
                           const styleStandLogo = {
@@ -624,18 +577,18 @@ const Profile = React.createClass ({
                             return;
                           }
 
-                            return <TableRowColumn style={styleTableRowColumn} key={i}>
+                            return <TableRowColumn className="pro-table" key={i}>
                               <Paper circle={true} style={styleStandLogo} ></Paper>
                             </TableRowColumn>;
                         })}
 
-                        <TableRowColumn style={styleTableRowColumn}>{element.overall_gp}</TableRowColumn>
-                        <TableRowColumn style={styleTableRowColumn}>{element.overall_w}</TableRowColumn>
-                        <TableRowColumn style={styleTableRowColumn}>{element.overall_d}</TableRowColumn>
-                        <TableRowColumn style={styleTableRowColumn}>{element.overall_l}</TableRowColumn>
-                        <TableRowColumn style={styleTableRowColumn}>{element.home_gs}</TableRowColumn>
-                        <TableRowColumn style={styleTableRowColumn}>{element.away_gs}</TableRowColumn>
-                        <TableRowColumn style={styleTableRowColumn}>{element.points}</TableRowColumn>
+                        <TableRowColumn className="pro-table">{element.overall_gp}</TableRowColumn>
+                        <TableRowColumn className="pro-table">{element.overall_w}</TableRowColumn>
+                        <TableRowColumn className="pro-table">{element.overall_d}</TableRowColumn>
+                        <TableRowColumn className="pro-table">{element.overall_l}</TableRowColumn>
+                        <TableRowColumn className="pro-table">{element.home_gs}</TableRowColumn>
+                        <TableRowColumn className="pro-table">{element.away_gs}</TableRowColumn>
+                        <TableRowColumn className="pro-table">{element.points}</TableRowColumn>
                       </TableRow>;
                     })}
                   </TableBody>
@@ -644,20 +597,20 @@ const Profile = React.createClass ({
             </Tab>
 
             {/* TAB - BING NEWS */}
-            <Tab label="News" style={styleTab} onActive={this.handleNews} >
+            <Tab label="News" className="pro-tab" onActive={this.handleNews} >
               <div>
                 <Paper>
-                  <div style={{overflow: 'auto', maxHeight: '1100px'}}>
+                  <div className="pro-news">
                   {this.state.news.map((element, i) => {
                     let newsImg;
 
                     if (!element.image) {
-                      newsImg = <img style={{width: '140px', height: '140px', borderRadius: '50%', marginTop: '23px'}} src="./images/logo-2017.jpg" />
+                      newsImg = <img className="pro-news-img" src="./images/logo-2017.jpg" />
                     } else {
-                      newsImg = <img style={{width: '140px', height: '140px', borderRadius: '50%', marginTop: '23px'}} src={element.image.thumbnail.contentUrl} />
+                      newsImg = <img className="pro-news-img" src={element.image.thumbnail.contentUrl} />
                     }
 
-                    return <div className="row" style={{borderBottom: '1px solid lightgrey'}} key={i}>
+                    return <div className="row pro-news-box" key={i}>
                       <div className="col s3">
                         <a href={element.url} >
                           {newsImg}
@@ -665,8 +618,8 @@ const Profile = React.createClass ({
                       </div>
                       <div className="col s9">
                         <a href={element.url} >{element.name}</a>
-                        <p style={{fontStyle: 'italic'}}>{element.description}</p>
-                        <p style={{fontWeight: 'bold'}}>{element.datePublished}</p>
+                        <p><i>{element.description}</i></p>
+                        <p><b>{element.datePublished}</b></p>
                       </div>
                     </div>;
                   })}

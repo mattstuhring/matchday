@@ -270,6 +270,164 @@ body {
 
 
 
+
+
+
+
+
+
+/* PROFILE styles */
+.pro-next {
+  border: 1px solid lightgrey !important;
+  margin-bottom: 0px !important;
+}
+
+.pro-jersey {
+  width: 80% !important;
+  margin-top: 25px !important;
+}
+
+.pro-table {
+  font-size: 18px !important;
+  color: #38003d !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.pro-tab {
+  background-color: #00ffa1 !important;
+  color: #38003d !important;
+}
+
+.pro-inline {
+  display: inline-block !important;
+}
+
+.pro-card-text {
+  padding: 0px 0px !important;
+}
+
+.pro-banner {
+  width: 100% !important;
+  margin-top: 20px !important;
+}
+
+.pro-card {
+  border: 1px solid lightgrey !important;
+  margin-bottom: 30px !important;
+}
+
+.pro-info-title {
+  margin-top: 18px !important;
+  margin-bottom: 5px !important;
+  text-decoration: underline !important;
+}
+
+.pro-info {
+  height: 35px  !important;
+  margin-bottom: 5px  !important;
+}
+
+.pro-send-btn {
+  margin-bottom: 20px !important;
+}
+
+.pro-table-pad {
+  padding-bottom: 0px !important;
+}
+
+.pro-table-avatar {
+  padding-bottom: 0px !important;
+  padding-left: 14px !important;
+}
+
+.pro-sms-title {
+  padding: 16px !important;
+  background-color: #38003d !important;
+  color: white !important;
+}
+
+.pro-sms-table {
+  margin-bottom: 5px !important;
+}
+
+.pro-sms-row {
+  margin-top: 17px !important;
+}
+
+.pro-overview {
+  margin-bottom: 0px !important;
+  font-family: Contrail One, cursive !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  margin-top: 0 !important;
+}
+
+.pro-m-table {
+  margin-bottom: 5px !important;
+}
+
+.pro-field-time {
+  width: 10rem !important;
+}
+
+.pro-field-team {
+  width: 100% !important;
+  margin-left: 50px !important;
+}
+
+.pro-field-local {
+  margin-left: 30px !important;
+}
+
+.pro-field-v {
+  width: 100% !important;
+  margin-left: 40px !important;
+}
+
+.pro-field-visitor {
+  margin-left: 20px !important;
+}
+
+.pro-field-team2 {
+  width: 100% !important;
+  margin-left: 20px !important;
+}
+
+.pro-news {
+  overflow: auto !important;
+  max-height: 1100px !important;
+}
+
+.pro-news-img {
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50% !important;
+  margin-top: 23px !important;
+}
+
+.pro-news-box {
+  border-bottom: 1px solid lightgrey !important;
+}
+
+
+
+
+
+
+
+
+
+
+.cardTitle {
+  background-image: url('./images/title.png');
+  color: white !important;
+  background-size: cover  !important;
+  background-repeat: no-repeat  !important;
+  width: 100%  !important;
+}
+
+
 .flex-container-1 {
   display:flex;
   flex-direction: row;
