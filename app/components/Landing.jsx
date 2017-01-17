@@ -97,52 +97,6 @@ const Landing = React.createClass({
   },
 
   render() {
-    const styleBanner = {
-      width: '100%',
-      marginTop: '25px'
-    };
-
-    const styleWho = {
-      width: '100%',
-      marginTop: '45px',
-      marginBottom: '25px'
-    };
-
-    const styleClubsBtn = {
-      borderRadius: '50%',
-      width: '120px',
-      height: '120px',
-      position: 'relative',
-      right: '9px',
-      bottom: '9px'
-    };
-
-    const styleInline = {
-      display: 'inline-block'
-    };
-
-    const styleUpMatch1 = {
-      position: 'relative',
-      bottom: '15px',
-      display: 'inline-block',
-      marginRight: '10px'
-    };
-
-    const styleUpMatch2 = {
-      display: 'inline-block',
-      paddingLeft: '10px',
-      paddingRight: '10px',
-      position: 'relative',
-      bottom: '15px'
-    };
-
-    const styleUpMatch3 = {
-      position: 'relative',
-      bottom: '15px',
-      display: 'inline-block',
-      marginLeft: '10px'
-    };
-
     const styleTeamHeader = {
       width: '55px',
       height: '55px',
@@ -154,42 +108,9 @@ const Landing = React.createClass({
       paddingBottom: '5px'
     };
 
-    const styleLogoP = {
-      marginTop: '0px',
-      textAlign: 'center',
-      marginBottom: '25px',
-    };
-
-    const styleClubName = {
-      display: 'inline-block',
-      position: 'relative',
-      bottom: '10px',
-      marginLeft: '20px',
-      color: 'white'
-    };
-
     const styleStadium = {
       height: '284px',
       backgroundImage: 'url(' + this.state.clubImg.stadium + ')',
-    };
-
-    const styleHistory = {
-      padding: '5px 5px'
-    };
-
-    const styleNoTeamId = {
-      box: {
-        backgroundColor: 'whitesmoke',
-        color: '#38003d',
-        paddingBottom: '13px'
-      },
-      welcome: {
-        textDecoration: 'underline',
-        marginBottom: '5px'
-      },
-      div: {
-        marginLeft: '80px'
-      }
     };
 
     let welcome;
@@ -201,49 +122,49 @@ const Landing = React.createClass({
 
     if (this.state.teamId === '') {
       welcome = <div>
-        <div className="col s7" style={styleNoTeamId.box}>
+        <div className="col s7 land-team-box">
           <div className="center">
-            <h3 style={styleNoTeamId.welcome}>Welcome</h3>
+            <h3 className="land-team-welcome">Welcome</h3>
           </div>
-          <div style={styleNoTeamId.div}>
-            <h5 style={styleInline}>1.</h5>
-            <h5 style={{display: 'inline-block', marginLeft: '10px'}}>Select your club</h5>
+          <div className="land-div" >
+            <h5 className="land-inline">1.</h5>
+            <h5 className="land-team-text">Select your club</h5>
           </div>
-          <div style={styleNoTeamId.div}>
-            <h5 style={styleInline}>2.</h5>
-            <h5 style={{display: 'inline-block', marginLeft: '10px'}}>Click to support club</h5>
+          <div className="land-div">
+            <h5 className="land-inline">2.</h5>
+            <h5 className="land-team-text">Click to support club</h5>
           </div>
-          <div style={styleNoTeamId.div}>
-            <h5 style={styleInline}>3.</h5>
-            <h5 style={{display: 'inline-block', marginLeft: '10px'}}>Create Account</h5>
+          <div className="land-div">
+            <h5 className="land-inline">3.</h5>
+            <h5 className="land-team-text">Create Account</h5>
           </div>
-          <div style={styleNoTeamId.div}>
-            <h5 style={styleInline}>4.</h5>
-            <h5 style={{display: 'inline-block', marginLeft: '10px'}}>Never miss a match!</h5>
+          <div className="land-div">
+            <h5 className="land-inline">4.</h5>
+            <h5 className="land-team-text">Never miss a match!</h5>
           </div>
         </div>
         <div className="col s5 center">
-          <img src="./images/ball2.png" style={{height: '284px'}}/>
+          <img src="./images/ball2.png" className="land-team-img"/>
         </div>
       </div>;
 
-      name = <div style={{color: 'lightgrey'}}>Club Name</div>;
-      founded = <div style={{color: 'lightgrey'}}>Founded</div>;
-      coach = <div style={{color: 'lightgrey'}}>Coach</div>;
-      stadium = <div style={{color: 'lightgrey'}}>Stadium</div>;
-      city = <div style={{color: 'lightgrey'}}>City</div>;
+      name = <div className="land-text-color">Club Name</div>;
+      founded = <div className="land-text-color">Founded</div>;
+      coach = <div className="land-text-color">Coach</div>;
+      stadium = <div className="land-text-color">Stadium</div>;
+      city = <div className="land-text-color">City</div>;
 
     } else {
       welcome = <div>
         <div className="col s7 center matchInfo" style={styleStadium}>
-          <h3 style={{marginTop: '30px', textDecoration: 'underline'}}>Next Match</h3>
+          <h3 className="land-next-match">Next Match</h3>
           <p>{this.state.match[0].date}</p>
           <p>{this.state.match[0].pacific}</p>
           <h5>{this.state.match[0].localteam_name} v {this.state.match[0].visitorteam_name}</h5>
           <p>{this.state.match[0].venue}</p>
         </div>
         <div className="col s5 center">
-          <img src={this.state.clubImg.kit} style={{height: '284px'}}/>
+          <img src={this.state.clubImg.kit} className="land-team-img"/>
         </div>
       </div>;
 
@@ -254,23 +175,14 @@ const Landing = React.createClass({
       city = <div>{this.state.club.venue_city}</div>;
     }
 
-
-
-
-
-
-
-
-
-
     return <div>
-      <div className="row center" style={{marginBottom: '5px'}}>
-          <img className="responsive-img" style={styleBanner} src="./images/banner.png" />
+      <div className="row center land-team-banner">
+          <img className="responsive-img land-banner" src="./images/banner.png" />
       </div>
 
       <div className="row">
         <div className="col s12 l6">
-          <img className="center" style={styleWho} src="./images/who.png" />
+          <img className="center land-who" src="./images/who.png" />
           <div className="flex-container-1">
             {this.state.clubs.map((element) => {
               const style = {
@@ -285,11 +197,11 @@ const Landing = React.createClass({
               return <div key={element.id}>
                 <Paper style={style} circle={true} zDepth={3} >
                   <FlatButton
-                    style={styleClubsBtn}
+                    className="land-club-btn"
                     onClick={() => this.handleClub(element.team_id)}
                   />
                 </Paper>
-                <p style={styleLogoP}>{element.name}</p>
+                <p className="land-logo">{element.name}</p>
               </div>;
             })}
           </div>
@@ -297,10 +209,10 @@ const Landing = React.createClass({
         <div className="col s12 l6 right">
           <div className="section"></div>
           <Card>
-            <div className="row landHeader titleImg">
-              <div className="col s7" style={{marginBottom: '6px'}}>
+            <div className="row landHeader land-title-img">
+              <div className="col s7 land-title-img-div">
                 <div style={styleTeamHeader}></div>
-                <h5 style={styleClubName}>{this.state.club.name}</h5>
+                <h5 className="land-club-name">{this.state.club.name}</h5>
               </div>
               <div className="col s5">
                 <div className="section support"></div>
@@ -314,7 +226,7 @@ const Landing = React.createClass({
                 />
               </div>
             </div>
-            <div className="row" style={{borderTop: '1px solid whitesmoke', borderBottom: '1px solid whitesmoke', height: '286px'}}>
+            <div className="row land-welcome-box">
               {welcome}
             </div>
             <div className="cardTitle logPad">Club Standing</div>
@@ -345,48 +257,48 @@ const Landing = React.createClass({
               </Table>
             </CardText>
             <div className="cardTitle logPad">Overview</div>
-            <CardText style={{padding: '0px'}}>
-              <div className="row center" style={{margin: '5px'}}>
+            <CardText className="land-card-text">
+              <div className="row center land-card-row">
                 <div className="col s10 offset-s1">
                   <Table>
                     <TableBody displayRowCheckbox={false}>
                       <TableRow>
-                        <TableRowColumn style={styleHistory}>
+                        <TableRowColumn className="land-history">
                           <img src="./images/icons/jersey.png" />
                         </TableRowColumn>
-                        <TableRowColumn style={styleHistory}>
+                        <TableRowColumn className="land-history">
                           {name}
                         </TableRowColumn>
                       </TableRow>
                       <TableRow>
-                        <TableRowColumn style={styleHistory}>
+                        <TableRowColumn className="land-history">
                           <img src="./images/icons/history.png" />
                         </TableRowColumn>
-                        <TableRowColumn style={styleHistory}>
+                        <TableRowColumn className="land-history">
                           {founded}
                         </TableRowColumn>
                       </TableRow>
                       <TableRow>
-                        <TableRowColumn style={styleHistory}>
+                        <TableRowColumn className="land-history">
                           <img src="./images/icons/player.png" />
                         </TableRowColumn>
-                        <TableRowColumn style={styleHistory}>
+                        <TableRowColumn className="land-history">
                           {coach}
                         </TableRowColumn>
                       </TableRow>
                       <TableRow>
-                        <TableRowColumn style={styleHistory}>
+                        <TableRowColumn className="land-history">
                           <img src="./images/icons/stadium.png" />
                         </TableRowColumn>
-                        <TableRowColumn style={styleHistory}>
+                        <TableRowColumn className="land-history">
                           {stadium}
                         </TableRowColumn>
                       </TableRow>
                       <TableRow>
-                        <TableRowColumn style={styleHistory}>
+                        <TableRowColumn className="land-history">
                           <img src="./images/icons/city.png" />
                         </TableRowColumn>
-                        <TableRowColumn style={styleHistory}>
+                        <TableRowColumn className="land-history">
                           {city}
                         </TableRowColumn>
                       </TableRow>

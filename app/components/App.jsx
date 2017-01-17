@@ -43,31 +43,9 @@ const App = React.createClass({
   },
 
   render() {
-    const styles = {
-      title: {
-        cursor: 'pointer',
-        width: '58px',
-        borderRadius: '50%',
-        border: '2px solid #fe005a',
-        marginTop: '3px'
-      },
-      background: {
-        backgroundColor: '#38003d',
-      },
-      text: {
-        // color: '#00ffa1'
-        color: '#fe005a'
-      },
-      logo: {
-        height: '40px',
-        marginBottom: '10px',
-        marginLeft: '10px'
-      }
-    };
-
     let appBarLogin = <div>
       <FlatButton
-        style={styles.text}
+        className="app-text"
         label="Login"
         onClick={() => browserHistory.push('/login')}
       />
@@ -76,12 +54,12 @@ const App = React.createClass({
     if (document.cookie) {
       appBarLogin = <div>
         <FlatButton
-          style={styles.text}
+          className="app-text"
           label="Profile"
           onClick={() => browserHistory.push('/profile')}
         />
         <FlatButton
-          style={styles.text}
+          className="app-text"
           label="Logout"
           onClick={this.handleLogOut}
         />
@@ -90,11 +68,11 @@ const App = React.createClass({
 
     return <div>
       <AppBar
-        style={styles.background}
+        className="app-background"
         title={
           <a href="/">
-            <img style={styles.title} src="./images/logo.png" />
-            <img style={styles.logo} src="./images/matchday.png" />
+            <img className="app-title" src="./images/logo.png" />
+            <img className="app-logo" src="./images/matchday.png" />
           </a>
         }
         showMenuIconButton={false}

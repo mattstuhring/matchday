@@ -12,6 +12,188 @@ body {
   width: 100%;
 }
 
+/* APP Styling */
+.app-title {
+  cursor: pointer !important;
+  width: 58px !important;
+  border-radius: 50% !important;
+  border: 2px solid #fe005a !important;
+  margin-top: 3px !important;
+}
+
+.app-background {
+  background-color: #38003d !important;
+}
+
+.app-text {
+  color: #fe005a !important;
+}
+
+.app-logo {
+  height: 40px !important;
+  margin-bottom: 10px !important;
+  margin-left: 10px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* LANDING style */
+.land-banner {
+  width: 100% !important;
+  margin-top: 25px !important;
+}
+
+.land-who {
+  width: 100% !important;
+  margin-top: 45px !important;
+  margin-bottom: 25px !important;
+}
+
+.land-club-btn {
+  border-radius: 50% !important;
+  width: 120px !important;
+  height: 120px !important;
+  position: relative !important;
+  right: 9px !important;
+  bottom: 9px !important;
+}
+
+.land-inline {
+  display: inline-block !important;
+}
+
+.land-match-1 {
+  position: relative !important;
+  bottom: 15px !important;
+  display: inline-block !important;
+  margin-right: 10px !important;
+}
+
+.land-match-2 {
+  display: inline-block !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  position: relative !important;
+  bottom: 15px !important;
+}
+
+.land-match-3 {
+  position: relative !important;
+  bottom: 15px !important;
+  display: inline-block !important;
+  margin-left: 10px !important;
+}
+
+.land-logo {
+  margin-top: 0px !important;
+  text-align: center !important;
+  margin-bottom: 25px !important;
+}
+
+.land-club-name {
+  display: inline-block !important;
+  position: relative !important;
+  bottom: 10px !important;
+  margin-left: 20px !important;
+  color: white !important;
+}
+
+.land-history {
+  padding: 5px 5px !important;
+}
+
+.land-team-welcome {
+  text-decoration: underline !important;
+  margin-bottom: 5px !important;
+}
+
+.land-team-box {
+  background-color: whitesmoke !important;
+  color: #38003d !important;
+  padding-bottom: 13px !important;
+}
+
+.land-team-text {
+  display: inline-block !important;
+  margin-left: 10px !important;
+}
+
+.land-div {
+  margin-left: 80px !important;
+}
+
+.land-text-color {
+  color: lightgrey !important;
+}
+
+.land-next-match {
+  margin-top: 30px !important;
+  text-decoration: underline !important;
+}
+
+.land-team-banner {
+  margin-bottom: 5px !important;
+}
+
+.land-welcome-box {
+  border-top: 1px solid whitesmoke !important;
+  border-bottom: 1px solid whitesmoke !important;
+  height: 286px !important;
+}
+
+.land-card-text {
+  padding: 0px !important;
+}
+
+.land-card-row {
+  margin: 5px !important;
+}
+
+.land-title-img-div {
+  margin-bottom: 6px !important;
+}
+
+.land-title-img {
+  background-image: url('./images/title.png') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  width: 100% !important;
+}
+
+.land-team-img {
+  height: 284px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .flex-container-1 {
   display:flex;
   flex-direction: row;
@@ -106,12 +288,12 @@ body {
   margin-top: 0;
 }
 
-.titleImg {
+/*.titleImg {
   background-image: url('./images/title.png');
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-}
+}*/
 
 input[type=text]:focus:not([readonly]) {
   box-shadow: none;
