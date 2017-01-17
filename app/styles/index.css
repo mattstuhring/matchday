@@ -180,10 +180,86 @@ body {
   height: 284px !important;
 }
 
+/* LOGIN style */
+.log-account {
+  margin-top: 30px !important;
+  margin-bottom: 10px !important;
+  padding: 20px 0px !important;
+  background-color: #00ffa1 !important;
+}
 
+.log-account img {
+  width: 40% !important;
+}
 
+.log-ball {
+  margin-top: 30px !important;
+}
 
+.log-card-title {
+  color: white !important;
+  background-image: url('./images/title.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  margin-top: 0px !important;
+  padding: 16px !important;
+}
 
+.log-login {
+  margin-bottom: 0px !important;
+}
+
+.log-paper {
+  margin-bottom: 50px !important;
+}
+
+.log-paper-done {
+  display: inline-block !important;
+  color: #fe005a !important;
+}
+
+.log-paper-h5 {
+  display: inline-block !important;
+  margin-left: 15px !important;
+}
+
+.log-paper-div {
+  margin-left: 50px !important;
+}
+
+.log-paper-header {
+  background-color: #38003d !important;
+  color: white !important;
+  padding: 15px !important;
+}
+
+.log-paper-p {
+  text-decoration: underline !important;
+}
+
+.log-inline {
+  display: inline-block !important;
+}
+
+.log-epl-standings {
+  display: inline-block !important;
+  margin-bottom: 53px !important;
+  margin-left: 15px !important;
+}
+
+.log-text-field {
+  margin-top: 20px !important;
+}
+
+.log-btn-div {
+  height: 74px !important;
+  padding-top: 20px !important;
+}
+
+.log-reg-btn {
+  margin-right: 30px !important;
+}
 
 
 
@@ -226,13 +302,7 @@ body {
   margin-bottom: 20px;
 }
 
-.cardTitle {
-  color: white !important;
-  background-image: url('./images/title.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-}
+
 
 .logPad {
   padding: 16px 16px;

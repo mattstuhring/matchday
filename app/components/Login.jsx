@@ -48,21 +48,20 @@ const Login = React.createClass({
   render() {
     return <div>
       <div className="row">
-        <div className="col s12 center" style={{marginTop: '30px', marginBottom: '10px', padding: '20px 0px', backgroundColor: '#00ffa1'}}>
-          <img style={{width: '40%'}} src="./images/account.png" />
+        <div className="col s12 center log-account">
+          <img src="./images/account.png" />
         </div>
       </div>
 
       <div className="row container">
         <div className="col s12 l6">
           <Paper zDepth={3}>
-            <h4 className="cardTitle" style={{marginTop: '0px', padding: '16px', marginBottom: '0px'}}>Login</h4>
+            <h4 className="log-card-title log-login">Login</h4>
             <div className="row">
               <div className="col s10 offset-s1 center">
                 <div>
                   <TextField
-                    className="textField"
-                    style={{marginTop: '20px'}}
+                    className="log-text-field"
                     hintText="Email"
                     floatingLabelText="Email"
                     name="email"
@@ -78,10 +77,9 @@ const Login = React.createClass({
                     onChange={this.handleTextChange}
                   />
                 </div>
-                <div style={{height: '74px'}}>
+                <div className="log-btn-div">
                   <RaisedButton
-                    className="regBtn"
-                    style={{marginRight: '20px'}}
+                    className="log-reg-btn"
                     label="Submit"
                     labelPosition="before"
                     backgroundColor={"#00ffa1"}
@@ -90,7 +88,6 @@ const Login = React.createClass({
                     onClick={this.handleLogin}
                   />
                   <RaisedButton
-                    className="regBtn"
                     label="Cancel"
                     labelPosition="before"
                     backgroundColor={"#00ffa1"}
@@ -103,7 +100,7 @@ const Login = React.createClass({
             </div>
             <div className="row">
               <div className="col s12 center">
-                <img src="./images/ball.png" style={{marginTop: '30px'}}/>
+                <img src="./images/ball.png" className="log-ball"/>
               </div>
             </div>
           </Paper>
@@ -112,27 +109,27 @@ const Login = React.createClass({
 
         <div className="col s12 l6">
           <Paper zDepth={3}>
-            <h4 className="cardTitle" style={{marginTop: '0px', padding: '16px'}}>Register</h4>
+            <h4 className="log-card-title">Register</h4>
             <div className="row">
               <div className="col s10 offset-s1">
-                <Paper zDepth={2} style={{marginBottom: '50px'}}>
-                  <h5 className="center" style={{backgroundColor: '#38003d', color: 'white', padding: '15px'}}>Don't have a Matchday account?</h5>
-                  <p className="center" style={{textDecoration: 'underline'}}>Here's what you are missing:</p>
-                  <div style={{marginLeft: '50px'}}>
-                    <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <h5 style={{display: 'inline-block', marginLeft: '15px'}}>SMS match reminders</h5>
+                <Paper zDepth={2} className="log-paper">
+                  <h5 className="center log-paper-header">Don't have a Matchday account?</h5>
+                  <p className="center log-paper-p">Here's what you are missing:</p>
+                  <div className="log-paper-div">
+                    <Done className="log-paper-done" />
+                    <h5 className="log-paper-h5">SMS match reminders</h5>
                   </div>
-                  <div style={{marginLeft: '50px'}}>
-                    <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <h5 style={{display: 'inline-block', marginLeft: '15px'}}>Weekly Match schedule</h5>
+                  <div className="log-paper-div">
+                    <Done className="log-paper-done" />
+                    <h5 className="log-paper-h5">Weekly Match schedule</h5>
                   </div>
-                  <div style={{marginLeft: '50px'}}>
-                    <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <h5 style={{display: 'inline-block', marginLeft: '15px'}}>Favorite club news</h5>
+                  <div className="log-paper-div">
+                    <Done className="log-paper-done" />
+                    <h5 className="log-paper-h5">Favorite club news</h5>
                   </div>
-                  <div style={{marginLeft: '50px'}}>
-                    <Done style={{display: 'inline-block', color: '#fe005a'}} />
-                    <h5 style={{display: 'inline-block', marginBottom: '53px', marginLeft: '15px'}}>Epl standings</h5>
+                  <div className="log-paper-div">
+                    <Done className="log-paper-done" />
+                    <h5 className="log-epl-standings">Epl standings</h5>
                   </div>
                   <RaisedButton
                     label="Click to go register"
