@@ -526,6 +526,7 @@ body {
 
 .land-header {
   margin-bottom: 20px;
+  height: 75px !important;
 }
 
 .log-pad {

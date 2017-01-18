@@ -187,7 +187,7 @@ const Profile = React.createClass ({
 
       this.props.setToast(
         true,
-        'Success!!!'
+        'Test SMS was a success!  Renew Twilio subscription :('
       );
     })
     .catch((err) => {
