@@ -97,7 +97,6 @@ const Register = React.createClass({
     this.formatPhoneNumber(this.state.user.phoneNumber);
 
     const user = this.state.user;
-    console.log(user);
 
     axios.post('/api/users', user)
       .then(() => {
@@ -116,29 +115,18 @@ const Register = React.createClass({
     const user = this.state.user;
     const errors = this.state.errors;
 
-    const styleRegClubsBtn = {
-      borderRadius: '50%',
-      minWidth: '80px',
-      height: '80px',
-      position: 'relative',
-      right: '9px',
-      bottom: '8px'
-    };
-
-console.log(this.state);
-
     return <div>
       <div className="row">
-        <div className="col s12 center" style={{marginTop: '30px', marginBottom: '10px', padding: '20px 0px', backgroundColor: '#00ffa1'}}>
-          <img style={{width: '58%'}} src="./images/create.png" />
+        <div className="col s12 center reg-create">
+          <img className="reg-create-img" src="./images/create.png" />
         </div>
       </div>
       <Paper zDepth={3} className="container">
         <div className="row">
           <div className="row center">
-            <div className="col s10 offset-s1" style={{ marginTop: '20px'}}>
-              <h4 className="regFormTitle cardTitle">Who do you support?</h4>
-              <div className="flex-container-1" style={{marginTop: '20px'}}>
+            <div className="col s10 offset-s1">
+              <h4 className="card-title reg-support">Who do you support?</h4>
+              <div className="reg-flex-container">
                 {this.state.clubs.map((element) => {
                   const style = {
                     height: 60,
@@ -158,7 +146,7 @@ console.log(this.state);
                       className="circle"
                     >
                       <FlatButton
-                        style={styleRegClubsBtn}
+                        className="reg-club-btn"
                         onClick={() => this.handleClub(element.team_id)}
                       />
                     </Paper>
@@ -171,8 +159,8 @@ console.log(this.state);
             <div className="divider col s10 offset-s1" />
           </div>
           <div className="row">
-            <div className="col s10 offset-s1 cardTitle">
-              <h4 style={{marginLeft: '10px'}}>Your Personal Details</h4>
+            <div className="col s10 offset-s1 reg-details-title">
+              <h4 className="reg-details">Your Personal Details</h4>
             </div>
           </div>
           <div className="col s5 offset-s1 regForm">
@@ -241,7 +229,7 @@ console.log(this.state);
             <div className="row">
               <div className="col s11 center reg-btn">
                 <RaisedButton
-                  style={{marginRight: '20px', marginBottom: '10px'}}
+                  className="reg-submit-btn"
                   backgroundColor={"#00ffa1"}
                   label="Submit"
                   labelColor={"#38003d"}
@@ -262,9 +250,9 @@ console.log(this.state);
           </div>
           <div className="col s5 center regKit">
             <Paper zDepth={2}>
-              <h4 style={{padding: '5px 0px', marginTop: '0px', backgroundColor: '#38003d', color: 'white'}}>Club</h4>
+              <h4 className="reg-club">Club</h4>
               <p>{this.state.user.name}</p>
-              <img style={{marginBottom: '20px'}} src={this.state.user.kit} className="responsive-img"/>
+              <img src={this.state.user.kit} className="responsive-img reg-club-img"/>
             </Paper>
           </div>
         </div>

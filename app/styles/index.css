@@ -12,6 +12,19 @@ body {
   width: 100%;
 }
 
+
+
+/* Styles apply to all pages */
+.card-title {
+  background-image: url('./images/title.png');
+  color: white !important;
+  background-size: cover  !important;
+  background-repeat: no-repeat  !important;
+  width: 100%  !important;
+}
+
+
+
 /* APP Styling */
 .app-title {
   cursor: pointer !important;
@@ -34,21 +47,6 @@ body {
   margin-bottom: 10px !important;
   margin-left: 10px !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -180,6 +178,26 @@ body {
   height: 284px !important;
 }
 
+.land-support {
+  padding-top: 0 !important;
+  padding-left: 5px !important;
+}
+
+.land-support-club {
+  margin-top: 7px !important;
+}
+
+.land-flex-container {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+
+
 /* LOGIN style */
 .log-account {
   margin-top: 30px !important;
@@ -260,18 +278,6 @@ body {
 .log-reg-btn {
   margin-right: 30px !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -414,65 +420,41 @@ body {
 
 
 
+/* REGISTER styles */
+.reg-club-btn {
+  border-radius: 50% !important;
+  min-width: 80px !important;
+  height: 80px !important;
+  position: relative !important;
+  right: 9px !important;
+  bottom: 8px !important;
+}
 
+.reg-details {
+  margin-left: 10px !important;
+}
 
+.reg-submit-btn {
+  margin-right: 20px !important;
+  margin-bottom: 10px !important;
+}
 
+.reg-club {
+  padding: 5px 0px !important;
+  margin-top: 0px !important;
+  background-color: #38003d !important;
+  color: white !important;
+}
 
+.reg-club-img {
+  margin-bottom: 20px !important;
+}
 
-.cardTitle {
+.reg-details-title {
   background-image: url('./images/title.png');
   color: white !important;
   background-size: cover  !important;
   background-repeat: no-repeat  !important;
-  width: 100%  !important;
-}
-
-
-.flex-container-1 {
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.support {
-  padding-top: 0 !important;
-  padding-left: 5px;
-}
-
-.supportClub {
-  margin-top: 7px;
-}
-
-.matchInfo {
-  background-repeat: no-repeat;
-  color: white !important;
-}
-
-.matchInfoTemp {
-  background-image: url('./images/stadiums/man-u.jpg');
-  background-repeat: no-repeat;
-  color: white !important;
-}
-
-.landHeader {
-  margin-bottom: 20px;
-}
-
-
-
-.logPad {
-  padding: 16px 16px;
-}
-
-.logCard {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.clubs {
-  width: 50px !important;
 }
 
 .reg-btn {
@@ -503,25 +485,56 @@ body {
   text-align: left;
 }
 
-.landFlatBtn {
-  margin-top: 7px;
-  border-radius: 50%;
-  height: 99px;
-  width: 99px;
+.reg-support {
+  padding: 15px 0px !important;
 }
 
-.proClubNews {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-top: 0;
+.reg-flex-container {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px !important;
 }
 
-/*.titleImg {
-  background-image: url('./images/title.png');
-  background-size: cover;
+.reg-create {
+  margin-top: 30px !important;
+  margin-bottom: 10px !important;
+  padding: 20px 0px !important;
+  background-color: #00ffa1 !important;
+}
+
+.reg-create-img {
+  width: 58% !important;
+}
+
+
+
+
+
+.match-info {
   background-repeat: no-repeat;
-  width: 100%;
-}*/
+  color: white !important;
+}
+
+.match-info-temp {
+  background-image: url('./images/stadiums/man-u.jpg');
+  background-repeat: no-repeat;
+  color: white !important;
+}
+
+.land-header {
+  margin-bottom: 20px;
+}
+
+.log-pad {
+  padding: 16px 16px;
+}
+
+.clubs {
+  width: 50px !important;
+}
 
 input[type=text]:focus:not([readonly]) {
   box-shadow: none;

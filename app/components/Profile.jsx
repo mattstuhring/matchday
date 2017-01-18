@@ -285,7 +285,7 @@ const Profile = React.createClass ({
                   src="./images/kits/manchester-united-j.jpg"
                 />
               </div>
-              <div className="col s7 center matchInfoTemp">
+              <div className="col s7 center match-info-temp">
                 <h3 className="pro-info-title">Next Match</h3>
                 <div className="row pro-info">
                   <TextField
@@ -380,7 +380,7 @@ const Profile = React.createClass ({
 
 
               {/* SMS SAVED MATCHES */}
-              <div className="cardTitle pro-sms-title">Recently Texted Match Reminders</div>
+              <div className="card-title pro-sms-title">Recently Texted Match Reminders</div>
               <CardText className="pro-card-text">
                 <Table className="pro-sms-table">
                   <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
@@ -423,7 +423,7 @@ const Profile = React.createClass ({
 
 
         <div className="col s12 l6">
-          <h3 className="center cardTitle pro-overview">Overview</h3>
+          <h3 className="center card-title pro-overview">Overview</h3>
 
         {/* TABS - OVERWIEW */}
           <Tabs>

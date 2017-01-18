@@ -156,7 +156,7 @@ const Landing = React.createClass({
 
     } else {
       welcome = <div>
-        <div className="col s7 center matchInfo" style={styleStadium}>
+        <div className="col s7 center match-info" style={styleStadium}>
           <h3 className="land-next-match">Next Match</h3>
           <p>{this.state.match[0].date}</p>
           <p>{this.state.match[0].pacific}</p>
@@ -183,7 +183,7 @@ const Landing = React.createClass({
       <div className="row">
         <div className="col s12 l6">
           <img className="center land-who" src="./images/who.png" />
-          <div className="flex-container-1">
+          <div className="land-flex-container">
             {this.state.clubs.map((element) => {
               const style = {
                 height: '100px',
@@ -209,15 +209,15 @@ const Landing = React.createClass({
         <div className="col s12 l6 right">
           <div className="section"></div>
           <Card>
-            <div className="row landHeader land-title-img">
+            <div className="row land-header land-title-img">
               <div className="col s7 land-title-img-div">
                 <div style={styleTeamHeader}></div>
                 <h5 className="land-club-name">{this.state.club.name}</h5>
               </div>
               <div className="col s5">
-                <div className="section support"></div>
+                <div className="section land-support"></div>
                 <RaisedButton
-                  className="supportClub"
+                  className="land-support-club"
                   label="Click to Support Club!"
                   backgroundColor={"#00ffa1"}
                   labelColor={"#38003d"}
@@ -229,7 +229,7 @@ const Landing = React.createClass({
             <div className="row land-welcome-box">
               {welcome}
             </div>
-            <div className="cardTitle logPad">Club Standing</div>
+            <div className="card-title log-pad">Club Standing</div>
             <CardText>
               <Table>
                 <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
@@ -256,7 +256,7 @@ const Landing = React.createClass({
                 </TableBody>
               </Table>
             </CardText>
-            <div className="cardTitle logPad">Overview</div>
+            <div className="card-title log-pad">Overview</div>
             <CardText className="land-card-text">
               <div className="row center land-card-row">
                 <div className="col s10 offset-s1">
