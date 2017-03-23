@@ -23,14 +23,8 @@ const Landing = React.createClass({
     return {
       clubs: [],
       club: {
-        statistics: [
-          {rank: ''},
-          {wins: ''},
-          {draws: ''},
-          {losses: ''},
-          {goals: ''},
-          {goals_conceded: ''}
-        ],
+        clubFacts: {},
+        team: {}
       },
       match: [
         {time: ''},
@@ -64,6 +58,7 @@ const Landing = React.createClass({
 
     axios.get(`/api/clubs/team/${id}`)
       .then((res) => {
+        console.log(res.data, 'clubs/team/id !!!!!!!!!!!!!!!!!!!!!!!!');
         this.setState({ club: res.data });
       })
       .catch((err) => {
@@ -168,19 +163,22 @@ const Landing = React.createClass({
         </div>
       </div>;
 
-      name = <div>{this.state.club.name}</div>;
-      founded = <div>{this.state.club.founded}</div>;
-      coach = <div>{this.state.club.coach_name}</div>;
-      stadium = <div>{this.state.club.venue_name}</div>;
-      city = <div>{this.state.club.venue_city}</div>;
+      name = <div>{this.state.club.clubFacts.name}</div>;
+      founded = <div>{this.state.club.clubFacts.founded}</div>;
+      coach = <div>{this.state.club.clubFacts.coach_name}</div>;
+      stadium = <div>{this.state.club.clubFacts.venue_name}</div>;
+      city = <div>{this.state.club.clubFacts.venue_city}</div>;
     }
 
     return <div>
+
+      {/* Matchday banner */}
       <div className="row center land-team-banner">
           <img className="responsive-img land-banner" src="./images/banner.png" />
       </div>
 
       <div className="row">
+        {/* Team logos */}
         <div className="col s12 l6">
           <img className="center land-who" src="./images/who.png" />
           <div className="land-flex-container">
@@ -206,13 +204,15 @@ const Landing = React.createClass({
             })}
           </div>
         </div>
+
+
         <div className="col s12 l6 right">
           <div className="section"></div>
           <Card>
             <div className="row land-header land-title-img">
               <div className="col s7 land-title-img-div">
                 <div style={styleTeamHeader}></div>
-                <h5 className="land-club-name">{this.state.club.name}</h5>
+                <h5 className="land-club-name">{this.state.club.team.team_name}</h5>
               </div>
               <div className="col s5">
                 <div className="section land-support"></div>
@@ -237,21 +237,21 @@ const Landing = React.createClass({
                     <TableHeaderColumn>#</TableHeaderColumn>
                     <TableHeaderColumn>Club</TableHeaderColumn>
                     <TableHeaderColumn>W</TableHeaderColumn>
-                    <TableHeaderColumn>T</TableHeaderColumn>
+                    <TableHeaderColumn>D</TableHeaderColumn>
                     <TableHeaderColumn>L</TableHeaderColumn>
-                    <TableHeaderColumn>GF</TableHeaderColumn>
-                    <TableHeaderColumn>GA</TableHeaderColumn>
+                    <TableHeaderColumn>Round</TableHeaderColumn>
+                    <TableHeaderColumn>Pts</TableHeaderColumn>
                   </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
                   <TableRow>
-                    <TableRowColumn>{this.state.club.statistics[0].rank}</TableRowColumn>
-                    <TableRowColumn>{this.state.club.name}</TableRowColumn>
-                    <TableRowColumn>{this.state.club.statistics[0].wins}</TableRowColumn>
-                    <TableRowColumn>{this.state.club.statistics[0].draws}</TableRowColumn>
-                    <TableRowColumn>{this.state.club.statistics[0].losses}</TableRowColumn>
-                    <TableRowColumn>{this.state.club.statistics[0].goals}</TableRowColumn>
-                    <TableRowColumn>{this.state.club.statistics[0].goals_conceded}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.team.position}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.team.team_name}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.team.overall_w}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.team.overall_d}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.team.overall_l}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.team.round}</TableRowColumn>
+                    <TableRowColumn>{this.state.club.team.points}</TableRowColumn>
                   </TableRow>
                 </TableBody>
               </Table>

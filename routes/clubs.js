@@ -19,13 +19,14 @@ router.get('/clubs', (req, res, next) => {
 });
 
 router.get('/clubs/matches', (req, res, next) => {
-  const start = moment().startOf('week').add('days', 2).format('DD.MM.YYYY');
-  const end = moment().endOf('week').add('days', 2).format('DD.MM.YYYY');
+
+  const start = moment().startOf('week').add(1, 'days').format('DD.MM.YYYY');
+  const end = moment().endOf('week').add(1, 'days').format('DD.MM.YYYY');
+  console.log(start, 'start');
+  console.log(end, 'end');
 
   axios.get(`http://api.football-api.com/2.0/matches?comp_id=1204&team_id=9002%2C%209053%2C%209072%2C%209092%2C%209127%2C%209158%2C%209221%2C%209240%2C%209249%2C%209259%2C%209260%2C%209274%2C%209363%2C%209378%2C%209384%2C%209387%2C%209406%2C%209423%2C%209426%2C%209427&from_date=${start}&to_date=${end}&Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
     .then((matches) => {
-
-      //  console.log('here are the matches', matches.data);
 
         for (let i = 0; i < matches.data.length; i++) {
           let d = moment(matches.data[i].formatted_date, "DD-MM-YYYY").format("MM-DD-YYYY");
@@ -39,7 +40,7 @@ router.get('/clubs/matches', (req, res, next) => {
           d = moment(matches.data[i].formatted_date, "DD-MM-YYYY").format("dddd, MMMM Do YYYY");
           matches.data[i].date = d;
         }
-        console.log(matches.data);
+
       res.send(matches.data);
     })
     .catch((err) => {
@@ -73,8 +74,8 @@ router.get('/clubs/:id', (req, res, next) => {
 
 router.get('/clubs/match/:id', (req, res, next) => {
   const { id } = req.params;
-  const start = moment().startOf('week').add(2, 'days').format('DD.MM.YYYY');
-  const end = moment().endOf('week').add(2, 'days').format('DD.MM.YYYY');
+  const start = moment().startOf('week').add(1, 'days').format('DD.MM.YYYY');
+  const end = moment().endOf('week').add(1, 'days').format('DD.MM.YYYY');
 
   axios.get(`http://api.football-api.com/2.0/matches?comp_id=1204&team_id=${id}&from_date=${start}&to_date=${end}&Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
     .then((match) => {
@@ -94,12 +95,52 @@ router.get('/clubs/match/:id', (req, res, next) => {
     });
 });
 
+// router.get('/clubs/team/:id', (req, res, next) => {
+//   const { id } = req.params;
+//
+//   axios.get('http://api.football-api.com/2.0/standings/1204?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822')
+//   .then((team) => {
+//
+//     const teamId = id.toString();
+//
+//     function findTeam(t) {
+//       return t.team_id === teamId;
+//     }
+//
+//     res.send(team.data.find(findTeam));
+//   })
+//   .catch((err) => {
+//     next(err);
+//   });
+// });
+
 router.get('/clubs/team/:id', (req, res, next) => {
   const { id } = req.params;
 
-  axios.get(`http://api.football-api.com/2.0/team/${id}?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
+  axios.get('http://api.football-api.com/2.0/standings/1204?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822')
   .then((team) => {
-    res.send(team.data);
+
+    const teamId = id.toString();
+
+    function findTeam(t) {
+      return t.team_id === teamId;
+    }
+
+    return team.data.find(findTeam);
+  })
+  .then((team) => {
+
+    return axios.get(`http://api.football-api.com/2.0/team/${parseInt(team.team_id)}?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
+      .then((facts) => {
+        console.log(facts.data, '$$$$$$$$$$$$$$$$$$$');
+        console.log(team, '@@@@@@@@@@@@@@@@@');
+        const clubFacts = facts.data;
+        // const result = { history: res.data, team: team }
+        res.send({ clubFacts, team });
+      })
+      .catch((err) => {
+        next(err);
+      });
   })
   .catch((err) => {
     next(err);

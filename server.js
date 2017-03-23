@@ -56,19 +56,7 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-// app.use(passport.initialize());
-// app.use(passport.session());
 
-passport.serializeUser((user, done) => {
-  done(null, user);
-});
-
-passport.deserializeUser((obj, done) => {
-  done(null, obj);
-});
-
-// Routes go here
-// app.use('/auth', auth);
 app.use('/api', users);
 app.use('/api', clubs);
 app.use('/api', token);
