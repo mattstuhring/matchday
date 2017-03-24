@@ -73,7 +73,9 @@ const Profile = React.createClass ({
   componentWillMount() {
     axios.get('api/me/team')
       .then((res) => {
-        this.setState({match: res.data.teamInfo.game, statistics: res.data.teamInfo.statistics[0], clubImg: res.data.clubImg});
+        console.log(res, '$$$$$$$$$$$');
+
+        this.setState({match: res.data.teamInfo.game, statistics: res.data.teamInfo.result, clubImg: res.data.clubImg});
       })
       .catch((err) => {
         this.props.setToast(
@@ -339,6 +341,9 @@ const Profile = React.createClass ({
                 />
               </div>
             </div>
+
+            <div className="card-title log-pad">Club Standing</div>
+
             <Card>
               <CardText>
                 <Table>
@@ -350,15 +355,15 @@ const Profile = React.createClass ({
                       <TableHeaderColumn>#</TableHeaderColumn>
                       <TableHeaderColumn>Club</TableHeaderColumn>
                       <TableHeaderColumn>W</TableHeaderColumn>
-                      <TableHeaderColumn>T</TableHeaderColumn>
+                      <TableHeaderColumn>D</TableHeaderColumn>
                       <TableHeaderColumn>L</TableHeaderColumn>
-                      <TableHeaderColumn>GF</TableHeaderColumn>
-                      <TableHeaderColumn>GA</TableHeaderColumn>
+                      <TableHeaderColumn>Round</TableHeaderColumn>
+                      <TableHeaderColumn>Pts</TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
                   <TableBody displayRowCheckbox={false}>
                     <TableRow>
-                      <TableRowColumn className="pro-table-pad" >{this.state.statistics.rank}</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad" >{this.state.statistics.position}</TableRowColumn>
                       <TableRowColumn className="pro-table-avatar">
                         <Avatar
                           src="./images/clubs/Manchester-United.png"
@@ -367,11 +372,11 @@ const Profile = React.createClass ({
                           backgroundColor={fullWhite}
                         />
                       </TableRowColumn>
-                      <TableRowColumn className="pro-table-pad">{this.state.statistics.wins}</TableRowColumn>
-                      <TableRowColumn className="pro-table-pad">{this.state.statistics.draws}</TableRowColumn>
-                      <TableRowColumn className="pro-table-pad">{this.state.statistics.losses}</TableRowColumn>
-                      <TableRowColumn className="pro-table-pad">{this.state.statistics.goals}</TableRowColumn>
-                      <TableRowColumn className="pro-table-pad">22</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad">{this.state.statistics.overall_w}</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad">{this.state.statistics.overall_d}</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad">{this.state.statistics.overall_l}</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad">{this.state.statistics.round}</TableRowColumn>
+                      <TableRowColumn className="pro-table-pad">{this.state.statistics.points}</TableRowColumn>
                     </TableRow>
                   </TableBody>
                 </Table>

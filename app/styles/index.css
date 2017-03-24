@@ -410,11 +410,12 @@ body {
   width: 140px !important;
   height: 140px !important;
   border-radius: 50% !important;
-  margin-top: 23px !important;
+  margin-top: 15px !important;
 }
 
 .pro-news-box {
   border-bottom: 1px solid lightgrey !important;
+  margin-top: 20px !important;
 }
 
 
