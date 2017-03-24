@@ -58,7 +58,6 @@ const Landing = React.createClass({
 
     axios.get(`/api/clubs/team/${id}`)
       .then((res) => {
-        console.log(res.data, 'clubs/team/id !!!!!!!!!!!!!!!!!!!!!!!!');
         this.setState({ club: res.data });
       })
       .catch((err) => {
@@ -86,7 +85,7 @@ const Landing = React.createClass({
       .catch((err) => {
         this.props.setToast(
           true,
-          `Whoops! ${err}.`
+          'Sorry no matches this week.'
         );
       });
   },

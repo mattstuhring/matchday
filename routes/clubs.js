@@ -75,44 +75,30 @@ router.get('/clubs/:id', (req, res, next) => {
 router.get('/clubs/match/:id', (req, res, next) => {
   const { id } = req.params;
   const start = moment().startOf('week').add(1, 'days').format('DD.MM.YYYY');
-  const end = moment().endOf('week').add(1, 'days').format('DD.MM.YYYY');
+  const end = moment().endOf('week').add(12, 'days').format('DD.MM.YYYY');
+
+  console.log(start, 'start');
+  console.log(end, 'end');
 
   axios.get(`http://api.football-api.com/2.0/matches?comp_id=1204&team_id=${id}&from_date=${start}&to_date=${end}&Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
     .then((match) => {
+
       let d = moment(match.data[0].formatted_date, "DD-MM-YYYY").format("MM-DD-YYYY");
       let iso = moment(d + 'T' + match.data[0].time, "MM-DD-YYYY HH:mm");
-      // the date object month starts at 0 not 1
-      // console.log('object', iso.toObject());
+
       iso = moment(iso).subtract(7, 'hours');
       iso = moment(iso).format('HH:mm A');
+
       match.data[0].pacific = iso + ' PST';
       d = moment(match.data[0].formatted_date, "DD-MM-YYYY").format("dddd, MMMM Do YYYY");
       match.data[0].date = d;
+
       res.send(match.data);
     })
     .catch((err) => {
       next(err);
     });
 });
-
-// router.get('/clubs/team/:id', (req, res, next) => {
-//   const { id } = req.params;
-//
-//   axios.get('http://api.football-api.com/2.0/standings/1204?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822')
-//   .then((team) => {
-//
-//     const teamId = id.toString();
-//
-//     function findTeam(t) {
-//       return t.team_id === teamId;
-//     }
-//
-//     res.send(team.data.find(findTeam));
-//   })
-//   .catch((err) => {
-//     next(err);
-//   });
-// });
 
 router.get('/clubs/team/:id', (req, res, next) => {
   const { id } = req.params;
@@ -132,10 +118,8 @@ router.get('/clubs/team/:id', (req, res, next) => {
 
     return axios.get(`http://api.football-api.com/2.0/team/${parseInt(team.team_id)}?Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
       .then((facts) => {
-        console.log(facts.data, '$$$$$$$$$$$$$$$$$$$');
-        console.log(team, '@@@@@@@@@@@@@@@@@');
         const clubFacts = facts.data;
-        // const result = { history: res.data, team: team }
+
         res.send({ clubFacts, team });
       })
       .catch((err) => {

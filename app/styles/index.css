@@ -125,6 +125,7 @@ body {
   background-color: whitesmoke !important;
   color: #38003d !important;
   padding-bottom: 13px !important;
+  height: 284px !important;
 }
 
 .land-team-text {
@@ -133,7 +134,7 @@ body {
 }
 
 .land-div {
-  margin-left: 80px !important;
+  margin-left: 15% !important;
 }
 
 .land-text-color {

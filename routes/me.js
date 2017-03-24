@@ -26,6 +26,8 @@ router.get('/me/team', checkAuth, (req, res, next) => {
       return axios.get(`http://api.football-api.com/2.0/matches?comp_id=1204&team_id=${user.team_id}&from_date=${start}&to_date=${end}&Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
         .then(match => {
 
+          console.log(match, '$$$$$$$$$$$$$$$');
+
           let d = moment(match.data[0].formatted_date, "DD-MM-YYYY").format("MM-DD-YYYY");
           let iso = moment(d + 'T' + match.data[0].time, "MM-DD-YYYY HH:mm");
 
