@@ -73,8 +73,6 @@ const Profile = React.createClass ({
   componentWillMount() {
     axios.get('api/me/team')
       .then((res) => {
-        console.log(res, '$$$$$$$$$$$');
-
         this.setState({match: res.data.teamInfo.game, statistics: res.data.teamInfo.result, clubImg: res.data.clubImg});
       })
       .catch((err) => {
@@ -106,6 +104,8 @@ const Profile = React.createClass ({
         this.setState({ matches });
       })
       .catch((err) => {
+        this.setState({matches: []})
+
         this.props.setToast(
           true,
           `Whoops! ${err}.`
@@ -268,6 +268,129 @@ const Profile = React.createClass ({
       height: '30px',
       borderRadius: '4px'
     };
+
+
+    let matches;
+
+    if (this.state.matches.length === 0) {
+
+      matches = <Paper className="pro-card-text">
+        <div className="center">
+          <h2>I am so sorry!</h2>
+          <p>
+            The English Premier league has taken the week off.
+          </p>
+          <p>
+            Check back on Monday for a new round of matches.
+          </p>
+          <p>
+            Play some soccer to help you get through the week.
+          </p>
+        </div>
+      </Paper>;
+
+    } else {
+
+      matches = <Paper className="pro-card-text">
+        {this.state.matches.map((element, index) => {
+          return <div key={index}>
+            <Table className="pro-m-table">
+              <TableHeader
+                adjustForCheckbox={false}
+                displaySelectAll={false}
+                >
+                <TableRow>
+                  <TableHeaderColumn>
+                    {element.date}
+                  </TableHeaderColumn>
+                </TableRow>
+              </TableHeader>
+            </Table>
+            {element.matches.map((e, i) => {
+              return <div key={i} className="row">
+
+                <div className="col s1">
+                  <TextField
+                    id="text-field-default"
+                    disabled={true}
+                    value={e.pacific}
+                    underlineDisabledStyle={styleField}
+                    name="time"
+                    inputStyle={styleField.text}
+                    className="pro-field-time"
+                  />
+                </div>
+
+                <div className="col s3 right-align">
+                  <TextField
+                    id="text-field-default"
+                    disabled={true}
+                    value={e.localteam_name}
+                    underlineDisabledStyle={styleField}
+                    name="team1"
+                    inputStyle={styleField.text}
+                    className="pro-field-team"
+                  />
+                </div>
+
+                <div className="col s1">
+                  <Avatar
+                    src={this.state.clubImgs[e.localteam_id]}
+                    size={40}
+                    backgroundColor={fullWhite}
+                    className="pro-field-local"
+                  />
+                </div>
+
+                <div className="col s1">
+                  <TextField
+                    className="center-align"
+                    id="text-field-default"
+                    disabled={true}
+                    value="v"
+                    underlineDisabledStyle={styleField}
+                    name="v"
+                    inputStyle={styleField.text}
+                    className="pro-field-v"
+                  />
+                </div>
+
+                <div className="col s1">
+                  <Avatar
+                    src={this.state.clubImgs[e.visitorteam_id]}
+                    size={40}
+                    className="pro-field-visitor"
+                    backgroundColor={fullWhite}
+                  />
+                </div>
+
+                <div className="col s3">
+                  <TextField
+                    id="text-field-default"
+                    disabled={true}
+                    value={e.visitorteam_name}
+                    underlineDisabledStyle={styleField}
+                    name="team2"
+                    inputStyle={styleField.text}
+                    className="pro-field-team2"
+                  />
+                </div>
+
+                <div className="col s1">
+                  <RaisedButton
+                    icon={<Sms />}
+                    backgroundColor="#00ffa1"
+                    labelColor="#38003d"
+                    onClick={() => this.handleTabSms(e)}
+                  />
+                </div>
+              </div>;
+            })}
+          </div>;
+        })}
+      </Paper>;
+    }
+
 
     return <div>
       {/* CLUB BANNER */}
@@ -434,7 +557,7 @@ const Profile = React.createClass ({
           <Tabs>
             {/* TAB - ALL MATCHES OF THE WEEK */}
             <Tab label="Matches" className="pro-tab">
-              <Paper className="pro-card-text">
+              {/* <Paper className="pro-card-text">
                 {this.state.matches.map((element, index) => {
                   return <div key={index}>
                     <Table className="pro-m-table">
@@ -531,8 +654,10 @@ const Profile = React.createClass ({
                     })}
                   </div>;
                 })}
-              </Paper>
+              </Paper> */}
+              {matches}
             </Tab>
+
 
 
 

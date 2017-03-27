@@ -77,9 +77,6 @@ router.get('/clubs/match/:id', (req, res, next) => {
   const start = moment().startOf('week').add(1, 'days').format('DD.MM.YYYY');
   const end = moment().endOf('week').add(12, 'days').format('DD.MM.YYYY');
 
-  console.log(start, 'start');
-  console.log(end, 'end');
-
   axios.get(`http://api.football-api.com/2.0/matches?comp_id=1204&team_id=${id}&from_date=${start}&to_date=${end}&Authorization=565ec012251f932ea400000119a15146d7c5405a4923d2307279b822`)
     .then((match) => {
 
