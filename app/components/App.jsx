@@ -8,7 +8,6 @@ import FlatButton from 'material-ui/FlatButton';
 import Snackbar from 'material-ui/Snackbar';
 
 
-
 const App = React.createClass({
   getInitialState() {
     return {

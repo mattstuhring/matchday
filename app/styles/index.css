@@ -17,21 +17,21 @@ body {
 /* Styles apply to all pages */
 .card-title {
   background-image: url('./images/title.png');
-  color: white !important;
-  background-size: cover  !important;
-  background-repeat: no-repeat  !important;
-  width: 100%  !important;
+  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
 }
 
 
 
 /* APP Styling */
 .app-title {
-  cursor: pointer !important;
-  width: 58px !important;
-  border-radius: 50% !important;
-  border: 2px solid #fe005a !important;
-  margin-top: 3px !important;
+  cursor: pointer;
+  width: 58px;
+  border-radius: 50%;
+  border: 2px solid #fe005a;
+  margin-top: 3px;
 }
 
 .app-background {
@@ -43,9 +43,9 @@ body {
 }
 
 .app-logo {
-  height: 40px !important;
-  margin-bottom: 10px !important;
-  margin-left: 10px !important;
+  height: 40px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 
@@ -53,139 +53,147 @@ body {
 
 /* LANDING style */
 .land-banner {
-  width: 100% !important;
-  margin-top: 25px !important;
+  width: 100%;
+  margin-top: 25px;
 }
 
 .land-who {
-  width: 100% !important;
-  margin-top: 45px !important;
-  margin-bottom: 25px !important;
+  width: 100%;
+  margin-top: 45px;
+  margin-bottom: 25px;
 }
 
 .land-club-btn {
   border-radius: 50% !important;
-  width: 120px !important;
+  width: 120px;
   height: 120px !important;
   position: relative !important;
-  right: 9px !important;
-  bottom: 9px !important;
+  right: 9px;
+  bottom: 9px;
 }
 
 .land-inline {
-  display: inline-block !important;
+  display: inline-block;
 }
 
 .land-match-1 {
-  position: relative !important;
-  bottom: 15px !important;
-  display: inline-block !important;
-  margin-right: 10px !important;
+  position: relative;
+  bottom: 15px;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .land-match-2 {
-  display: inline-block !important;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-  position: relative !important;
-  bottom: 15px !important;
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  bottom: 15px;
 }
 
 .land-match-3 {
-  position: relative !important;
-  bottom: 15px !important;
-  display: inline-block !important;
-  margin-left: 10px !important;
+  position: relative;
+  bottom: 15px;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .land-logo {
-  margin-top: 0px !important;
-  text-align: center !important;
-  margin-bottom: 25px !important;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 .land-club-name {
-  display: inline-block !important;
-  position: relative !important;
-  bottom: 10px !important;
-  margin-left: 20px !important;
-  color: white !important;
+  display: inline-block;
+  position: relative;
+  bottom: 10px;
+  margin-left: 20px;
+  color: white;
 }
 
 .land-history {
-  padding: 5px 5px !important;
+  padding: 5px 5px;
 }
 
 .land-team-welcome {
-  text-decoration: underline !important;
-  margin-bottom: 5px !important;
+  text-decoration: underline;
+  margin-bottom: 5px;
 }
 
 .land-team-box {
-  background-color: whitesmoke !important;
-  color: #38003d !important;
-  padding-bottom: 13px !important;
-  height: 284px !important;
+  background-color: whitesmoke;
+  color: #38003d;
+  padding-bottom: 13px;
+  height: 284px;
 }
 
 .land-team-text {
-  display: inline-block !important;
-  margin-left: 10px !important;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .land-div {
-  margin-left: 15% !important;
+  margin-left: 15%;
 }
 
 .land-text-color {
-  color: lightgrey !important;
+  color: lightgrey;
 }
 
 .land-next-match {
-  margin-top: 30px !important;
-  text-decoration: underline !important;
+  margin-top: 30px;
+  text-decoration: underline;
 }
 
 .land-team-banner {
-  margin-bottom: 5px !important;
+  margin-bottom: 5px;
 }
 
 .land-welcome-box {
-  border-top: 1px solid whitesmoke !important;
-  border-bottom: 1px solid whitesmoke !important;
-  height: 286px !important;
+  border-top: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke;
+  height: 286px;
+  margin-bottom: 0px;
+  color: white;
+}
+
+.land-header {
+  margin-bottom: 0px;
 }
 
 .land-card-text {
-  padding: 0px !important;
+  padding: 0px 16px;
 }
 
 .land-card-row {
-  margin: 5px !important;
+  margin: 5px;
 }
 
 .land-title-img-div {
-  margin-bottom: 6px !important;
+  margin-bottom: 6px;
 }
 
 .land-title-img {
-  background-image: url('./images/title.png') !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  width: 100% !important;
+  background-image: url('./images/title.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 76px;
 }
 
 .land-team-img {
-  height: 284px !important;
+  height: 265px;
+  margin-top: 8px;
 }
 
 .land-support {
-  padding-top: 0 !important;
-  padding-left: 5px !important;
+  padding-top: 0;
+  padding-left: 5px;
 }
 
 .land-support-club {
-  margin-top: 7px !important;
+  margin-top: 7px;
 }
 
 .land-flex-container {
@@ -201,83 +209,86 @@ body {
 
 /* LOGIN style */
 .log-account {
-  margin-top: 30px !important;
-  margin-bottom: 10px !important;
+  margin-top: 30px;
+  margin-bottom: 10px;
   padding: 20px 0px !important;
-  background-color: #00ffa1 !important;
+  background-color: #00ffa1;
 }
 
 .log-account img {
-  width: 40% !important;
+  width: 40%;
 }
 
 .log-ball {
-  margin-top: 30px !important;
+  margin-top: 30px;
 }
 
 .log-card-title {
-  color: white !important;
+  color: white;
   background-image: url('./images/title.png');
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  margin-top: 0px !important;
-  padding: 16px !important;
+  margin-top: 0px;
+  padding: 16px;
 }
 
 .log-login {
-  margin-bottom: 0px !important;
+  margin-bottom: 0px;
 }
 
 .log-paper {
-  margin-bottom: 50px !important;
+  margin-bottom: 50px;
 }
 
 .log-paper-done {
-  display: inline-block !important;
   color: #fe005a !important;
 }
 
 .log-paper-h5 {
-  display: inline-block !important;
-  margin-left: 15px !important;
+  display: inline-block;
+  margin-left: 15px;
 }
 
 .log-paper-div {
-  margin-left: 50px !important;
+  margin-left: 50px;
 }
 
 .log-paper-header {
-  background-color: #38003d !important;
-  color: white !important;
-  padding: 15px !important;
+  background-color: #38003d;
+  color: white;
+  padding: 15px;
 }
 
 .log-paper-p {
-  text-decoration: underline !important;
+  text-decoration: underline;
+}
+
+.log-pad {
+  padding: 16px 16px;
 }
 
 .log-inline {
-  display: inline-block !important;
+  display: inline-block;
 }
 
 .log-epl-standings {
-  display: inline-block !important;
-  margin-bottom: 53px !important;
-  margin-left: 15px !important;
+  display: inline-block;
+  margin-bottom: 53px;
+  margin-left: 15px;
 }
 
 .log-text-field {
-  margin-top: 20px !important;
+  margin-top: 20px;
 }
 
 .log-btn-div {
-  height: 74px !important;
-  padding-top: 20px !important;
+  height: 74px;
+  padding-top: 45px;
 }
 
 .log-reg-btn {
-  margin-right: 30px !important;
+  margin-right: 30px;
 }
 
 
@@ -285,20 +296,20 @@ body {
 
 /* PROFILE styles */
 .pro-next {
-  border: 1px solid lightgrey !important;
-  margin-bottom: 0px !important;
+  border: 1px solid lightgrey;
+  margin-bottom: 0px;
 }
 
 .pro-jersey {
-  width: 80% !important;
-  margin-top: 25px !important;
+  width: 80%;
+  margin-top: 25px;
 }
 
 .pro-table {
   font-size: 18px !important;
-  color: #38003d !important;
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
+  color: #38003d;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .pro-tab {
@@ -307,115 +318,115 @@ body {
 }
 
 .pro-inline {
-  display: inline-block !important;
+  display: inline-block;
 }
 
 .pro-card-text {
-  padding: 0px 0px !important;
+  padding: 0px !important;
 }
 
 .pro-banner {
-  width: 100% !important;
-  margin-top: 20px !important;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .pro-card {
-  border: 1px solid lightgrey !important;
-  margin-bottom: 30px !important;
+  border: 1px solid lightgrey;
+  margin-bottom: 30px;
 }
 
 .pro-info-title {
-  margin-top: 18px !important;
-  margin-bottom: 5px !important;
-  text-decoration: underline !important;
+  margin-top: 18px;
+  margin-bottom: 5px;
+  text-decoration: underline;
 }
 
 .pro-info {
-  height: 35px  !important;
-  margin-bottom: 5px  !important;
+  height: 35px ;
+  margin-bottom: 5px ;
 }
 
 .pro-send-btn {
-  margin-bottom: 20px !important;
+  margin-bottom: 20px;
 }
 
 .pro-table-pad {
-  padding-bottom: 0px !important;
+  padding-bottom: 0px;
 }
 
 .pro-table-avatar {
-  padding-bottom: 0px !important;
-  padding-left: 14px !important;
+  padding-bottom: 0px;
+  padding-left: 14px;
 }
 
 .pro-sms-title {
-  padding: 16px !important;
-  background-color: #38003d !important;
-  color: white !important;
+  padding: 16px;
+  background-color: #38003d;
+  color: white;
 }
 
 .pro-sms-table {
-  margin-bottom: 5px !important;
+  margin-bottom: 5px;
 }
 
 .pro-sms-row {
-  margin-top: 17px !important;
+  margin-top: 17px;
 }
 
 .pro-overview {
-  margin-bottom: 0px !important;
-  font-family: Contrail One, cursive !important;
-  padding-top: 15px !important;
-  padding-bottom: 15px !important;
-  margin-top: 0 !important;
+  margin-bottom: 0px;
+  font-family: Contrail One, cursive;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 0;
 }
 
 .pro-m-table {
-  margin-bottom: 5px !important;
+  margin-bottom: 5px;
 }
 
 .pro-field-time {
-  width: 10rem !important;
+  width: 10rem;
 }
 
 .pro-field-team {
-  width: 100% !important;
-  margin-left: 50px !important;
+  width: 100%;
+  margin-left: 50px;
 }
 
 .pro-field-local {
-  margin-left: 30px !important;
+  margin-left: 30px;
 }
 
 .pro-field-v {
-  width: 100% !important;
-  margin-left: 40px !important;
+  width: 100%;
+  margin-left: 40px;
 }
 
 .pro-field-visitor {
-  margin-left: 20px !important;
+  margin-left: 20px;
 }
 
 .pro-field-team2 {
-  width: 100% !important;
-  margin-left: 20px !important;
+  width: 100%;
+  margin-left: 20px;
 }
 
 .pro-news {
-  overflow: auto !important;
-  max-height: 1100px !important;
+  overflow: auto;
+  max-height: 1100px;
 }
 
 .pro-news-img {
-  width: 140px !important;
-  height: 140px !important;
-  border-radius: 50% !important;
-  margin-top: 15px !important;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin-top: 15px;
 }
 
 .pro-news-box {
-  border-bottom: 1px solid lightgrey !important;
-  margin-top: 20px !important;
+  border-bottom: 1px solid lightgrey;
+  margin-top: 20px;
 }
 
 
@@ -425,38 +436,38 @@ body {
 /* REGISTER styles */
 .reg-club-btn {
   border-radius: 50% !important;
-  min-width: 80px !important;
-  height: 80px !important;
+  min-width: 100px !important;
+  height: 100px !important;
   position: relative !important;
-  right: 9px !important;
-  bottom: 8px !important;
+  right: 8px;
+  bottom: 7px;
 }
 
 .reg-details {
-  margin-left: 10px !important;
+  margin-left: 10px;
 }
 
 .reg-submit-btn {
-  margin-right: 20px !important;
-  margin-bottom: 10px !important;
+  margin-right: 20px;
+  margin-bottom: 10px;
 }
 
 .reg-club {
-  padding: 5px 0px !important;
-  margin-top: 0px !important;
-  background-color: #38003d !important;
-  color: white !important;
+  padding: 5px 0px;
+  margin-top: 0px;
+  background-color: #38003d;
+  color: white;
 }
 
 .reg-club-img {
-  margin-bottom: 20px !important;
+  margin-bottom: 20px;
 }
 
 .reg-details-title {
   background-image: url('./images/title.png');
-  color: white !important;
-  background-size: cover  !important;
-  background-repeat: no-repeat  !important;
+  color: white;
+  background-size: cover ;
+  background-repeat: no-repeat ;
 }
 
 .reg-btn {
@@ -464,23 +475,23 @@ body {
 }
 
 .regKit {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
+  padding-left: 0px;
+  padding-right: 0px;
   margin-bottom: 40px;
-  margin-left: 11px !important;
+  margin-left: 11px;
   margin-top: 30px;
 }
 
 .regFormTitle {
   background-color: grey;
   color: white;
-  padding: 16px 0 !important;
-  margin-top: 0px !important;
+  padding: 16px 0;
+  margin-top: 0px;
 }
 
 .regForm {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .reg-phone {
@@ -488,7 +499,7 @@ body {
 }
 
 .reg-support {
-  padding: 15px 0px !important;
+  padding: 15px 0px;
 }
 
 .reg-flex-container {
@@ -497,18 +508,18 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 20px !important;
+  margin-top: 20px;
 }
 
 .reg-create {
-  margin-top: 30px !important;
-  margin-bottom: 10px !important;
+  margin-top: 30px;
+  margin-bottom: 10px;
   padding: 20px 0px !important;
-  background-color: #00ffa1 !important;
+  background-color: #00ffa1;
 }
 
 .reg-create-img {
-  width: 58% !important;
+  width: 58%;
 }
 
 
@@ -526,14 +537,9 @@ body {
   color: white !important;
 }
 
-.land-header {
-  margin-bottom: 20px;
-  height: 75px !important;
-}
 
-.log-pad {
-  padding: 16px 16px;
-}
+
+
 
 .clubs {
   width: 50px !important;

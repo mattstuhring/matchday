@@ -129,12 +129,13 @@ const Register = React.createClass({
               <div className="reg-flex-container">
                 {this.state.clubs.map((element) => {
                   const style = {
-                    height: 60,
-                    width: 60,
+                    height: 85,
+                    width: 85,
                     margin: 10,
                     textAlign: 'center',
                     display: 'inline-block',
                     backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
                     backgroundImage: 'url(' + element.logo + ')'
                   };
 

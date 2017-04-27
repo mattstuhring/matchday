@@ -150,7 +150,7 @@ const Landing = React.createClass({
 
     } else {
       welcome = <div>
-        <div className="col s7 center match-info" style={styleStadium}>
+        <div className="col s7 center" style={styleStadium}>
           <h3 className="land-next-match">Next Match</h3>
           <p>{this.state.match[0].date}</p>
           <p>{this.state.match[0].pacific}</p>
